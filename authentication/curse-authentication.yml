@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curse-core-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: API_KEY
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: <br/>The API key can be generated in the CurseForge for Studios [developer console](https://console.curseforge.com/).
+  sources:
+  - openapi/curse-core-openapi-original.yml
