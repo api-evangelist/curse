@@ -1,0 +1,334 @@
+openapi: 3.0.0
+info:
+  title: CurseForge Core Categories Minecraft API
+  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  version: v1
+servers:
+- url: https://api.curseforge.com
+security:
+- API_KEY: []
+tags:
+- name: Minecraft
+paths:
+  /v1/minecraft/version:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Minecraft Versions
+      parameters:
+      - name: sortDescending
+        in: query
+        schema:
+          type: boolean
+          default: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfMinecraftGameVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/version/{gameVersionString}:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Specific Minecraft Version
+      parameters:
+      - name: gameVersionString
+        in: path
+        required: true
+        schema:
+          type: string
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfMinecraftGameVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/modloader:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Minecraft ModLoaders
+      parameters:
+      - name: version
+        in: query
+        schema:
+          type: string
+        x-position: 1
+      - name: includeAll
+        in: query
+        schema:
+          type: boolean
+          nullable: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfMinecraftModLoaderIndex'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/modloader/{modLoaderName}:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Specific Minecraft ModLoader
+      parameters:
+      - name: modLoaderName
+        in: path
+        required: true
+        schema:
+          type: string
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfMinecraftModLoaderVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+components:
+  schemas:
+    ModLoaderInstallMethod:
+      type: integer
+      description: '1 = ForgeInstaller
+
+        2 = ForgeJarInstall
+
+        3 = ForgeInstaller_v2'
+      x-enumNames:
+      - ForgeInstaller
+      - ForgeJarInstall
+      - ForgeInstaller_v2
+      enum:
+      - 1
+      - 2
+      - 3
+    MinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        gameVersion:
+          type: string
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        type:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+    MinecraftModLoaderVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameVersionId:
+          type: integer
+          format: int32
+        minecraftGameVersionId:
+          type: integer
+          format: int32
+        forgeVersion:
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ModLoaderType'
+        downloadUrl:
+          type: string
+        filename:
+          type: string
+        installMethod:
+          $ref: '#/components/schemas/ModLoaderInstallMethod'
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        approved:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        mavenVersionString:
+          type: string
+        versionJson:
+          type: string
+        librariesInstallLocation:
+          type: string
+        minecraftVersion:
+          type: string
+        additionalFilesJson:
+          type: string
+        modLoaderGameVersionId:
+          type: integer
+          format: int32
+        modLoaderGameVersionTypeId:
+          type: integer
+          format: int32
+        modLoaderGameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        modLoaderGameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+        mcGameVersionId:
+          type: integer
+          format: int32
+        mcGameVersionTypeId:
+          type: integer
+          format: int32
+        mcGameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        mcGameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+        installProfileJson:
+          type: string
+    GameVersionStatus:
+      type: integer
+      description: '1 = Approved
+
+        2 = Deleted
+
+        3 = New'
+      x-enumNames:
+      - Approved
+      - Deleted
+      - New
+      enum:
+      - 1
+      - 2
+      - 3
+    ApiResponseOfListOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftGameVersion'
+    MinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameVersionId:
+          type: integer
+          format: int32
+        versionString:
+          type: string
+        jarDownloadUrl:
+          type: string
+        jsonDownloadUrl:
+          type: string
+        approved:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        gameVersionTypeId:
+          type: integer
+          format: int32
+        gameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        gameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    ApiResponseOfMinecraftModLoaderVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftModLoaderVersion'
+    ApiResponseOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftGameVersion'
+    ApiResponseOfListOfMinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftModLoaderIndex'
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    GameVersionTypeStatus:
+      type: integer
+      description: '1 = Normal
+
+        2 = Deleted'
+      x-enumNames:
+      - Normal
+      - Deleted
+      enum:
+      - 1
+      - 2
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      description: <br/>The API key can be generated in the CurseForge for Studios [developer console](https://console.curseforge.com/).
+      name: x-api-key
+      in: header
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))

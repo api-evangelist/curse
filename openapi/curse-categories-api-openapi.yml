@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: CurseForge Core Categories API
+  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  version: v1
+servers:
+- url: https://api.curseforge.com
+security:
+- API_KEY: []
+tags:
+- name: Categories
+paths:
+  /v1/categories:
+    get:
+      tags:
+      - Categories
+      description: 'Get all available classes and categories of the specified game. Specify a game id for a list of all game categories, or a class id for a list of categories under that class.
+
+        specifiy the classes Only flag to just get the classes for a given game.'
+      operationId: Get Categories
+      parameters:
+      - name: gameId
+        in: query
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: classId
+        in: query
+        description: A class unique id
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 2
+      - name: classesOnly
+        in: query
+        description: A flag used with gameId to return only classes
+        schema:
+          type: boolean
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Categories Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+components:
+  schemas:
+    Get Categories Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Category'
+    Category:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The category id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the category
+          format: int32
+        name:
+          type: string
+          description: Category name
+        slug:
+          type: string
+          description: The category slug as it appear in the URL
+        url:
+          type: string
+          description: The category URL
+        iconUrl:
+          type: string
+          description: URL for the category icon
+        dateModified:
+          type: string
+          description: Last modified date of the category
+          format: date-time
+        isClass:
+          type: boolean
+          description: A top level category for other categories
+          nullable: true
+        classId:
+          type: integer
+          description: The class id of the category, meaning - the class of which this category is under
+          format: int32
+          nullable: true
+        parentCategoryId:
+          type: integer
+          description: The parent category for this category
+          format: int32
+          nullable: true
+        displayIndex:
+          type: integer
+          description: The display index for this category
+          format: int32
+          nullable: true
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      description: <br/>The API key can be generated in the CurseForge for Studios [developer console](https://console.curseforge.com/).
+      name: x-api-key
+      in: header
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))

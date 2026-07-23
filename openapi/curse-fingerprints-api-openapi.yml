@@ -1,0 +1,556 @@
+openapi: 3.0.0
+info:
+  title: CurseForge Core Categories Fingerprints API
+  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  version: v1
+servers:
+- url: https://api.curseforge.com
+security:
+- API_KEY: []
+tags:
+- name: Fingerprints
+paths:
+  /v1/fingerprints/{gameId}:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints for a given game id.
+      operationId: Get Fingerprints Matches By Game Id
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: The game id for matching fingerprints
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      requestBody:
+        x-name: requestBody
+        description: The request body containing an array of fingerprints
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFingerprintMatchesRequestBody'
+        required: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints.
+      operationId: Get Fingerprints Matches
+      requestBody:
+        x-name: requestBody
+        description: The request body containing an array of fingerprints
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFingerprintMatchesRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints/fuzzy/{gameId}:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints using fuzzy matching.
+      operationId: Get Fingerprints Fuzzy Matches By Game Id
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: The game id for matching fingerprints
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      requestBody:
+        x-name: matchCriteria
+        description: Game id and folder fingerprints options for the fuzzy matching
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFuzzyMatchesRequestBody'
+        required: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints/fuzzy:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints using fuzzy matching.
+      operationId: Get Fingerprints Fuzzy Matches
+      requestBody:
+        x-name: matchCriteria
+        description: Game id and folder fingerprints options for the fuzzy matching
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFuzzyMatchesRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    File:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The file id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the mod that this file belongs to
+          format: int32
+        modId:
+          type: integer
+          description: The mod id
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Whether the file is available to download
+        displayName:
+          type: string
+          description: Display name of the file
+        fileName:
+          type: string
+          description: Exact file name
+        releaseType:
+          description: The file release type
+          $ref: '#/components/schemas/FileReleaseType'
+        fileStatus:
+          description: Status of the file
+          $ref: '#/components/schemas/FileStatus'
+        hashes:
+          type: array
+          description: The file hash (i.e. md5 or sha1)
+          items:
+            $ref: '#/components/schemas/FileHash'
+        fileDate:
+          type: string
+          description: The file timestamp
+          format: date-time
+        fileLength:
+          type: integer
+          description: The file length in bytes
+          format: int64
+        downloadCount:
+          type: integer
+          description: The number of downloads for the file
+          format: int64
+        fileSizeOnDisk:
+          type: integer
+          description: The file's size on disk
+          format: int64
+          nullable: true
+        downloadUrl:
+          type: string
+          description: The file download URL
+        gameVersions:
+          type: array
+          description: List of game versions this file is relevant for
+          items:
+            type: string
+        sortableGameVersions:
+          type: array
+          description: Metadata used for sorting by game versions
+          items:
+            $ref: '#/components/schemas/SortableGameVersion'
+        dependencies:
+          type: array
+          description: List of dependencies files
+          items:
+            $ref: '#/components/schemas/FileDependency'
+        exposeAsAlternative:
+          type: boolean
+          nullable: true
+        parentProjectFileId:
+          type: integer
+          format: int32
+          nullable: true
+        alternateFileId:
+          type: integer
+          format: int32
+          nullable: true
+        isServerPack:
+          type: boolean
+          nullable: true
+        serverPackFileId:
+          type: integer
+          format: int32
+          nullable: true
+        isEarlyAccessContent:
+          type: boolean
+          nullable: true
+        earlyAccessEndDate:
+          type: string
+          format: date-time
+          nullable: true
+        fileFingerprint:
+          type: integer
+          format: int64
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileModule'
+        cookingInfo:
+          $ref: '#/components/schemas/CookerInfo'
+    FingerprintFuzzyMatch:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        file:
+          $ref: '#/components/schemas/File'
+        latestFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FingerprintMatch:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        file:
+          $ref: '#/components/schemas/File'
+        latestFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+    FileHash:
+      type: object
+      additionalProperties: false
+      properties:
+        value:
+          type: string
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
+    Get Fingerprint Matches Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintsMatchesResult'
+    FileModule:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        fingerprint:
+          type: integer
+          format: int64
+    HashAlgo:
+      type: integer
+      description: '1 = Sha1
+
+        2 = Md5'
+      x-enumNames:
+      - Sha1
+      - Md5
+      enum:
+      - 1
+      - 2
+    SortableGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        gameVersionName:
+          type: string
+          description: Original version name (e.g. 1.5b)
+        gameVersionPadded:
+          type: string
+          description: Used for sorting (e.g. 0000000001.0000000005)
+        gameVersion:
+          type: string
+          description: game version clean name (e.g. 1.5)
+        gameVersionReleaseDate:
+          type: string
+          description: Game version release date
+          format: date-time
+        gameVersionTypeId:
+          type: integer
+          description: Game version type id
+          format: int32
+          nullable: true
+    CookerInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
+    FolderFingerprint:
+      type: object
+      additionalProperties: false
+      properties:
+        foldername:
+          type: string
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FileStatus:
+      type: integer
+      description: '1 = Processing
+
+        2 = ChangesRequired
+
+        3 = UnderReview
+
+        4 = Approved
+
+        5 = Rejected
+
+        6 = MalwareDetected
+
+        7 = Deleted
+
+        8 = Archived
+
+        9 = Testing
+
+        10 = Released
+
+        11 = ReadyForReview
+
+        12 = Deprecated
+
+        13 = Baking
+
+        14 = AwaitingPublishing
+
+        15 = FailedPublishing'
+      x-enumNames:
+      - Processing
+      - ChangesRequired
+      - UnderReview
+      - Approved
+      - Rejected
+      - MalwareDetected
+      - Deleted
+      - Archived
+      - Testing
+      - Released
+      - ReadyForReview
+      - Deprecated
+      - Baking
+      - AwaitingPublishing
+      - FailedPublishing
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    FingerprintFuzzyMatchResult:
+      type: object
+      additionalProperties: false
+      properties:
+        fuzzyMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintFuzzyMatch'
+    Get Fingerprints Fuzzy Matches Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
+    GetFingerprintMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FingerprintsMatchesResult:
+      type: object
+      additionalProperties: false
+      properties:
+        isCacheBuilt:
+          type: boolean
+        exactMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        exactFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        partialMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        partialMatchFingerprints:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: integer
+              format: int64
+        installedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        unmatchedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FileDependency:
+      type: object
+      additionalProperties: false
+      properties:
+        modId:
+          type: integer
+          format: int32
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
+    GetFuzzyMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        fingerprints:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderFingerprint'
+    FileRelationType:
+      type: integer
+      description: '1 = EmbeddedLibrary
+
+        2 = OptionalDependency
+
+        3 = RequiredDependency
+
+        4 = Tool
+
+        5 = Incompatible
+
+        6 = Include'
+      x-enumNames:
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      description: <br/>The API key can be generated in the CurseForge for Studios [developer console](https://console.curseforge.com/).
+      name: x-api-key
+      in: header
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))
