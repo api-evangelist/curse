@@ -1,0 +1,4222 @@
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))
+openapi: 3.0.0
+info:
+  title: CurseForge Core API
+  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  version: v1
+servers:
+- url: https://api.curseforge.com
+paths:
+  /v1/games:
+    get:
+      tags:
+      - Games
+      description: Get all games that are available to the provided API key.
+      operationId: Get Games
+      parameters:
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Games Response'
+        '500':
+          description: ''
+  /v1/games/{gameId}:
+    get:
+      tags:
+      - Games
+      description: Get a single game. A private game is only accessible by its respective API key.
+      operationId: Get Game
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Game Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/games/{gameId}/versions:
+    get:
+      tags:
+      - Games
+      description: Get all available versions for each known version type of the specified game. A private game is only accessible
+        to its respective API key.
+      operationId: Get Versions
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Versions Response - V1'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/games/{gameId}/version-types:
+    get:
+      tags:
+      - Games
+      description: 'Get all available version types of the specified game.
+
+
+        A private game is only accessible to its respective API key.
+
+
+
+        Currently, when creating games via the CurseForge for Studios Console, you are limited to a single game version type.
+
+        This means that this endpoint is probably not useful in most cases and is relevant mostly when handling
+
+        existing games that have multiple game versions such as World of Warcraft and Minecraft (e.g. 517 for wow_retail).'
+      operationId: Get Version Types
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Version Types Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v2/games/{gameId}/versions:
+    get:
+      tags:
+      - Games
+      description: Get all available versions for each known version type of the specified game. A private game is only accessible
+        to its respective API key.
+      operationId: Get Versions - V2
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Versions Response - V2'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v2/games/{gameId}/additional-client-featured-projects:
+    get:
+      tags:
+      - Games
+      operationId: Get additional client featured projects
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Version Types Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/categories:
+    get:
+      tags:
+      - Categories
+      description: 'Get all available classes and categories of the specified game. Specify a game id for a list of all game
+        categories, or a class id for a list of categories under that class.
+
+        specifiy the classes Only flag to just get the classes for a given game.'
+      operationId: Get Categories
+      parameters:
+      - name: gameId
+        in: query
+        required: true
+        description: A game unique id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: classId
+        in: query
+        description: A class unique id
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 2
+      - name: classesOnly
+        in: query
+        description: A flag used with gameId to return only classes
+        schema:
+          type: boolean
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Categories Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/search:
+    get:
+      tags:
+      - Mods
+      description: Get all mods that match the search criteria.
+      operationId: Search Mods
+      parameters:
+      - name: gameId
+        in: query
+        required: true
+        description: Filter by game id.
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: classId
+        in: query
+        description: Filter by section id (discoverable via Categories)
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: categoryId
+        in: query
+        description: Filter by category id
+        schema:
+          type: integer
+          format: int32
+        x-position: 3
+      - name: categoryIds
+        in: query
+        description: "Filter by a list of category ids - this will override categoryId\ncategoryIds=[1,2,3...]\n         \
+          \   \nThe maximum allowed category ids per query is 10"
+        schema:
+          type: string
+        x-position: 4
+      - name: gameVersion
+        in: query
+        description: Filter by game version string
+        schema:
+          type: string
+        x-position: 5
+      - name: gameVersions
+        in: query
+        description: "Filter by a list of game version strings - this will override\ngameVersion\n            \ngameVersions=[\"\
+          1.19.1\", \"1.19.2\", \"1.20.1\" ...]\n            \nThe maximum allowed category ids per query is 4"
+        schema:
+          type: string
+        x-position: 6
+      - name: searchFilter
+        in: query
+        description: Filter by free text search in the mod name and author
+        schema:
+          type: string
+        x-position: 7
+      - name: sortField
+        in: query
+        description: Filter by ModsSearchSortField enumeration
+        schema:
+          $ref: '#/components/schemas/ModsSearchSortField'
+        x-position: 8
+      - name: sortOrder
+        in: query
+        description: '''asc'' if sort is in ascending order, ''desc'' if sort is in descending order'
+        schema:
+          $ref: '#/components/schemas/SortOrder'
+        x-position: 9
+      - name: modLoaderType
+        in: query
+        description: Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
+        schema:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+        x-position: 10
+      - name: modLoaderTypes
+        in: query
+        description: "Filter by a list of mod loader types - this will override modLoaderType\nmodLoaderTypes=[Forge, Fabric,\
+          \ ...]\n            \nMax values = 5"
+        schema:
+          type: string
+        x-position: 11
+      - name: gameVersionTypeId
+        in: query
+        description: Filter only mods that contain files tagged with versions of the given gameVersionTypeId
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 12
+      - name: authorId
+        in: query
+        description: Filter only mods that the given authorId is a member of.
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 13
+      - name: primaryAuthorId
+        in: query
+        description: Filter only mods that the given primaryAuthorId is the owner of.
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 14
+      - name: PremiumType
+        in: query
+        description: Filter only mods that are Premium or not.
+        schema:
+          $ref: '#/components/schemas/ModPremiumTypeEnum'
+        x-position: 15
+      - name: slug
+        in: query
+        description: Filter by slug (coupled with classId will result in a unique result).
+        schema:
+          type: string
+        x-position: 16
+      - name: clientCompatible
+        in: query
+        description: 'When set to true, will filter out any mod that doesn''t have a default
+
+          file that is compatible with the client. This is usually due to a bad
+
+          file structure of the file (which might cause unexpected behaviours on
+
+          the user''s machine - such as overriding other mods installed).'
+        schema:
+          type: boolean
+        x-position: 17
+      - name: modsSearchEnhancedFeatures
+        in: query
+        description: Bitwise number with values from ModsSearchEnhancedFeatures
+        schema:
+          type: integer
+          format: int64
+        x-position: 18
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 19
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 20
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseWithPaginationOfListOfModDto'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v1/mods/app-search:
+    post:
+      tags:
+      - Mods
+      operationId: App Mods Search
+      requestBody:
+        x-name: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchModsPostRequest'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v1/mods/{modId}:
+    get:
+      tags:
+      - Mods
+      description: Get a single mod.
+      operationId: Get Mod
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfModDto'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/get-mods-by-ids:
+    post:
+      tags:
+      - Mods
+      description: Get a list of mods belonging the the same game.
+      operationId: Get Mods
+      requestBody:
+        x-name: requestBody
+        description: Request body containing an array of mod ids, mod ids must belong to the same game.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetExpandedModsByIdsListRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfModDto'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v1/mods:
+    post:
+      tags:
+      - Mods
+      description: Get a list of mods belonging the the same game.
+      operationId: Get Mods2
+      requestBody:
+        x-name: requestBody
+        description: Request body containing an array of mod ids, mod ids must belong to the same game.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetExpandedModsByIdsListRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfModDto'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v1/mods/featured:
+    post:
+      tags:
+      - Mods
+      description: Get a list of featured, popular and recently updated mods.
+      operationId: Get Featured Mods
+      requestBody:
+        x-name: filter
+        description: Match results for a game and exclude specific mods
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFeaturedModsRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfFeaturedModsResponseOfModDto'
+        '500':
+          description: ''
+        '400':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/{modId}/description:
+    get:
+      tags:
+      - Mods
+      description: Get the full description of a mod in HTML format.
+      operationId: Get Mod Description
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: raw
+        in: query
+        schema:
+          type: boolean
+        x-position: 2
+      - name: stripped
+        in: query
+        schema:
+          type: boolean
+        x-position: 3
+      - name: markup
+        in: query
+        schema:
+          type: boolean
+        x-position: 4
+      - name: lang
+        in: query
+        schema:
+          type: string
+          default: en
+        x-position: 5
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/String Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/app-highlights:
+    get:
+      tags:
+      - Mods
+      operationId: Mods_GetAppModHighlights
+      parameters:
+      - name: gameId
+        in: query
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfAppHighlightsResponse'
+        '404':
+          description: ''
+  /v1/mods/highlights:
+    post:
+      tags:
+      - Mods
+      operationId: Get Mod Highlights
+      requestBody:
+        x-name: body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetHighlightsFeaturedRequest'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfHomepageHighlightsResponse'
+        '500':
+          description: ''
+  /v1/mods/{modId}/files/{fileId}:
+    get:
+      tags:
+      - Files
+      description: Get a single file of the specified mod.
+      operationId: Get Mod File
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the file belongs to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: fileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Mod File Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/{modId}/files:
+    get:
+      tags:
+      - Files
+      description: Get all files of the specified mod.
+      operationId: Get Mod Files
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the files belong to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: olderThanProjectFileId
+        in: query
+        description: Filter only files older than the given file ID
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 2
+      - name: gameVersion
+        in: query
+        description: Filter by game version string
+        schema:
+          type: string
+        x-position: 3
+      - name: modLoaderType
+        in: query
+        description: 'ModLoaderType enumeration
+
+          Filter only files associated to a given modloader (Forge, Fabric ...).'
+        schema:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+        x-position: 4
+      - name: releaseTypes
+        in: query
+        style: form
+        explode: true
+        description: Filter only files that are of the given release types
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectFileReleaseType'
+        x-position: 5
+      - name: platformType
+        in: query
+        description: Filter only files supporting the given platform type
+        schema:
+          nullable: true
+          $ref: '#/components/schemas/PlatformType'
+        x-position: 6
+      - name: gameVersionTypeId
+        in: query
+        description: Filter only files that are tagged with versions of the given gameVersionTypeId
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 7
+      - name: clientCompatible
+        in: query
+        description: When set to true, filter OUT any file that isn't client compatible.
+        schema:
+          type: boolean
+        x-position: 8
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 10
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 11
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Mod Files Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/files:
+    post:
+      tags:
+      - Files
+      description: Get a list of files.
+      operationId: Get Files
+      requestBody:
+        x-name: requestBody
+        description: Request body containing a list of file ids to fetch
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetModFilesRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Files Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+        '400':
+          description: ''
+  /v1/mods/{modId}/files/{fileId}/changelog:
+    get:
+      tags:
+      - Files
+      description: Get the changelog of a file in HTML format.
+      operationId: Get Mod File Changelog
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the file belongs to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: fileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: raw
+        in: query
+        schema:
+          type: boolean
+        x-position: 3
+      - name: stripped
+        in: query
+        schema:
+          type: boolean
+        x-position: 4
+      - name: markup
+        in: query
+        schema:
+          type: boolean
+        x-position: 5
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/String Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/{modId}/files/{fileId}/download-url:
+    get:
+      tags:
+      - Files
+      description: Get a download url for a specific file.
+      operationId: Get Mod File Download URL
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the file belongs to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: fileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/String Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/{modId}/files/{fileId}/download-info:
+    get:
+      tags:
+      - Files
+      summary: 'Get a download information for a specific file. This can include
+
+        different formats and delta-diffs and allows the client to select the
+
+        best suited file to download.'
+      operationId: Get Mod File Download URL2
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the file belongs to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: fileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: updateFrom
+        in: query
+        description: 'Optional. A file id which the client currently has and wants to update
+
+          from. This allows searching for more efficient methods of updates - like
+
+          a delta diff file.'
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfDownloadInfo'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/mods/{modId}/files/{newFileId}/deltas/{oldFileId}:
+    get:
+      tags:
+      - Files
+      description: Get a single file of the specified mod.
+      operationId: Get Mod File2
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id the file belongs to
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: newFileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: oldFileId
+        in: path
+        required: true
+        description: The file id
+        schema:
+          type: integer
+          format: int32
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfFileDeltaDiff'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/fingerprints/{gameId}:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints for a given game id.
+      operationId: Get Fingerprints Matches By Game Id
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: The game id for matching fingerprints
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      requestBody:
+        x-name: requestBody
+        description: The request body containing an array of fingerprints
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFingerprintMatchesRequestBody'
+        required: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints.
+      operationId: Get Fingerprints Matches
+      requestBody:
+        x-name: requestBody
+        description: The request body containing an array of fingerprints
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFingerprintMatchesRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints/fuzzy/{gameId}:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints using fuzzy matching.
+      operationId: Get Fingerprints Fuzzy Matches By Game Id
+      parameters:
+      - name: gameId
+        in: path
+        required: true
+        description: The game id for matching fingerprints
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      requestBody:
+        x-name: matchCriteria
+        description: Game id and folder fingerprints options for the fuzzy matching
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFuzzyMatchesRequestBody'
+        required: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/fingerprints/fuzzy:
+    post:
+      tags:
+      - Fingerprints
+      description: Get mod files that match a list of fingerprints using fuzzy matching.
+      operationId: Get Fingerprints Fuzzy Matches
+      requestBody:
+        x-name: matchCriteria
+        description: Game id and folder fingerprints options for the fuzzy matching
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFuzzyMatchesRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+        '400':
+          description: ''
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/minecraft/version:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Minecraft Versions
+      parameters:
+      - name: sortDescending
+        in: query
+        schema:
+          type: boolean
+          default: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfMinecraftGameVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/version/{gameVersionString}:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Specific Minecraft Version
+      parameters:
+      - name: gameVersionString
+        in: path
+        required: true
+        schema:
+          type: string
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfMinecraftGameVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/modloader:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Minecraft ModLoaders
+      parameters:
+      - name: version
+        in: query
+        schema:
+          type: string
+        x-position: 1
+      - name: includeAll
+        in: query
+        schema:
+          type: boolean
+          nullable: true
+        x-position: 2
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfMinecraftModLoaderIndex'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v1/minecraft/modloader/{modLoaderName}:
+    get:
+      tags:
+      - Minecraft
+      operationId: Get Specific Minecraft ModLoader
+      parameters:
+      - name: modLoaderName
+        in: path
+        required: true
+        schema:
+          type: string
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfMinecraftModLoaderVersion'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v3/mods/highlights:
+    post:
+      tags:
+      - Mods
+      operationId: Get Mod Highlights2
+      requestBody:
+        x-name: body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetHighlightsFeaturedRequest'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfHomepageHighlightsResponse2'
+        '500':
+          description: ''
+  /v3/mods:
+    get:
+      tags:
+      - Mods
+      operationId: Mods_GetById
+      parameters:
+      - name: modId
+        in: query
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /v2/mods/app-highlights:
+    get:
+      tags:
+      - Mods
+      operationId: Mods_GetAppModHighlights2
+      parameters:
+      - name: gameId
+        in: query
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfAppHighlightsResponse2'
+        '404':
+          description: ''
+  /v2/mods/highlights:
+    post:
+      tags:
+      - Mods
+      operationId: Get Mod Highlights22
+      requestBody:
+        x-name: body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetHighlightsFeaturedRequest'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfHomepageHighlightsResponse3'
+        '500':
+          description: ''
+  /v2/mods/search:
+    get:
+      tags:
+      - Mods
+      description: Get all mods that match the search criteria.
+      operationId: Search Mods2
+      parameters:
+      - name: gameId
+        in: query
+        required: true
+        description: Filter by game id.
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: classId
+        in: query
+        description: Filter by section id (discoverable via Categories)
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: categoryId
+        in: query
+        description: Filter by category id
+        schema:
+          type: integer
+          format: int32
+        x-position: 3
+      - name: categoryIds
+        in: query
+        description: "Filter by a list of category ids - this will override categoryId\ncategoryIds=[1,2,3...]\n         \
+          \   \nThe maximum allowed category ids per query is 10"
+        schema:
+          type: string
+        x-position: 4
+      - name: gameVersion
+        in: query
+        description: Filter by game version string
+        schema:
+          type: string
+        x-position: 5
+      - name: gameVersions
+        in: query
+        description: "Filter by a list of game version strings - this will override\ngameVersion\n            \ngameVersions=[\"\
+          1.19.1\", \"1.19.2\", \"1.20.1\" ...]\n            \nThe maximum allowed category ids per query is 4"
+        schema:
+          type: string
+        x-position: 6
+      - name: searchFilter
+        in: query
+        description: Filter by free text search in the mod name and author
+        schema:
+          type: string
+        x-position: 7
+      - name: sortField
+        in: query
+        description: Filter by ModsSearchSortField enumeration
+        schema:
+          $ref: '#/components/schemas/ModsSearchSortField'
+        x-position: 8
+      - name: sortOrder
+        in: query
+        description: '''asc'' if sort is in ascending order, ''desc'' if sort is in descending order'
+        schema:
+          $ref: '#/components/schemas/SortOrder'
+        x-position: 9
+      - name: modLoaderType
+        in: query
+        description: Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
+        schema:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+        x-position: 10
+      - name: modLoaderTypes
+        in: query
+        description: "Filter by a list of mod loader types - this will override modLoaderType\nmodLoaderTypes=[Forge, Fabric,\
+          \ ...]\n            \nMax values = 5"
+        schema:
+          type: string
+        x-position: 11
+      - name: gameVersionTypeId
+        in: query
+        description: Filter only mods that contain files tagged with versions of the given gameVersionTypeId
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 12
+      - name: authorId
+        in: query
+        description: Filter only mods that the given authorId is a member of.
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 13
+      - name: primaryAuthorId
+        in: query
+        description: Filter only mods that the given primaryAuthorId is the owner of.
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 14
+      - name: PremiumType
+        in: query
+        description: Filter only mods that are Premium or not.
+        schema:
+          $ref: '#/components/schemas/ModPremiumTypeEnum'
+        x-position: 15
+      - name: slug
+        in: query
+        description: Filter by slug (coupled with classId will result in a unique result).
+        schema:
+          type: string
+        x-position: 16
+      - name: clientCompatible
+        in: query
+        description: 'When set to true, will filter out any mod that doesn''t have a default
+
+          file that is compatible with the client. This is usually due to a bad
+
+          file structure of the file (which might cause unexpected behaviours on
+
+          the user''s machine - such as overriding other mods installed).'
+        schema:
+          type: boolean
+        x-position: 17
+      - name: modsSearchEnhancedFeatures
+        in: query
+        description: Bitwise number with values from ModsSearchEnhancedFeatures
+        schema:
+          type: integer
+          format: int64
+        x-position: 18
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 19
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 20
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v2/mods/community-picks-candidates:
+    post:
+      tags:
+      - Mods
+      operationId: Mods_GetCommunityPicksCandidates
+      requestBody:
+        x-name: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityPicksCandidatesRequests'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '404':
+          description: ''
+  /v2/mods/app-search:
+    post:
+      tags:
+      - Mods
+      operationId: App Mods Search2
+      requestBody:
+        x-name: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchModsPostRequest'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v2/mods/{modId}:
+    get:
+      tags:
+      - Mods
+      description: Get a single mod.
+      operationId: Get Mod2
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        description: The mod id
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Mod Response'
+        '500':
+          description: ''
+        '404':
+          description: ''
+  /v2/mods/get-mods-by-ids:
+    post:
+      tags:
+      - Mods
+      description: Get a list of mods belonging the the same game.
+      operationId: Get Mods22
+      requestBody:
+        x-name: requestBody
+        description: Request body containing an array of mod ids, mod ids must belong to the same game.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetExpandedModsByIdsListRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfListOfModDto2'
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v2/mods/featured:
+    post:
+      tags:
+      - Mods
+      description: Get a list of featured, popular and recently updated mods.
+      operationId: Get Featured Mods2
+      requestBody:
+        x-name: filter
+        description: Match results for a game and exclude specific mods
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetFeaturedModsRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfFeaturedModsResponseOfModDto2'
+        '500':
+          description: ''
+        '400':
+          description: ''
+        '404':
+          description: ''
+  /v1/users/me/mods/subscriptions:
+    get:
+      tags:
+      - Subscriptions
+      description: Get the current user's subscribed mods for the given game key
+      operationId: Get Mods Subscriptions
+      parameters:
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: gameId
+        in: query
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '500':
+          description: ''
+        '403':
+          description: ''
+        '405':
+          description: ''
+  /v1/users/me/mods/subscriptions/ids:
+    get:
+      tags:
+      - Subscriptions
+      description: Get the current user's subscribed mods for the given game key
+      operationId: Get Mods Subscriptions2
+      parameters:
+      - name: index
+        in: query
+        description: 'A zero based index of the first item to include in the response,  the limit is: (index + pageSize <=
+          10,000).'
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      - name: pageSize
+        in: query
+        description: The number of items to include in the response,  the default/maximum value is 50.
+        schema:
+          type: integer
+          format: int32
+        x-position: 2
+      - name: gameId
+        in: query
+        schema:
+          type: integer
+          format: int32
+          nullable: true
+        x-position: 3
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search Mods Response'
+        '500':
+          description: ''
+        '403':
+          description: ''
+        '405':
+          description: ''
+  /v1/users/me/mods/subscriptions/subscribe:
+    post:
+      tags:
+      - Subscriptions
+      summary: ''
+      operationId: Add a list of mod ids to the user's subscribed mods
+      requestBody:
+        x-name: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscribeModIdsRequestBody'
+        required: true
+        x-position: 1
+      responses:
+        '500':
+          description: ''
+        '400':
+          description: ''
+  /v1/users/me/mods/subscriptions/subscribe/{modId}:
+    post:
+      tags:
+      - Subscriptions
+      summary: ''
+      operationId: Add a mod id to the user's subscribed mods
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get Mod Response'
+        '500':
+          description: ''
+        '403':
+          description: ''
+        '405':
+          description: ''
+        '404':
+          description: ''
+        '400':
+          description: ''
+  /v1/users/me/mods/subscriptions/unsubscribe/{modId}:
+    post:
+      tags:
+      - Subscriptions
+      summary: ''
+      operationId: Remove a mod id from the user's subscribed mods
+      parameters:
+      - name: modId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+        x-position: 1
+      responses:
+        '200':
+          description: ''
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '500':
+          description: ''
+        '403':
+          description: ''
+        '405':
+          description: ''
+components:
+  schemas:
+    AffiliationServiceType:
+      type: integer
+      description: 1 = Bisect
+      x-enumNames:
+      - Bisect
+      enum:
+      - 1
+    ApiResponseOfAppHighlightsResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/AppHighlightsResponse'
+    ApiResponseOfAppHighlightsResponse2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/AppHighlightsResponse2'
+    ApiResponseOfFeaturedModsResponseOfModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FeaturedModsResponseOfModDto'
+    ApiResponseOfFeaturedModsResponseOfModDto2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FeaturedModsResponseOfModDto2'
+    ApiResponseOfFileDeltaDiff:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FileDeltaDiff'
+    ApiResponseOfHomepageHighlightsResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/HomepageHighlightsResponse'
+    ApiResponseOfHomepageHighlightsResponse2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/HomepageHighlightsResponse2'
+    ApiResponseOfHomepageHighlightsResponse3:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/HomepageHighlightsResponse3'
+    ApiResponseOfListOfDownloadInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/DownloadInfo'
+    ApiResponseOfListOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftGameVersion'
+    ApiResponseOfListOfMinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftModLoaderIndex'
+    ApiResponseOfListOfModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/ModDto'
+    ApiResponseOfListOfModDto2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/ModDto2'
+    ApiResponseOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftGameVersion'
+    ApiResponseOfMinecraftModLoaderVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftModLoaderVersion'
+    ApiResponseOfModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/ModDto'
+    ApiResponseWithPaginationOfListOfModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/ModDto'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
+    AppCarouselItem:
+      type: object
+      additionalProperties: false
+      properties:
+        title:
+          type: string
+        youtubeVideoid:
+          type: string
+        description:
+          type: string
+        primaryButtonTitle:
+          type: string
+        primaryButtonUrl:
+          type: string
+          format: uri
+        secondaryButtonTitle:
+          type: string
+        secondaryButtonUrl:
+          type: string
+        backgroundImage:
+          type: string
+          format: uri
+    AppHighlightsResponse:
+      allOf:
+      - $ref: '#/components/schemas/AppHighlightsResponseBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          shelves:
+            type: array
+            items:
+              $ref: '#/components/schemas/GameShelf'
+    AppHighlightsResponse2:
+      allOf:
+      - $ref: '#/components/schemas/AppHighlightsResponseBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          shelves:
+            type: array
+            items:
+              $ref: '#/components/schemas/GameShelf2'
+    AppHighlightsResponseBase:
+      type: object
+      additionalProperties: false
+      properties:
+        carousel:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppCarouselItem'
+    BaseModDto:
+      type: object
+      x-abstract: true
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The mod id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id this mod is for
+          format: int32
+        name:
+          type: string
+          description: The name of the mod
+        slug:
+          type: string
+          description: The mod slug that would appear in the URL
+        links:
+          description: Relevant links for the mod such as Issue tracker and Wiki
+          $ref: '#/components/schemas/ModLinks'
+        summary:
+          type: string
+          description: Mod summary
+        status:
+          description: Current mod status
+          $ref: '#/components/schemas/ModStatus'
+        downloadCount:
+          type: integer
+          description: Number of downloads for the mod
+          format: int64
+        isFeatured:
+          type: boolean
+          description: Whether the mod is included in the featured mods list
+        primaryCategoryId:
+          type: integer
+          description: The main category of the mod as it was chosen by the mod author
+          format: int32
+        categories:
+          type: array
+          description: List of categories that this mod is related to
+          items:
+            $ref: '#/components/schemas/Category'
+        classId:
+          type: integer
+          description: The class id this mod belongs to
+          format: int32
+          nullable: true
+        authors:
+          type: array
+          description: List of the mod's authors
+          items:
+            $ref: '#/components/schemas/ModAuthor'
+        logo:
+          description: The mod's logo asset
+          $ref: '#/components/schemas/ModAsset'
+        videos:
+          type: array
+          description: List of videos assets
+          items:
+            $ref: '#/components/schemas/ModAsset'
+        mainFileId:
+          type: integer
+          description: The id of the main file of the mod
+          format: int32
+        latestFiles:
+          type: array
+          description: List of latest files of the mod
+          items:
+            $ref: '#/components/schemas/File'
+        supportsCrossPlatform:
+          type: boolean
+          nullable: true
+        latestFilesIndexes:
+          type: array
+          description: List of file related details for the latest files of the mod
+          items:
+            $ref: '#/components/schemas/FileIndex'
+        latestEarlyAccessFilesIndexes:
+          type: array
+          description: List of file related details for the latest early access files of the mod
+          items:
+            $ref: '#/components/schemas/FileIndex'
+        dateCreated:
+          type: string
+          description: The creation date of the mod
+          format: date-time
+        dateModified:
+          type: string
+          description: The last time the mod was modified
+          format: date-time
+        dateReleased:
+          type: string
+          description: The release date of the mod
+          format: date-time
+        allowModDistribution:
+          type: boolean
+          description: Is mod allowed to be distributed
+          nullable: true
+        gamePopularityRank:
+          type: integer
+          description: The mod popularity rank for the game
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Is the mod available for search. This can be false when a mod is experimental, in a deleted state or
+            has only alpha files
+        hasCommentsEnabled:
+          type: boolean
+          description: Does the mod enable comments
+          nullable: true
+        thumbsUpCount:
+          type: integer
+          description: The mod's thumbs up count
+          format: int32
+        ratingDetails:
+          description: The mod's Rating Details
+          $ref: '#/components/schemas/RatingDetails'
+        serverAffiliation:
+          description: The mod's server affiliation details
+          $ref: '#/components/schemas/ServerAffiliation'
+        socialLinks:
+          type: array
+          description: The mod's social links
+          items:
+            $ref: '#/components/schemas/SocialLink'
+        featuredProjectTag:
+          $ref: '#/components/schemas/ClientFeaturedProjectTag'
+    CarouselItem:
+      type: object
+      additionalProperties: false
+      properties:
+        mainTitle:
+          type: string
+        subTitle:
+          type: string
+        mainImageUrl:
+          type: string
+        tileImageUrl:
+          type: string
+        customTag:
+          type: string
+        destination:
+          $ref: '#/components/schemas/Destination'
+        ctaText:
+          type: string
+        layout:
+          $ref: '#/components/schemas/ItemLayout'
+    Category:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The category id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the category
+          format: int32
+        name:
+          type: string
+          description: Category name
+        slug:
+          type: string
+          description: The category slug as it appear in the URL
+        url:
+          type: string
+          description: The category URL
+        iconUrl:
+          type: string
+          description: URL for the category icon
+        dateModified:
+          type: string
+          description: Last modified date of the category
+          format: date-time
+        isClass:
+          type: boolean
+          description: A top level category for other categories
+          nullable: true
+        classId:
+          type: integer
+          description: The class id of the category, meaning - the class of which this category is under
+          format: int32
+          nullable: true
+        parentCategoryId:
+          type: integer
+          description: The parent category for this category
+          format: int32
+          nullable: true
+        displayIndex:
+          type: integer
+          description: The display index for this category
+          format: int32
+          nullable: true
+    ClientFeaturedProjectTag:
+      type: integer
+      description: '0 = None
+
+        1 = Sponsored
+
+        2 = HiddenGem
+
+        3 = Popular'
+      x-enumNames:
+      - None
+      - Sponsored
+      - HiddenGem
+      - Popular
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+    CommunityPicksCandidatesRequests:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        fromDate:
+          type: string
+          format: date-time
+        toDate:
+          type: string
+          format: date-time
+    CookerInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
+    CoreApiStatus:
+      type: integer
+      description: '1 = Private
+
+        2 = Public'
+      x-enumNames:
+      - Private
+      - Public
+      enum:
+      - 1
+      - 2
+    CoreStatus:
+      type: integer
+      description: '1 = Draft
+
+        2 = Test
+
+        3 = PendingReview
+
+        4 = Rejected
+
+        5 = Approved
+
+        6 = Live'
+      x-enumNames:
+      - Draft
+      - Test
+      - PendingReview
+      - Rejected
+      - Approved
+      - Live
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    Destination:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          $ref: '#/components/schemas/DestinationType'
+        value:
+          type: integer
+          format: int32
+    DestinationType:
+      type: integer
+      description: '1 = Mod
+
+        2 = Themepage'
+      x-enumNames:
+      - Mod
+      - Themepage
+      enum:
+      - 1
+      - 2
+    DiscountData:
+      type: object
+      additionalProperties: false
+      properties:
+        discountPrice:
+          type: number
+          format: decimal
+        percent:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        platformData:
+          $ref: '#/components/schemas/PlatformData'
+    DownloadInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          $ref: '#/components/schemas/DownloadInfoType'
+        downloadUrl:
+          type: string
+        fileName:
+          type: string
+        fileLength:
+          type: integer
+          format: int64
+        fileSizeOnDisk:
+          type: integer
+          format: int64
+          nullable: true
+        hashes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileHash'
+        extraJsonData:
+          type: string
+    DownloadInfoType:
+      type: integer
+      description: '1 = Default
+
+        2 = Diff
+
+        3 = Compression7z'
+      x-enumNames:
+      - Default
+      - Diff
+      - Compression7z
+      enum:
+      - 1
+      - 2
+      - 3
+    FeaturedModsResponseOfModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        featured:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto'
+        popular:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto'
+        recentlyUpdated:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto'
+    FeaturedModsResponseOfModDto2:
+      type: object
+      additionalProperties: false
+      properties:
+        featured:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto2'
+        popular:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto2'
+        recentlyUpdated:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModDto2'
+    File:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The file id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the mod that this file belongs to
+          format: int32
+        modId:
+          type: integer
+          description: The mod id
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Whether the file is available to download
+        displayName:
+          type: string
+          description: Display name of the file
+        fileName:
+          type: string
+          description: Exact file name
+        releaseType:
+          description: The file release type
+          $ref: '#/components/schemas/FileReleaseType'
+        fileStatus:
+          description: Status of the file
+          $ref: '#/components/schemas/FileStatus'
+        hashes:
+          type: array
+          description: The file hash (i.e. md5 or sha1)
+          items:
+            $ref: '#/components/schemas/FileHash'
+        fileDate:
+          type: string
+          description: The file timestamp
+          format: date-time
+        fileLength:
+          type: integer
+          description: The file length in bytes
+          format: int64
+        downloadCount:
+          type: integer
+          description: The number of downloads for the file
+          format: int64
+        fileSizeOnDisk:
+          type: integer
+          description: The file's size on disk
+          format: int64
+          nullable: true
+        downloadUrl:
+          type: string
+          description: The file download URL
+        gameVersions:
+          type: array
+          description: List of game versions this file is relevant for
+          items:
+            type: string
+        sortableGameVersions:
+          type: array
+          description: Metadata used for sorting by game versions
+          items:
+            $ref: '#/components/schemas/SortableGameVersion'
+        dependencies:
+          type: array
+          description: List of dependencies files
+          items:
+            $ref: '#/components/schemas/FileDependency'
+        exposeAsAlternative:
+          type: boolean
+          nullable: true
+        parentProjectFileId:
+          type: integer
+          format: int32
+          nullable: true
+        alternateFileId:
+          type: integer
+          format: int32
+          nullable: true
+        isServerPack:
+          type: boolean
+          nullable: true
+        serverPackFileId:
+          type: integer
+          format: int32
+          nullable: true
+        isEarlyAccessContent:
+          type: boolean
+          nullable: true
+        earlyAccessEndDate:
+          type: string
+          format: date-time
+          nullable: true
+        fileFingerprint:
+          type: integer
+          format: int64
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileModule'
+        cookingInfo:
+          $ref: '#/components/schemas/CookerInfo'
+    FileDeltaDiff:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameId:
+          type: integer
+          format: int32
+        modId:
+          type: integer
+          format: int32
+        oldFileId:
+          type: integer
+          format: int32
+        newFileId:
+          type: integer
+          format: int32
+        status:
+          $ref: '#/components/schemas/FileDeltaDiffStatus'
+        downloadUrl:
+          type: string
+        fileName:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        dateModified:
+          type: string
+          format: date-time
+        fileLength:
+          type: integer
+          format: int64
+        fileSizeOnDisk:
+          type: integer
+          format: int64
+        hashes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileHash'
+        extraJsonData:
+          type: string
+    FileDeltaDiffStatus:
+      type: integer
+      description: '1 = Generating
+
+        2 = Approved
+
+        3 = Deleted'
+      x-enumNames:
+      - Generating
+      - Approved
+      - Deleted
+      enum:
+      - 1
+      - 2
+      - 3
+    FileDependency:
+      type: object
+      additionalProperties: false
+      properties:
+        modId:
+          type: integer
+          format: int32
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
+    FileHash:
+      type: object
+      additionalProperties: false
+      properties:
+        value:
+          type: string
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
+    FileIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        gameVersion:
+          type: string
+        fileId:
+          type: integer
+          format: int32
+        filename:
+          type: string
+        releaseType:
+          $ref: '#/components/schemas/FileReleaseType'
+        gameVersionTypeId:
+          type: integer
+          format: int32
+          nullable: true
+        modLoader:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+    FileModule:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        fingerprint:
+          type: integer
+          format: int64
+    FileRelationType:
+      type: integer
+      description: '1 = EmbeddedLibrary
+
+        2 = OptionalDependency
+
+        3 = RequiredDependency
+
+        4 = Tool
+
+        5 = Incompatible
+
+        6 = Include'
+      x-enumNames:
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    FileStatus:
+      type: integer
+      description: '1 = Processing
+
+        2 = ChangesRequired
+
+        3 = UnderReview
+
+        4 = Approved
+
+        5 = Rejected
+
+        6 = MalwareDetected
+
+        7 = Deleted
+
+        8 = Archived
+
+        9 = Testing
+
+        10 = Released
+
+        11 = ReadyForReview
+
+        12 = Deprecated
+
+        13 = Baking
+
+        14 = AwaitingPublishing
+
+        15 = FailedPublishing'
+      x-enumNames:
+      - Processing
+      - ChangesRequired
+      - UnderReview
+      - Approved
+      - Rejected
+      - MalwareDetected
+      - Deleted
+      - Archived
+      - Testing
+      - Released
+      - ReadyForReview
+      - Deprecated
+      - Baking
+      - AwaitingPublishing
+      - FailedPublishing
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+    FingerprintFuzzyMatch:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        file:
+          $ref: '#/components/schemas/File'
+        latestFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FingerprintFuzzyMatchResult:
+      type: object
+      additionalProperties: false
+      properties:
+        fuzzyMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintFuzzyMatch'
+    FingerprintMatch:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        file:
+          $ref: '#/components/schemas/File'
+        latestFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+    FingerprintsMatchesResult:
+      type: object
+      additionalProperties: false
+      properties:
+        isCacheBuilt:
+          type: boolean
+        exactMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        exactFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        partialMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        partialMatchFingerprints:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: integer
+              format: int64
+        installedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        unmatchedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FolderFingerprint:
+      type: object
+      additionalProperties: false
+      properties:
+        foldername:
+          type: string
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    GalleryItem:
+      type: object
+      additionalProperties: false
+      properties:
+        description:
+          type: string
+        isFeatured:
+          type: boolean
+        displayIndex:
+          type: integer
+          format: int32
+          nullable: true
+        title:
+          type: string
+        url:
+          type: string
+        thumbnailUrl:
+          type: string
+        type:
+          $ref: '#/components/schemas/GalleryItemType'
+    GalleryItemType:
+      type: integer
+      description: '0 = None
+
+        1 = Screenshot
+
+        2 = EmbeddedVideo'
+      x-enumNames:
+      - None
+      - Screenshot
+      - EmbeddedVideo
+      enum:
+      - 0
+      - 1
+      - 2
+    Game:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        dateModified:
+          type: string
+          format: date-time
+        assets:
+          $ref: '#/components/schemas/GameAssets'
+        status:
+          $ref: '#/components/schemas/CoreStatus'
+        apiStatus:
+          $ref: '#/components/schemas/CoreApiStatus'
+        supportedFeatures:
+          $ref: '#/components/schemas/GameSupportedFeatures'
+    GameAssets:
+      type: object
+      additionalProperties: false
+      properties:
+        iconUrl:
+          type: string
+        tileUrl:
+          type: string
+        coverUrl:
+          type: string
+    GameShelf:
+      allOf:
+      - $ref: '#/components/schemas/GameShelfBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          projects:
+            type: array
+            items:
+              $ref: '#/components/schemas/ModDto'
+    GameShelf2:
+      allOf:
+      - $ref: '#/components/schemas/GameShelfBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          projects:
+            type: array
+            items:
+              $ref: '#/components/schemas/ModDto2'
+    GameShelfBase:
+      type: object
+      additionalProperties: false
+      properties:
+        title:
+          type: string
+        type:
+          type: string
+        classId:
+          type: integer
+          format: int32
+        sortField:
+          $ref: '#/components/schemas/ModsSearchSortField'
+    GameSupportedFeatures:
+      type: object
+      additionalProperties: false
+      properties:
+        supportModSubscriptions:
+          type: boolean
+    GameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        slug:
+          type: string
+        name:
+          type: string
+    GameVersionsByType:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            type: string
+    GameVersionsByType2:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameVersion'
+    GameVersionStatus:
+      type: integer
+      description: '1 = Approved
+
+        2 = Deleted
+
+        3 = New'
+      x-enumNames:
+      - Approved
+      - Deleted
+      - New
+      enum:
+      - 1
+      - 2
+      - 3
+    GameVersionType:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameId:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        isSyncable:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    GameVersionTypeStatus:
+      type: integer
+      description: '1 = Normal
+
+        2 = Deleted'
+      x-enumNames:
+      - Normal
+      - Deleted
+      enum:
+      - 1
+      - 2
+    Get Categories Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Category'
+    Get Files Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/File'
+    Get Fingerprint Matches Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintsMatchesResult'
+    Get Fingerprints Fuzzy Matches Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
+    Get Game Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Game'
+    Get Games Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Game'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
+    Get Mod File Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/File'
+    Get Mod Files Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/File'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
+    Get Mod Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Mod'
+    Get Version Types Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionType'
+    Get Versions Response - V1:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType'
+    Get Versions Response - V2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType2'
+    GetExpandedModsByIdsListRequestBody:
+      allOf:
+      - $ref: '#/components/schemas/GetModsByIdsListRequestBody'
+      - type: object
+        additionalProperties: false
+        properties:
+          devModIds:
+            type: array
+            items:
+              type: integer
+              format: int32
+          filterPcOnly:
+            type: boolean
+            nullable: true
+    GetFeaturedModsRequestBase:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        excludedModIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    GetFeaturedModsRequestBody:
+      allOf:
+      - $ref: '#/components/schemas/GetFeaturedModsRequestBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          gameVersionTypeId:
+            type: integer
+            format: int32
+            nullable: true
+          clientCompatible:
+            type: boolean
+    GetFingerprintMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    GetFuzzyMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        fingerprints:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderFingerprint'
+    GetHighlightsFeaturedRequest:
+      allOf:
+      - $ref: '#/components/schemas/GetFeaturedModsRequestBase'
+      - type: object
+        additionalProperties: false
+        properties:
+          filters:
+            $ref: '#/components/schemas/HighlightsFilters'
+    GetModFilesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        fileIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    GetModsByIdsListRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        modIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    HashAlgo:
+      type: integer
+      description: '1 = Sha1
+
+        2 = Md5'
+      x-enumNames:
+      - Sha1
+      - Md5
+      enum:
+      - 1
+      - 2
+    HighlightsFilters:
+      type: object
+      additionalProperties: false
+      properties:
+        carousel:
+          type: boolean
+        banners:
+          type: boolean
+        categories:
+          type: boolean
+        themePages:
+          type: boolean
+        latest:
+          type: boolean
+        mostDownloaded:
+          type: boolean
+        premium:
+          type: boolean
+        trending:
+          type: boolean
+        modSquadPicksModIds:
+          type: boolean
+        communityPicksModIds:
+          type: boolean
+    HighlightsModDto:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        logo:
+          $ref: '#/components/schemas/ModAsset'
+        name:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModAuthor'
+        ratingDetails:
+          $ref: '#/components/schemas/RatingDetails'
+        downloadCount:
+          type: integer
+          format: int64
+        fileSize:
+          type: integer
+          format: int64
+          nullable: true
+    HomepageHighlightsResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        carousel:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        premium:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        trending:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        mostDownloaded:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        latest:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        communityPicksMods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        modSquadPicksMods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+    HomepageHighlightsResponse2:
+      type: object
+      additionalProperties: false
+      properties:
+        carousel:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarouselItem'
+        shelves:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shelf'
+        themePages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThemePage'
+    HomepageHighlightsResponse3:
+      type: object
+      additionalProperties: false
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        carousel:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarouselItem'
+        banners:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarouselItem'
+        premium:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        trending:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        mostDownloaded:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        latest:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        communityPicksMods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        modSquadPicksMods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mod'
+        themePages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThemePage'
+    ItemLayout:
+      type: integer
+      description: '0 = Default
+
+        1 = SaleView
+
+        2 = SmallSaleView'
+      x-enumNames:
+      - Default
+      - SaleView
+      - SmallSaleView
+      enum:
+      - 0
+      - 1
+      - 2
+    MinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameVersionId:
+          type: integer
+          format: int32
+        versionString:
+          type: string
+        jarDownloadUrl:
+          type: string
+        jsonDownloadUrl:
+          type: string
+        approved:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        gameVersionTypeId:
+          type: integer
+          format: int32
+        gameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        gameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    MinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        gameVersion:
+          type: string
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        type:
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+    MinecraftModLoaderVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameVersionId:
+          type: integer
+          format: int32
+        minecraftGameVersionId:
+          type: integer
+          format: int32
+        forgeVersion:
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ModLoaderType'
+        downloadUrl:
+          type: string
+        filename:
+          type: string
+        installMethod:
+          $ref: '#/components/schemas/ModLoaderInstallMethod'
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        approved:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        mavenVersionString:
+          type: string
+        versionJson:
+          type: string
+        librariesInstallLocation:
+          type: string
+        minecraftVersion:
+          type: string
+        additionalFilesJson:
+          type: string
+        modLoaderGameVersionId:
+          type: integer
+          format: int32
+        modLoaderGameVersionTypeId:
+          type: integer
+          format: int32
+        modLoaderGameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        modLoaderGameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+        mcGameVersionId:
+          type: integer
+          format: int32
+        mcGameVersionTypeId:
+          type: integer
+          format: int32
+        mcGameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        mcGameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+        installProfileJson:
+          type: string
+    Mod:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The mod id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id this mod is for
+          format: int32
+        name:
+          type: string
+          description: The name of the mod
+        slug:
+          type: string
+          description: The mod slug that would appear in the URL
+        links:
+          description: Relevant links for the mod such as Issue tracker and Wiki
+          $ref: '#/components/schemas/ModLinks'
+        summary:
+          type: string
+          description: Mod summary
+        status:
+          description: Current mod status
+          $ref: '#/components/schemas/ModStatus'
+        downloadCount:
+          type: integer
+          description: Number of downloads for the mod
+          format: int64
+        isFeatured:
+          type: boolean
+          description: Whether the mod is included in the featured mods list
+        primaryCategoryId:
+          type: integer
+          description: The main category of the mod as it was chosen by the mod author
+          format: int32
+        categories:
+          type: array
+          description: List of categories that this mod is related to
+          items:
+            $ref: '#/components/schemas/Category'
+        classId:
+          type: integer
+          description: The class id this mod belongs to
+          format: int32
+          nullable: true
+        authors:
+          type: array
+          description: List of the mod's authors
+          items:
+            $ref: '#/components/schemas/ModAuthor'
+        logo:
+          description: The mod's logo asset
+          $ref: '#/components/schemas/ModAsset'
+        screenshots:
+          type: array
+          description: List of screenshots assets
+          items:
+            $ref: '#/components/schemas/ModAsset'
+        videos:
+          type: array
+          description: List of videos assets
+          items:
+            $ref: '#/components/schemas/ModAsset'
+        mainFileId:
+          type: integer
+          description: The id of the main file of the mod
+          format: int32
+        latestFiles:
+          type: array
+          description: List of latest files of the mod
+          items:
+            $ref: '#/components/schemas/File'
+        latestFilesIndexes:
+          type: array
+          description: List of file related details for the latest files of the mod
+          items:
+            $ref: '#/components/schemas/FileIndex'
+        latestEarlyAccessFilesIndexes:
+          type: array
+          description: List of file related details for the latest early access files of the mod
+          items:
+            $ref: '#/components/schemas/FileIndex'
+        dateCreated:
+          type: string
+          description: The creation date of the mod
+          format: date-time
+        dateModified:
+          type: string
+          description: The last time the mod was modified
+          format: date-time
+        dateReleased:
+          type: string
+          description: The release date of the mod
+          format: date-time
+        dateLastReleasedFile:
+          type: string
+          description: The last file release date
+          format: date-time
+          nullable: true
+        allowModDistribution:
+          type: boolean
+          description: Is mod allowed to be distributed
+          nullable: true
+        gamePopularityRank:
+          type: integer
+          description: The mod popularity rank for the game
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Is the mod available for search. This can be false when a mod is experimental, in a deleted state or
+            has only alpha files
+        hasCommentsEnabled:
+          type: boolean
+          description: Does the mod enable comments
+          nullable: true
+        thumbsUpCount:
+          type: integer
+          description: The mod's thumbs up count
+          format: int32
+        ratingDetails:
+          description: The mod's Rating Details
+          $ref: '#/components/schemas/RatingDetails'
+        serverAffiliation:
+          description: The mod's server affiliation details
+          $ref: '#/components/schemas/ServerAffiliation'
+        socialLinks:
+          type: array
+          description: The mod's social links
+          items:
+            $ref: '#/components/schemas/SocialLink'
+        galleryItems:
+          type: array
+          description: The mod's gallery items
+          items:
+            $ref: '#/components/schemas/GalleryItem'
+        featuredProjectTag:
+          $ref: '#/components/schemas/ClientFeaturedProjectTag'
+    ModAsset:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        modId:
+          type: integer
+          format: int32
+        title:
+          type: string
+        description:
+          type: string
+        thumbnailUrl:
+          type: string
+        url:
+          type: string
+    ModAuthor:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        url:
+          type: string
+        avatarUrl:
+          type: string
+    ModDto:
+      allOf:
+      - $ref: '#/components/schemas/BaseModDto'
+      - type: object
+        additionalProperties: false
+        properties:
+          screenshots:
+            type: array
+            description: List of screenshots assets
+            items:
+              $ref: '#/components/schemas/ModAsset'
+    ModDto2:
+      allOf:
+      - $ref: '#/components/schemas/BaseModDto'
+      - type: object
+        additionalProperties: false
+        properties:
+          galleryItems:
+            type: array
+            description: List of screenshots assets
+            items:
+              $ref: '#/components/schemas/GalleryItem'
+    ModLinks:
+      type: object
+      additionalProperties: false
+      properties:
+        websiteUrl:
+          type: string
+        wikiUrl:
+          type: string
+        issuesUrl:
+          type: string
+        sourceUrl:
+          type: string
+    ModLoaderInstallMethod:
+      type: integer
+      description: '1 = ForgeInstaller
+
+        2 = ForgeJarInstall
+
+        3 = ForgeInstaller_v2'
+      x-enumNames:
+      - ForgeInstaller
+      - ForgeJarInstall
+      - ForgeInstaller_v2
+      enum:
+      - 1
+      - 2
+      - 3
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    ModPremiumTypeEnum:
+      type: integer
+      description: '0 = All
+
+        1 = Premium
+
+        2 = Free'
+      x-enumNames:
+      - All
+      - Premium
+      - Free
+      enum:
+      - 0
+      - 1
+      - 2
+    ModsSearchSortField:
+      type: integer
+      description: '1 = Featured
+
+        2 = Popularity
+
+        3 = LastUpdated
+
+        4 = Name
+
+        5 = Author
+
+        6 = TotalDownloads
+
+        7 = Category
+
+        8 = GameVersion
+
+        9 = EarlyAccess
+
+        10 = FeaturedReleased
+
+        11 = ReleasedDate
+
+        12 = Rating
+
+        13 = Relevancy'
+      x-enumNames:
+      - Featured
+      - Popularity
+      - LastUpdated
+      - Name
+      - Author
+      - TotalDownloads
+      - Category
+      - GameVersion
+      - EarlyAccess
+      - FeaturedReleased
+      - ReleasedDate
+      - Rating
+      - Relevancy
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+    ModStatus:
+      type: integer
+      description: '1 = New
+
+        2 = ChangesRequired
+
+        3 = UnderSoftReview
+
+        4 = Approved
+
+        5 = Rejected
+
+        6 = ChangesMade
+
+        7 = Inactive
+
+        8 = Abandoned
+
+        9 = Deleted
+
+        10 = UnderReview'
+      x-enumNames:
+      - New
+      - ChangesRequired
+      - UnderSoftReview
+      - Approved
+      - Rejected
+      - ChangesMade
+      - Inactive
+      - Abandoned
+      - Deleted
+      - UnderReview
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+    Pagination:
+      type: object
+      additionalProperties: false
+      properties:
+        index:
+          type: integer
+          description: A zero based index of the first item that is included in the response
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested number of items to be included in the response
+          format: int32
+        resultCount:
+          type: integer
+          description: The actual number of items that were included in the response
+          format: int32
+        totalCount:
+          type: integer
+          description: The total number of items available by the request
+          format: int64
+    PlatformData:
+      type: object
+      additionalProperties: false
+      properties:
+        productId:
+          type: string
+    PlatformType:
+      type: integer
+      description: '0 = Empty
+
+        1 = Windows
+
+        2 = XboxOne
+
+        3 = XboxXS
+
+        4 = Linux
+
+        5 = PS4
+
+        6 = PS5
+
+        7 = Mac
+
+        8 = IOS
+
+        9 = TVOS
+
+        10 = Android
+
+        11 = Switch
+
+        12 = WindowsServer
+
+        13 = LinuxServer'
+      x-enumNames:
+      - Empty
+      - Windows
+      - XboxOne
+      - XboxXS
+      - Linux
+      - PS4
+      - PS5
+      - Mac
+      - IOS
+      - TVOS
+      - Android
+      - Switch
+      - WindowsServer
+      - LinuxServer
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+    ProjectFileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    QueryParams:
+      type: object
+      additionalProperties: false
+      properties:
+        classId:
+          type: integer
+          format: int32
+          nullable: true
+        premiumStatus:
+          $ref: '#/components/schemas/ModPremiumTypeEnum'
+        categoryIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        sortingOption:
+          $ref: '#/components/schemas/ModsSearchSortField'
+        sortingOrder:
+          $ref: '#/components/schemas/SortOrder'
+    RatingDetails:
+      type: object
+      additionalProperties: false
+      properties:
+        rating:
+          type: number
+          format: decimal
+          nullable: true
+        totalRatings:
+          type: integer
+          format: int32
+          nullable: true
+        positiveRatings:
+          type: integer
+          format: int32
+          nullable: true
+        score:
+          $ref: '#/components/schemas/RatingScore'
+    RatingScore:
+      type: integer
+      description: '0 = NotEnoughReviews
+
+        1 = OverwhelminglyPositive
+
+        2 = VeryPositive
+
+        3 = Positive
+
+        4 = MostlyPositive
+
+        5 = Mixed
+
+        6 = MostlyNegative
+
+        7 = Negative
+
+        8 = VeryNegative
+
+        9 = OverwhelminglyNegative'
+      x-enumNames:
+      - NotEnoughReviews
+      - OverwhelminglyPositive
+      - VeryPositive
+      - Positive
+      - MostlyPositive
+      - Mixed
+      - MostlyNegative
+      - Negative
+      - VeryNegative
+      - OverwhelminglyNegative
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+    Search Mods Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Mod'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
+    SearchModsParameters:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          description: Filter by game id.
+          format: int32
+        classId:
+          type: integer
+          description: Filter by section id (discoverable via Categories)
+          format: int32
+        categoryId:
+          type: integer
+          description: Filter by category id
+          format: int32
+        categoryIds:
+          type: string
+          description: "Filter by a list of category ids - this will override categoryId\ncategoryIds=[1,2,3...]\n       \
+            \     \nThe maximum allowed category ids per query is 10"
+        gameVersion:
+          type: string
+          description: Filter by game version string
+        gameVersions:
+          type: string
+          description: "Filter by a list of game version strings - this will override\ngameVersion\n            \ngameVersions=[\"\
+            1.19.1\", \"1.19.2\", \"1.20.1\" ...]\n            \nThe maximum allowed category ids per query is 4"
+        searchFilter:
+          type: string
+          description: Filter by free text search in the mod name and author
+        sortField:
+          description: Filter by ModsSearchSortField enumeration
+          $ref: '#/components/schemas/ModsSearchSortField'
+        sortOrder:
+          description: '''asc'' if sort is in ascending order, ''desc'' if sort is in descending order'
+          $ref: '#/components/schemas/SortOrder'
+        modLoaderType:
+          description: Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion.
+          nullable: true
+          $ref: '#/components/schemas/ModLoaderType'
+        modLoaderTypes:
+          type: string
+          description: "Filter by a list of mod loader types - this will override modLoaderType\nmodLoaderTypes=[Forge, Fabric,\
+            \ ...]\n            \nMax values = 5"
+        gameVersionTypeId:
+          type: integer
+          description: Filter only mods that contain files tagged with versions of the given gameVersionTypeId
+          format: int32
+          nullable: true
+        authorId:
+          type: integer
+          description: Filter only mods that the given authorId is a member of.
+          format: int32
+          nullable: true
+        primaryAuthorId:
+          type: integer
+          description: Filter only mods that the given primaryAuthorId is the owner of.
+          format: int32
+          nullable: true
+        premiumType:
+          description: Filter only mods that are Premium or not.
+          $ref: '#/components/schemas/ModPremiumTypeEnum'
+        slug:
+          type: string
+          description: Filter by slug (coupled with classId will result in a unique result).
+        clientCompatible:
+          type: boolean
+          description: 'When set to true, will filter out any mod that doesn''t have a default
+
+            file that is compatible with the client. This is usually due to a bad
+
+            file structure of the file (which might cause unexpected behaviours on
+
+            the user''s machine - such as overriding other mods installed).'
+        excludeModIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        modsSearchEnhancedFeatures:
+          type: integer
+          description: Bitwise number with values from ModsSearchEnhancedFeatures
+          format: int64
+    SearchModsPostRequest:
+      allOf:
+      - $ref: '#/components/schemas/SearchModsParameters'
+      - type: object
+        additionalProperties: false
+        properties:
+          index:
+            type: integer
+            format: int32
+          pageSize:
+            type: integer
+            format: int32
+    ServerAffiliation:
+      type: object
+      additionalProperties: false
+      properties:
+        isEnabled:
+          type: boolean
+        isDefaultBanner:
+          type: boolean
+        hasDiscount:
+          type: boolean
+        affiliationService:
+          $ref: '#/components/schemas/AffiliationServiceType'
+        defaultBannerCustomTitle:
+          type: string
+        customImageUrl:
+          type: string
+        affiliationLink:
+          type: string
+    Shelf:
+      type: object
+      additionalProperties: false
+      properties:
+        displayIndex:
+          type: integer
+          format: int32
+        type:
+          $ref: '#/components/schemas/ShelfType'
+        name:
+          type: string
+        queryParams:
+          $ref: '#/components/schemas/QueryParams'
+        content:
+          $ref: '#/components/schemas/ShelfContent'
+        destination:
+          $ref: '#/components/schemas/Destination'
+        seeAllButton:
+          type: boolean
+    ShelfContent:
+      type: object
+      additionalProperties: false
+      properties:
+        mods:
+          type: array
+          items:
+            $ref: '#/components/schemas/HighlightsModDto'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        banner:
+          $ref: '#/components/schemas/CarouselItem'
+    ShelfType:
+      type: integer
+      description: '0 = Category
+
+        1 = Generated
+
+        2 = Custom
+
+        3 = Banner'
+      x-enumNames:
+      - Category
+      - Generated
+      - Custom
+      - Banner
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+    SocialLink:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          $ref: '#/components/schemas/SocialLinkType'
+        url:
+          type: string
+    SocialLinkType:
+      type: integer
+      description: '1 = Mastodon
+
+        2 = Discord
+
+        3 = Website
+
+        4 = Facebook
+
+        5 = Twitter
+
+        6 = Instagram
+
+        7 = Patreon
+
+        8 = Twitch
+
+        9 = Reddit
+
+        10 = Youtube
+
+        11 = TikTok
+
+        12 = Pinterest
+
+        13 = Github
+
+        14 = Bsky
+
+        15 = Paypal
+
+        16 = PaypalHosted
+
+        17 = GithubSponsors
+
+        18 = Kofi
+
+        19 = BuyMeACoffee'
+      x-enumNames:
+      - Mastodon
+      - Discord
+      - Website
+      - Facebook
+      - Twitter
+      - Instagram
+      - Patreon
+      - Twitch
+      - Reddit
+      - Youtube
+      - TikTok
+      - Pinterest
+      - Github
+      - Bsky
+      - Paypal
+      - PaypalHosted
+      - GithubSponsors
+      - Kofi
+      - BuyMeACoffee
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+    SortableGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        gameVersionName:
+          type: string
+          description: Original version name (e.g. 1.5b)
+        gameVersionPadded:
+          type: string
+          description: Used for sorting (e.g. 0000000001.0000000005)
+        gameVersion:
+          type: string
+          description: game version clean name (e.g. 1.5)
+        gameVersionReleaseDate:
+          type: string
+          description: Game version release date
+          format: date-time
+        gameVersionTypeId:
+          type: integer
+          description: Game version type id
+          format: int32
+          nullable: true
+    SortOrder:
+      type: string
+      description: ''
+      x-enumNames:
+      - asc
+      - desc
+      enum:
+      - asc
+      - desc
+    String Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: string
+          description: The response data
+    SubscribeModIdsRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        modIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    ThemePage:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        mainTitle:
+          type: string
+        subTitle:
+          type: string
+        bannerUrl:
+          type: string
+        modIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    TrialDetails:
+      type: object
+      additionalProperties: false
+      properties:
+        isEnabled:
+          type: boolean
+        allowedHours:
+          type: integer
+          format: int32
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      description: <br/>The API key can be generated in the CurseForge for Studios [developer console](https://console.curseforge.com/).
+      name: x-api-key
+      in: header
+security:
+- API_KEY: []

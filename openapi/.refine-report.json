@@ -1,0 +1,26 @@
+{
+  "provider": "curse",
+  "sources": [
+    "curse-categories-api-openapi.yml",
+    "curse-files-api-openapi.yml",
+    "curse-fingerprints-api-openapi.yml",
+    "curse-games-api-openapi.yml",
+    "curse-minecraft-api-openapi.yml",
+    "curse-mods-api-openapi.yml",
+    "curse-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "curse-categories-api-openapi.yml",
+    "curse-files-api-openapi.yml",
+    "curse-fingerprints-api-openapi.yml",
+    "curse-games-api-openapi.yml",
+    "curse-minecraft-api-openapi.yml",
+    "curse-mods-api-openapi.yml",
+    "curse-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

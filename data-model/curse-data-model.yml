@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curse-core-openapi-original.yml
+entities:
+- name: Game
+- name: Category
+- name: Mod
+- name: File
+- name: MinecraftGameVersion
+- name: MinecraftModLoaderIndex
+- name: Pagination
+relationships:
+- from: Mod
+  type: belongs_to
+  to: Game
+  via: gameId
+- from: Mod
+  type: belongs_to
+  to: Category
+  via: primaryCategoryId
+- from: Mod
+  type: has_many
+  to: Category
+  via: categories
+- from: Mod
+  type: has_many
+  to: File
+  via: latestFiles
+- from: File
+  type: belongs_to
+  to: Mod
+  via: modId
+- from: Category
+  type: belongs_to
+  to: Game
+  via: gameId
+- from: MinecraftGameVersion
+  type: belongs_to
+  to: Game
+  via: gameVersionId
+notes: Derived from OpenAPI $ref graph and id-reference fields. Root game id 432 = Minecraft.

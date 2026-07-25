@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curse-core-openapi-original.yml
+format: http-status
+note: CurseForge Core API returns standard HTTP status codes with a JSON body (ApiResponseOf* envelope).
+  No application/problem+json (RFC 9457).
+envelope: 'JSON { "data": ... } on success; error responses carry the HTTP status code.'
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  remediation: Validate request parameters and body against the schema.
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  remediation: Provide a valid x-api-key header; confirm your key is approved for this endpoint.
+- status: 404
+  title: Not Found
+  description: Not Found
+  remediation: Confirm the resource id (gameId/modId/fileId) exists.
+- status: 405
+  title: Method Not Allowed
+  description: Method Not Allowed
+  remediation: Use the HTTP method documented for the endpoint.
+- status: 500
+  title: Internal Server Error
+  description: Internal Server Error
+  remediation: Transient server error; retry with backoff and contact CurseForge support if persistent.
+- status: 503
+  title: Service Unavailable
+  description: Service Unavailable
+  remediation: Service temporarily unavailable; retry with exponential backoff.

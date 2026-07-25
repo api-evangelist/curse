@@ -1,8 +1,11 @@
 aid: curse
 name: Curse
-description: 'Curse is a company surfaced as a portfolio company of ggv-capital, uncork-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: gaming. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Curse (Curse Inc.) built and operated CurseForge, Gamepedia, and the Curse gaming
+  network; its platform assets are now operated under Fandom / Overwolf. The live developer surface
+  is the CurseForge Core API — a REST API over the CurseForge catalog of game mods, modpacks, and
+  add-ons, covering games, categories, mods, files, fingerprint matching, and Minecraft versions and
+  mod loaders. It is authenticated with an x-api-key header issued from the CurseForge for Studios
+  developer console, with third-party access granted via an approved application.'
 url: https://raw.githubusercontent.com/api-evangelist/curse/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,13 +14,129 @@ x-backed-by:
 - uncork-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://www.curseforge.com/images/mods/logos/curseforge.png
 tags:
 - Company
 - Gaming
-apis: []
+- Mods
+- Minecraft
+- Game Content
+- Developer Platform
+- Catalog
+apis:
+- aid: curse:curse-categories-api
+  name: Curse Categories API
+  description: The Categories API from Curse — 1 operation(s) for categories.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-files-api
+  name: Curse Files API
+  description: The Files API from Curse — 7 operation(s) for files.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-fingerprints-api
+  name: Curse Fingerprints API
+  description: The Fingerprints API from Curse — 4 operation(s) for fingerprints.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Fingerprints
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-fingerprints-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-games-api
+  name: Curse Games API
+  description: The Games API from Curse — 6 operation(s) for games.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Games
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-games-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-minecraft-api
+  name: Curse Minecraft API
+  description: The Minecraft API from Curse — 4 operation(s) for minecraft.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Minecraft
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-minecraft-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-mods-api
+  name: Curse Mods API
+  description: The Mods API from Curse — 19 operation(s) for mods.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Mods
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-mods-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-subscriptions-api
+  name: Curse Subscriptions API
+  description: The Subscriptions API from Curse — 5 operation(s) for subscriptions.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +145,62 @@ maintainers:
 common:
 - type: Website
   url: https://www.fandom.com/
+- type: DeveloperPortal
+  url: https://console.curseforge.com/
+- type: Documentation
+  url: https://docs.curseforge.com/rest-api/
+- type: APIReference
+  url: https://docs.curseforge.com/rest-api/
+- type: GettingStarted
+  url: https://docs.curseforge.com/rest-api/
+- type: Support
+  url: https://support.curseforge.com/
+- type: Blog
+  url: https://blog.curseforge.com/
+- type: StatusPage
+  url: https://status.curseforge.com/
+- type: SignUp
+  url: https://console.curseforge.com/
+- type: TermsOfService
+  url: https://docs.curseforge.com/rest-api/#terms-of-use
+- type: PrivacyPolicy
+  url: https://www.fandom.com/privacy-policy
+- type: OpenAPI
+  url: openapi/curse-core-openapi-original.yml
+- type: Overlay
+  url: overlays/curse-core-overlay.yaml
+- type: MCPServer
+  url: mcp/curse-mcp.yml
+- type: LLMsTxt
+  url: llms/curse-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/curse-authentication.yml
+- type: AgenticAccess
+  url: agentic-access/curse-agentic-access.yml
+- type: Conventions
+  url: conventions/curse-conventions.yml
+- type: ErrorCatalog
+  url: errors/curse-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/curse-lifecycle.yml
+- type: Conformance
+  url: conformance/curse-conformance.yml
+- type: DataModel
+  url: data-model/curse-data-model.yml
+- type: Packages
+  url: packages/curse-packages.yml
+- type: WellKnown
+  url: well-known/curse-well-known.yml
+- type: VulnerabilityDisclosure
+  url: security/curse-vulnerability-disclosure.yml
+- type: Security
+  url: https://hackerone.com/fandom_bbp
+- type: DomainSecurity
+  url: security/curse-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

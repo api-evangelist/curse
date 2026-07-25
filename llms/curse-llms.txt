@@ -1,0 +1,26 @@
+# CurseForge Core API
+
+> CurseForge (Curse Inc., now operated under Fandom / Overwolf) runs the CurseForge platform for game mods, modpacks, and add-ons. The CurseForge Core API is a REST API over the CurseForge catalog — games, categories, mods, files, fingerprints, and Minecraft versions/mod loaders — authenticated with an `x-api-key` header issued from the CurseForge for Studios developer console.
+
+## APIs
+- [CurseForge Core API](https://docs.curseforge.com/rest-api/): REST API for games, mods, files, fingerprints, and Minecraft data. Base URL https://api.curseforge.com.
+
+## Specs
+- [OpenAPI (verbatim)](https://api.curseforge.com/swagger/v1/swagger.json): OpenAPI 3.0.0, 46 operations, API-key auth.
+- [OpenAPI (repo copy)](openapi/curse-core-openapi-original.yml)
+- [MCP candidate tools](mcp/curse-mcp.yml)
+- [Overlay](overlays/curse-core-overlay.yaml)
+
+## Docs
+- [Getting Started](https://docs.curseforge.com/rest-api/)
+- [Developer Console](https://console.curseforge.com/)
+- [API key / access application](https://support.curseforge.com/support/solutions/articles/9000208346-about-the-curseforge-api-and-how-to-apply-for-a-key)
+- [Support](https://support.curseforge.com/)
+- [Blog](https://blog.curseforge.com/)
+- [Status](https://status.curseforge.com/)
+
+## Conventions
+- [Authentication](authentication/curse-authentication.yml): API key in `x-api-key` header.
+- [Conventions](conventions/curse-conventions.yml): index/pageSize pagination (max 50), `{ "data": ... }` envelope.
+- [Errors](errors/curse-problem-types.yml): standard HTTP status codes.
+- [Data model](data-model/curse-data-model.yml): Game / Category / Mod / File graph.

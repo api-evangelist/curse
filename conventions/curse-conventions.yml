@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.curseforge.com/rest-api/
+authentication:
+  style: api-key
+  header: x-api-key
+  docs: https://console.curseforge.com/
+  notes: API key issued via CurseForge for Studios developer console; third-party access requires an approved
+    application.
+idempotency:
+  supported: false
+  notes: No idempotency-key header documented.
+pagination:
+  style: index-offset
+  params:
+  - index
+  - pageSize
+  response_fields:
+  - pagination.index
+  - pagination.pageSize
+  - pagination.resultCount
+  - pagination.totalCount
+  max_page_size: 50
+  constraint: index + pageSize must be <= 10000
+  docs: https://docs.curseforge.com/rest-api/
+versioning:
+  style: uri-path
+  versions:
+  - v1
+  - v2
+  - v3
+  current: v1
+response_envelope:
+  shape: '{ "data": <payload> }'
+  pagination_envelope: '{ "data": [...], "pagination": {...} }'
+rate_limiting:
+  documented: false
+  notes: No public rate-limit headers documented; fair-use governed by the 3rd Party Developers API Terms
+    of Service.
+cross_links:
+  errors: errors/curse-problem-types.yml
+  authentication: authentication/curse-authentication.yml
+  lifecycle: lifecycle/curse-lifecycle.yml
+  data_model: data-model/curse-data-model.yml

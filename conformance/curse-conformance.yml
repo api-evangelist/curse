@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curse-core-openapi-original.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: OpenAPI 3.0.0 at https://api.curseforge.com/swagger/v1/swagger.json
+- id: oauth2
+  conforms: false
+  evidence: API-key auth only (x-api-key)
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Plain HTTP status codes, not application/problem+json
+- id: pagination
+  conforms: true
+  evidence: index/pageSize offset pagination
+- id: idempotency
+  conforms: false
+- id: json
+  conforms: true
+  evidence: application/json responses

@@ -1,0 +1,154 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/curse-core-openapi-original.yml
+server:
+  name: curse
+  transport: http
+note: No official CurseForge MCP server found. Candidate tools derived one-per-operation from the Core
+  API OpenAPI.
+tools:
+- name: Get_Games
+  description: Get Games
+  source_operation: openapi/curse-core-openapi-original.yml#Get Games
+- name: Get_Game
+  description: Get Game
+  source_operation: openapi/curse-core-openapi-original.yml#Get Game
+- name: Get_Versions
+  description: Get Versions
+  source_operation: openapi/curse-core-openapi-original.yml#Get Versions
+- name: Get_Version_Types
+  description: Get Version Types
+  source_operation: openapi/curse-core-openapi-original.yml#Get Version Types
+- name: Get_Versions_-_V2
+  description: Get Versions - V2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Versions - V2
+- name: Get_additional_client_featured_projects
+  description: Get additional client featured projects
+  source_operation: openapi/curse-core-openapi-original.yml#Get additional client featured projects
+- name: Get_Categories
+  description: Get Categories
+  source_operation: openapi/curse-core-openapi-original.yml#Get Categories
+- name: Search_Mods
+  description: Search Mods
+  source_operation: openapi/curse-core-openapi-original.yml#Search Mods
+- name: App_Mods_Search
+  description: App Mods Search
+  source_operation: openapi/curse-core-openapi-original.yml#App Mods Search
+- name: Get_Mod
+  description: Get Mod
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod
+- name: Get_Mods
+  description: Get Mods
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mods
+- name: Get_Mods2
+  description: Get Mods2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mods2
+- name: Get_Featured_Mods
+  description: Get Featured Mods
+  source_operation: openapi/curse-core-openapi-original.yml#Get Featured Mods
+- name: Get_Mod_Description
+  description: Get Mod Description
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod Description
+- name: Mods_GetAppModHighlights
+  description: Mods_GetAppModHighlights
+  source_operation: openapi/curse-core-openapi-original.yml#Mods_GetAppModHighlights
+- name: Get_Mod_Highlights
+  description: Get Mod Highlights
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod Highlights
+- name: Get_Mod_File
+  description: Get Mod File
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod File
+- name: Get_Mod_Files
+  description: Get Mod Files
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod Files
+- name: Get_Files
+  description: Get Files
+  source_operation: openapi/curse-core-openapi-original.yml#Get Files
+- name: Get_Mod_File_Changelog
+  description: Get Mod File Changelog
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod File Changelog
+- name: Get_Mod_File_Download_URL
+  description: Get Mod File Download URL
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod File Download URL
+- name: Get_Mod_File_Download_URL2
+  description: 'Get a download information for a specific file. This can include
+
+    different formats and delta-diffs and allows the client to select the
+
+    best suited file to download.'
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod File Download URL2
+- name: Get_Mod_File2
+  description: Get Mod File2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod File2
+- name: Get_Fingerprints_Matches_By_Game_Id
+  description: Get Fingerprints Matches By Game Id
+  source_operation: openapi/curse-core-openapi-original.yml#Get Fingerprints Matches By Game Id
+- name: Get_Fingerprints_Matches
+  description: Get Fingerprints Matches
+  source_operation: openapi/curse-core-openapi-original.yml#Get Fingerprints Matches
+- name: Get_Fingerprints_Fuzzy_Matches_By_Game_Id
+  description: Get Fingerprints Fuzzy Matches By Game Id
+  source_operation: openapi/curse-core-openapi-original.yml#Get Fingerprints Fuzzy Matches By Game Id
+- name: Get_Fingerprints_Fuzzy_Matches
+  description: Get Fingerprints Fuzzy Matches
+  source_operation: openapi/curse-core-openapi-original.yml#Get Fingerprints Fuzzy Matches
+- name: Get_Minecraft_Versions
+  description: Get Minecraft Versions
+  source_operation: openapi/curse-core-openapi-original.yml#Get Minecraft Versions
+- name: Get_Specific_Minecraft_Version
+  description: Get Specific Minecraft Version
+  source_operation: openapi/curse-core-openapi-original.yml#Get Specific Minecraft Version
+- name: Get_Minecraft_ModLoaders
+  description: Get Minecraft ModLoaders
+  source_operation: openapi/curse-core-openapi-original.yml#Get Minecraft ModLoaders
+- name: Get_Specific_Minecraft_ModLoader
+  description: Get Specific Minecraft ModLoader
+  source_operation: openapi/curse-core-openapi-original.yml#Get Specific Minecraft ModLoader
+- name: Get_Mod_Highlights2
+  description: Get Mod Highlights2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod Highlights2
+- name: Mods_GetById
+  description: Mods_GetById
+  source_operation: openapi/curse-core-openapi-original.yml#Mods_GetById
+- name: Mods_GetAppModHighlights2
+  description: Mods_GetAppModHighlights2
+  source_operation: openapi/curse-core-openapi-original.yml#Mods_GetAppModHighlights2
+- name: Get_Mod_Highlights22
+  description: Get Mod Highlights22
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod Highlights22
+- name: Search_Mods2
+  description: Search Mods2
+  source_operation: openapi/curse-core-openapi-original.yml#Search Mods2
+- name: Mods_GetCommunityPicksCandidates
+  description: Mods_GetCommunityPicksCandidates
+  source_operation: openapi/curse-core-openapi-original.yml#Mods_GetCommunityPicksCandidates
+- name: App_Mods_Search2
+  description: App Mods Search2
+  source_operation: openapi/curse-core-openapi-original.yml#App Mods Search2
+- name: Get_Mod2
+  description: Get Mod2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mod2
+- name: Get_Mods22
+  description: Get Mods22
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mods22
+- name: Get_Featured_Mods2
+  description: Get Featured Mods2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Featured Mods2
+- name: Get_Mods_Subscriptions
+  description: Get Mods Subscriptions
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mods Subscriptions
+- name: Get_Mods_Subscriptions2
+  description: Get Mods Subscriptions2
+  source_operation: openapi/curse-core-openapi-original.yml#Get Mods Subscriptions2
+- name: Add_a_list_of_mod_ids_to_the_user's_subscribed_mods
+  description: Add a list of mod ids to the user's subscribed mods
+  source_operation: openapi/curse-core-openapi-original.yml#Add a list of mod ids to the user's subscribed
+    mods
+- name: Add_a_mod_id_to_the_user's_subscribed_mods
+  description: Add a mod id to the user's subscribed mods
+  source_operation: openapi/curse-core-openapi-original.yml#Add a mod id to the user's subscribed mods
+- name: Remove_a_mod_id_from_the_user's_subscribed_mods
+  description: Remove a mod id from the user's subscribed mods
+  source_operation: openapi/curse-core-openapi-original.yml#Remove a mod id from the user's subscribed
+    mods

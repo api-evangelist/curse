@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: generated
+skills:
+  - file: curse-search-and-download-mod.md
+    name: Search and download a CurseForge mod
+    api: openapi/curse-core-openapi-original.yml
+    operations: [Get Games, Search Mods, Get Mod Files, Get Mod File Download URL]
+  - file: curse-match-installed-mods-by-fingerprint.md
+    name: Match installed mods by fingerprint
+    api: openapi/curse-core-openapi-original.yml
+    operations: [Get Fingerprints Matches, Get Mods]

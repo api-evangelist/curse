@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.curseforge.com/rest-api/
+versioning:
+  scheme: uri-path
+  current: v1
+  observed:
+  - v1
+  - v2
+  - v3
+  docs: https://docs.curseforge.com/rest-api/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/Sunset-header policy published.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.curseforge.com/
+terms_of_service: https://docs.curseforge.com/rest-api/#terms-of-use
+support: https://support.curseforge.com/
+deprecated_operations: []

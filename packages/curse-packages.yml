@@ -1,0 +1,30 @@
+generated: '2026-07-18'
+method: searched
+source: registry + GitHub search
+note: 'No first-party CurseForge SDK published. Libraries below are community-maintained (official: false).'
+packages:
+- language: javascript
+  registry: npm
+  name: curseforge-api
+  url: https://github.com/minimusubi/curseforge-api
+  official: false
+- language: javascript
+  registry: npm
+  name: curseforge-v2
+  url: https://www.npmjs.com/package/curseforge-v2
+  official: false
+- language: python
+  registry: github
+  name: cursepy
+  url: https://github.com/OwenCochell/cursepy
+  official: false
+- language: python
+  registry: pypi
+  name: curse-api
+  url: https://github.com/Stinky-c/curse-api
+  official: false
+- language: python
+  registry: pypi
+  name: CurseForgeAPy
+  url: https://github.com/Eriall1/CurseForgeAPy
+  official: false
