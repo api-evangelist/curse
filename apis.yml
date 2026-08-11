@@ -166,7 +166,7 @@ common:
 - type: PrivacyPolicy
   url: https://www.fandom.com/privacy-policy
 - type: OpenAPI
-  url: openapi/curse-core-openapi-original.yml
+  url: openapi/_original/curse-core-openapi-original.yml
 - type: Overlay
   url: overlays/curse-core-overlay.yaml
 - type: MCPServer
