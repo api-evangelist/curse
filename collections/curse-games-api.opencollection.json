@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories Games API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Games",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Games",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/games",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              }
+            ]
+          },
+          "docs": "Get all games that are available to the provided API key."
+        },
+        {
+          "info": {
+            "name": "Get Game",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/games/:gameId",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "path",
+                "description": "A game unique id"
+              }
+            ]
+          },
+          "docs": "Get a single game. A private game is only accessible by its respective API key."
+        },
+        {
+          "info": {
+            "name": "Get Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/games/:gameId/versions",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "path",
+                "description": "A game unique id"
+              }
+            ]
+          },
+          "docs": "Get all available versions for each known version type of the specified game. A private game is only accessible to its respective API key."
+        },
+        {
+          "info": {
+            "name": "Get Version Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/games/:gameId/version-types",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "path",
+                "description": "A game unique id"
+              }
+            ]
+          },
+          "docs": "Get all available version types of the specified game.\n\nA private game is only accessible to its respective API key.\n\n\nCurrently, when creating games via the CurseForge for Studios Console, you are limited to a single game version type.\nThis means that this endpoint is probably not useful in most cases and is relevant mostly when handling\nexisting games that have multiple game versions such as World of Warcraft and Minecraft (e.g. 517 for wow_retail)."
+        },
+        {
+          "info": {
+            "name": "Get Versions - V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v2/games/:gameId/versions",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "path",
+                "description": "A game unique id"
+              }
+            ]
+          },
+          "docs": "Get all available versions for each known version type of the specified game. A private game is only accessible to its respective API key."
+        },
+        {
+          "info": {
+            "name": "Get additional client featured projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v2/games/:gameId/additional-client-featured-projects",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

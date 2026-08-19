@@ -1,0 +1,1384 @@
+{
+  "item": [
+    {
+      "id": "8d71ea26-a237-444b-a734-8dfdbbd0a88a",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb1c7ef5-dd92-410d-bb35-b3958cb268ec",
+          "name": "Get Mods Subscriptions",
+          "request": {
+            "name": "Get Mods Subscriptions",
+            "description": {
+              "content": "Get the current user's subscribed mods for the given game key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                "me",
+                "mods",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<integer>",
+                  "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The number of items to include in the response,  the default/maximum value is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "gameId",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "506cdbdd-4acc-48d6-a5dd-05b8d538a62c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 4505,\n      \"gameId\": 5308,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"links\": {\n        \"websiteUrl\": \"string\",\n        \"wikiUrl\": \"string\",\n        \"issuesUrl\": \"string\",\n        \"sourceUrl\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"status\": 7,\n      \"downloadCount\": 1980,\n      \"isFeatured\": true,\n      \"primaryCategoryId\": 3149,\n      \"categories\": [\n        {\n          \"id\": 4022,\n          \"gameId\": 8264,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1982-03-21T10:07:45.248Z\",\n          \"isClass\": true,\n          \"classId\": 9054,\n          \"parentCategoryId\": 4305,\n          \"displayIndex\": 93\n        },\n        {\n          \"id\": 5263,\n          \"gameId\": 9469,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"2009-04-27T12:16:53.603Z\",\n          \"isClass\": false,\n          \"classId\": 3146,\n          \"parentCategoryId\": 5189,\n          \"displayIndex\": 7134\n        }\n      ],\n      \"classId\": 6599,\n      \"authors\": [\n        {\n          \"id\": 1999,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        },\n        {\n          \"id\": 2487,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        }\n      ],\n      \"logo\": {\n        \"id\": 1873,\n        \"modId\": 4064,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"screenshots\": [\n        {\n          \"id\": 1850,\n          \"modId\": 9020,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 7759,\n          \"modId\": 1902,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"videos\": [\n        {\n          \"id\": 3039,\n          \"modId\": 9669,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 5141,\n          \"modId\": 2530,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"mainFileId\": 1216,\n      \"latestFiles\": [\n        {\n          \"id\": 3604,\n          \"gameId\": 1313,\n          \"modId\": 8297,\n          \"isAvailable\": true,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 2,\n          \"fileStatus\": 10,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1997-11-01T22:39:55.668Z\",\n          \"fileLength\": 5650,\n          \"downloadCount\": 2638,\n          \"fileSizeOnDisk\": 5361,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": true,\n          \"parentProjectFileId\": 1622,\n          \"alternateFileId\": 3,\n          \"isServerPack\": false,\n          \"serverPackFileId\": 9556,\n          \"isEarlyAccessContent\": false,\n          \"earlyAccessEndDate\": \"2011-02-11T03:39:53.158Z\",\n          \"fileFingerprint\": 5176,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        },\n        {\n          \"id\": 3557,\n          \"gameId\": 7016,\n          \"modId\": 5334,\n          \"isAvailable\": true,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 3,\n          \"fileStatus\": 9,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"2005-11-07T03:51:03.359Z\",\n          \"fileLength\": 2318,\n          \"downloadCount\": 8149,\n          \"fileSizeOnDisk\": 9183,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": true,\n          \"parentProjectFileId\": 3303,\n          \"alternateFileId\": 2627,\n          \"isServerPack\": true,\n          \"serverPackFileId\": 3811,\n          \"isEarlyAccessContent\": false,\n          \"earlyAccessEndDate\": \"1959-01-19T18:28:22.793Z\",\n          \"fileFingerprint\": 854,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        }\n      ],\n      \"latestFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 5133,\n          \"filename\": \"string\",\n          \"releaseType\": 2,\n          \"gameVersionTypeId\": 7120,\n          \"modLoader\": 0\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 247,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 1486,\n          \"modLoader\": 1\n        }\n      ],\n      \"latestEarlyAccessFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 9465,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 9840,\n          \"modLoader\": 2\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 6010,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 8091,\n          \"modLoader\": 5\n        }\n      ],\n      \"dateCreated\": \"1959-04-05T23:26:09.978Z\",\n      \"dateModified\": \"1957-07-07T18:03:40.190Z\",\n      \"dateReleased\": \"1973-09-03T18:23:57.200Z\",\n      \"dateLastReleasedFile\": \"1973-04-17T19:31:55.142Z\",\n      \"allowModDistribution\": false,\n      \"gamePopularityRank\": 3109,\n      \"isAvailable\": false,\n      \"hasCommentsEnabled\": false,\n      \"thumbsUpCount\": 1517,\n      \"ratingDetails\": {\n        \"rating\": 3253.248141057633,\n        \"totalRatings\": 4885,\n        \"positiveRatings\": 8179,\n        \"score\": 9\n      },\n      \"serverAffiliation\": {\n        \"isEnabled\": false,\n        \"isDefaultBanner\": false,\n        \"hasDiscount\": true,\n        \"affiliationService\": 1,\n        \"defaultBannerCustomTitle\": \"string\",\n        \"customImageUrl\": \"string\",\n        \"affiliationLink\": \"string\"\n      },\n      \"socialLinks\": [\n        {\n          \"type\": 16,\n          \"url\": \"string\"\n        },\n        {\n          \"type\": 4,\n          \"url\": \"string\"\n        }\n      ],\n      \"galleryItems\": [\n        {\n          \"description\": \"string\",\n          \"isFeatured\": false,\n          \"displayIndex\": 9885,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        },\n        {\n          \"description\": \"string\",\n          \"isFeatured\": true,\n          \"displayIndex\": 7760,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        }\n      ],\n      \"featuredProjectTag\": 0\n    },\n    {\n      \"id\": 1964,\n      \"gameId\": 9390,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"links\": {\n        \"websiteUrl\": \"string\",\n        \"wikiUrl\": \"string\",\n        \"issuesUrl\": \"string\",\n        \"sourceUrl\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"status\": 6,\n      \"downloadCount\": 2914,\n      \"isFeatured\": false,\n      \"primaryCategoryId\": 9579,\n      \"categories\": [\n        {\n          \"id\": 2147,\n          \"gameId\": 6481,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1983-08-08T08:39:57.038Z\",\n          \"isClass\": true,\n          \"classId\": 9594,\n          \"parentCategoryId\": 7260,\n          \"displayIndex\": 1802\n        },\n        {\n          \"id\": 296,\n          \"gameId\": 1469,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1968-12-09T11:14:46.321Z\",\n          \"isClass\": false,\n          \"classId\": 6794,\n          \"parentCategoryId\": 7170,\n          \"displayIndex\": 2559\n        }\n      ],\n      \"classId\": 5016,\n      \"authors\": [\n        {\n          \"id\": 9451,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        },\n        {\n          \"id\": 3456,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        }\n      ],\n      \"logo\": {\n        \"id\": 7694,\n        \"modId\": 7556,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"screenshots\": [\n        {\n          \"id\": 9998,\n          \"modId\": 3689,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 5988,\n          \"modId\": 8153,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"videos\": [\n        {\n          \"id\": 6219,\n          \"modId\": 5657,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 1505,\n          \"modId\": 6094,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"mainFileId\": 4068,\n      \"latestFiles\": [\n        {\n          \"id\": 9246,\n          \"gameId\": 527,\n          \"modId\": 5478,\n          \"isAvailable\": false,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 2,\n          \"fileStatus\": 1,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1950-08-06T08:59:52.573Z\",\n          \"fileLength\": 4028,\n          \"downloadCount\": 6575,\n          \"fileSizeOnDisk\": 4657,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": false,\n          \"parentProjectFileId\": 5122,\n          \"alternateFileId\": 6383,\n          \"isServerPack\": false,\n          \"serverPackFileId\": 1153,\n          \"isEarlyAccessContent\": true,\n          \"earlyAccessEndDate\": \"1984-02-22T15:35:25.735Z\",\n          \"fileFingerprint\": 7037,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        },\n        {\n          \"id\": 8647,\n          \"gameId\": 6162,\n          \"modId\": 1011,\n          \"isAvailable\": false,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 3,\n          \"fileStatus\": 2,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1987-04-05T10:24:32.070Z\",\n          \"fileLength\": 2091,\n          \"downloadCount\": 4359,\n          \"fileSizeOnDisk\": 5081,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": false,\n          \"parentProjectFileId\": 8820,\n          \"alternateFileId\": 2395,\n          \"isServerPack\": true,\n          \"serverPackFileId\": 8893,\n          \"isEarlyAccessContent\": true,\n          \"earlyAccessEndDate\": \"1952-05-10T05:29:28.027Z\",\n          \"fileFingerprint\": 539,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        }\n      ],\n      \"latestFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 9785,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 6178,\n          \"modLoader\": 2\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 1115,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 7631,\n          \"modLoader\": 5\n        }\n      ],\n      \"latestEarlyAccessFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 2748,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 149,\n          \"modLoader\": 3\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 3876,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 5161,\n          \"modLoader\": 4\n        }\n      ],\n      \"dateCreated\": \"1963-01-05T12:31:46.086Z\",\n      \"dateModified\": \"1982-03-11T06:39:42.011Z\",\n      \"dateReleased\": \"2011-12-05T12:06:53.391Z\",\n      \"dateLastReleasedFile\": \"1960-05-15T12:02:50.066Z\",\n      \"allowModDistribution\": true,\n      \"gamePopularityRank\": 4949,\n      \"isAvailable\": true,\n      \"hasCommentsEnabled\": true,\n      \"thumbsUpCount\": 8862,\n      \"ratingDetails\": {\n        \"rating\": 5299.5962485707105,\n        \"totalRatings\": 5196,\n        \"positiveRatings\": 3234,\n        \"score\": 2\n      },\n      \"serverAffiliation\": {\n        \"isEnabled\": false,\n        \"isDefaultBanner\": false,\n        \"hasDiscount\": false,\n        \"affiliationService\": 1,\n        \"defaultBannerCustomTitle\": \"string\",\n        \"customImageUrl\": \"string\",\n        \"affiliationLink\": \"string\"\n      },\n      \"socialLinks\": [\n        {\n          \"type\": 9,\n          \"url\": \"string\"\n        },\n        {\n          \"type\": 3,\n          \"url\": \"string\"\n        }\n      ],\n      \"galleryItems\": [\n        {\n          \"description\": \"string\",\n          \"isFeatured\": false,\n          \"displayIndex\": 9033,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        },\n        {\n          \"description\": \"string\",\n          \"isFeatured\": false,\n          \"displayIndex\": 2338,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 2\n        }\n      ],\n      \"featuredProjectTag\": 0\n    }\n  ],\n  \"pagination\": {\n    \"index\": 9062,\n    \"pageSize\": 1859,\n    \"resultCount\": 2580,\n    \"totalCount\": 5243\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "415d0dd1-8c5a-43ca-82c2-973d49a28ed6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a32bf9f-3904-4394-9408-57e9462b4e11",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "443107e5-1d1e-49ca-97de-638cfb607fb6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "390ee2b5-6923-4251-b1db-0cf1b59d97e2",
+          "name": "Get Mods Subscriptions2",
+          "request": {
+            "name": "Get Mods Subscriptions2",
+            "description": {
+              "content": "Get the current user's subscribed mods for the given game key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                "me",
+                "mods",
+                "subscriptions",
+                "ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<integer>",
+                  "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The number of items to include in the response,  the default/maximum value is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "gameId",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2307be7-eb74-41ac-bcf7-adf24ca639bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 9757,\n      \"gameId\": 2082,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"links\": {\n        \"websiteUrl\": \"string\",\n        \"wikiUrl\": \"string\",\n        \"issuesUrl\": \"string\",\n        \"sourceUrl\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"status\": 6,\n      \"downloadCount\": 5920,\n      \"isFeatured\": false,\n      \"primaryCategoryId\": 6554,\n      \"categories\": [\n        {\n          \"id\": 8516,\n          \"gameId\": 371,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1964-12-25T17:25:09.403Z\",\n          \"isClass\": true,\n          \"classId\": 9826,\n          \"parentCategoryId\": 3334,\n          \"displayIndex\": 9704\n        },\n        {\n          \"id\": 8628,\n          \"gameId\": 4305,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1947-03-21T00:34:26.587Z\",\n          \"isClass\": false,\n          \"classId\": 5080,\n          \"parentCategoryId\": 1779,\n          \"displayIndex\": 1706\n        }\n      ],\n      \"classId\": 7006,\n      \"authors\": [\n        {\n          \"id\": 5985,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        },\n        {\n          \"id\": 153,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        }\n      ],\n      \"logo\": {\n        \"id\": 4849,\n        \"modId\": 2157,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"screenshots\": [\n        {\n          \"id\": 8594,\n          \"modId\": 420,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 5872,\n          \"modId\": 2239,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"videos\": [\n        {\n          \"id\": 3406,\n          \"modId\": 4023,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 2599,\n          \"modId\": 2735,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"mainFileId\": 1990,\n      \"latestFiles\": [\n        {\n          \"id\": 9455,\n          \"gameId\": 7193,\n          \"modId\": 3660,\n          \"isAvailable\": false,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 2,\n          \"fileStatus\": 7,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1958-02-18T20:41:01.443Z\",\n          \"fileLength\": 7046,\n          \"downloadCount\": 6924,\n          \"fileSizeOnDisk\": 3103,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": true,\n          \"parentProjectFileId\": 3767,\n          \"alternateFileId\": 6715,\n          \"isServerPack\": false,\n          \"serverPackFileId\": 1507,\n          \"isEarlyAccessContent\": false,\n          \"earlyAccessEndDate\": \"2012-09-29T16:00:26.338Z\",\n          \"fileFingerprint\": 7520,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        },\n        {\n          \"id\": 8057,\n          \"gameId\": 5800,\n          \"modId\": 2620,\n          \"isAvailable\": true,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 2,\n          \"fileStatus\": 12,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1949-12-21T18:18:37.308Z\",\n          \"fileLength\": 8113,\n          \"downloadCount\": 26,\n          \"fileSizeOnDisk\": 6746,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": false,\n          \"parentProjectFileId\": 1990,\n          \"alternateFileId\": 410,\n          \"isServerPack\": false,\n          \"serverPackFileId\": 9192,\n          \"isEarlyAccessContent\": false,\n          \"earlyAccessEndDate\": \"2023-02-24T17:56:38.715Z\",\n          \"fileFingerprint\": 9854,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        }\n      ],\n      \"latestFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 4691,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 4005,\n          \"modLoader\": 1\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 1859,\n          \"filename\": \"string\",\n          \"releaseType\": 2,\n          \"gameVersionTypeId\": 2378,\n          \"modLoader\": 4\n        }\n      ],\n      \"latestEarlyAccessFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 5324,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 8436,\n          \"modLoader\": 5\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 9042,\n          \"filename\": \"string\",\n          \"releaseType\": 2,\n          \"gameVersionTypeId\": 1437,\n          \"modLoader\": 0\n        }\n      ],\n      \"dateCreated\": \"1986-05-25T19:30:10.936Z\",\n      \"dateModified\": \"2021-07-14T10:31:30.972Z\",\n      \"dateReleased\": \"1996-12-31T12:18:18.954Z\",\n      \"dateLastReleasedFile\": \"1953-08-20T04:47:21.515Z\",\n      \"allowModDistribution\": true,\n      \"gamePopularityRank\": 2247,\n      \"isAvailable\": true,\n      \"hasCommentsEnabled\": false,\n      \"thumbsUpCount\": 4293,\n      \"ratingDetails\": {\n        \"rating\": 8249.09007704826,\n        \"totalRatings\": 7892,\n        \"positiveRatings\": 1520,\n        \"score\": 0\n      },\n      \"serverAffiliation\": {\n        \"isEnabled\": false,\n        \"isDefaultBanner\": false,\n        \"hasDiscount\": true,\n        \"affiliationService\": 1,\n        \"defaultBannerCustomTitle\": \"string\",\n        \"customImageUrl\": \"string\",\n        \"affiliationLink\": \"string\"\n      },\n      \"socialLinks\": [\n        {\n          \"type\": 2,\n          \"url\": \"string\"\n        },\n        {\n          \"type\": 12,\n          \"url\": \"string\"\n        }\n      ],\n      \"galleryItems\": [\n        {\n          \"description\": \"string\",\n          \"isFeatured\": false,\n          \"displayIndex\": 1128,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        },\n        {\n          \"description\": \"string\",\n          \"isFeatured\": false,\n          \"displayIndex\": 1863,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        }\n      ],\n      \"featuredProjectTag\": 0\n    },\n    {\n      \"id\": 1115,\n      \"gameId\": 5274,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"links\": {\n        \"websiteUrl\": \"string\",\n        \"wikiUrl\": \"string\",\n        \"issuesUrl\": \"string\",\n        \"sourceUrl\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"status\": 3,\n      \"downloadCount\": 1599,\n      \"isFeatured\": true,\n      \"primaryCategoryId\": 8663,\n      \"categories\": [\n        {\n          \"id\": 7359,\n          \"gameId\": 4477,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1969-08-27T01:08:45.234Z\",\n          \"isClass\": true,\n          \"classId\": 1331,\n          \"parentCategoryId\": 6159,\n          \"displayIndex\": 1731\n        },\n        {\n          \"id\": 2954,\n          \"gameId\": 9611,\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"url\": \"string\",\n          \"iconUrl\": \"string\",\n          \"dateModified\": \"1989-09-25T17:33:47.083Z\",\n          \"isClass\": false,\n          \"classId\": 5213,\n          \"parentCategoryId\": 9150,\n          \"displayIndex\": 6144\n        }\n      ],\n      \"classId\": 4452,\n      \"authors\": [\n        {\n          \"id\": 1069,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        },\n        {\n          \"id\": 6650,\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"avatarUrl\": \"string\"\n        }\n      ],\n      \"logo\": {\n        \"id\": 1802,\n        \"modId\": 3650,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      \"screenshots\": [\n        {\n          \"id\": 7666,\n          \"modId\": 1435,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 8766,\n          \"modId\": 7337,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"videos\": [\n        {\n          \"id\": 5355,\n          \"modId\": 5818,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"id\": 8069,\n          \"modId\": 2802,\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"mainFileId\": 4373,\n      \"latestFiles\": [\n        {\n          \"id\": 5854,\n          \"gameId\": 6468,\n          \"modId\": 9492,\n          \"isAvailable\": false,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 1,\n          \"fileStatus\": 13,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"1971-08-20T07:54:23.176Z\",\n          \"fileLength\": 500,\n          \"downloadCount\": 4669,\n          \"fileSizeOnDisk\": 8568,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": false,\n          \"parentProjectFileId\": 1539,\n          \"alternateFileId\": 5476,\n          \"isServerPack\": true,\n          \"serverPackFileId\": 1365,\n          \"isEarlyAccessContent\": true,\n          \"earlyAccessEndDate\": \"1986-03-05T03:24:47.076Z\",\n          \"fileFingerprint\": 3627,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        },\n        {\n          \"id\": 2515,\n          \"gameId\": 969,\n          \"modId\": 3115,\n          \"isAvailable\": false,\n          \"displayName\": \"string\",\n          \"fileName\": \"string\",\n          \"releaseType\": 2,\n          \"fileStatus\": 1,\n          \"hashes\": [\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"algo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"fileDate\": \"2013-03-31T01:13:18.688Z\",\n          \"fileLength\": 4232,\n          \"downloadCount\": 9600,\n          \"fileSizeOnDisk\": 1614,\n          \"downloadUrl\": \"string\",\n          \"gameVersions\": [\n            \"string\",\n            \"string\"\n          ],\n          \"sortableGameVersions\": [\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"gameVersionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionPadded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersion\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionReleaseDate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"gameVersionTypeId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"modId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relationType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"exposeAsAlternative\": true,\n          \"parentProjectFileId\": 7351,\n          \"alternateFileId\": 3710,\n          \"isServerPack\": false,\n          \"serverPackFileId\": 4102,\n          \"isEarlyAccessContent\": false,\n          \"earlyAccessEndDate\": \"1959-01-22T07:12:02.570Z\",\n          \"fileFingerprint\": 8592,\n          \"modules\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fingerprint\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"cookingInfo\": {\n            \"cookerVersion\": \"string\",\n            \"cookerRevision\": \"string\"\n          }\n        }\n      ],\n      \"latestFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 4751,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 3081,\n          \"modLoader\": 4\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 5374,\n          \"filename\": \"string\",\n          \"releaseType\": 1,\n          \"gameVersionTypeId\": 4810,\n          \"modLoader\": 4\n        }\n      ],\n      \"latestEarlyAccessFilesIndexes\": [\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 6719,\n          \"filename\": \"string\",\n          \"releaseType\": 2,\n          \"gameVersionTypeId\": 1672,\n          \"modLoader\": 0\n        },\n        {\n          \"gameVersion\": \"string\",\n          \"fileId\": 7295,\n          \"filename\": \"string\",\n          \"releaseType\": 3,\n          \"gameVersionTypeId\": 2336,\n          \"modLoader\": 6\n        }\n      ],\n      \"dateCreated\": \"2011-10-19T22:02:49.012Z\",\n      \"dateModified\": \"2021-12-31T11:41:55.060Z\",\n      \"dateReleased\": \"2004-07-11T19:01:00.166Z\",\n      \"dateLastReleasedFile\": \"1976-08-10T16:11:38.334Z\",\n      \"allowModDistribution\": true,\n      \"gamePopularityRank\": 4746,\n      \"isAvailable\": true,\n      \"hasCommentsEnabled\": true,\n      \"thumbsUpCount\": 6636,\n      \"ratingDetails\": {\n        \"rating\": 8998.24642293973,\n        \"totalRatings\": 7206,\n        \"positiveRatings\": 6493,\n        \"score\": 8\n      },\n      \"serverAffiliation\": {\n        \"isEnabled\": true,\n        \"isDefaultBanner\": false,\n        \"hasDiscount\": true,\n        \"affiliationService\": 1,\n        \"defaultBannerCustomTitle\": \"string\",\n        \"customImageUrl\": \"string\",\n        \"affiliationLink\": \"string\"\n      },\n      \"socialLinks\": [\n        {\n          \"type\": 15,\n          \"url\": \"string\"\n        },\n        {\n          \"type\": 14,\n          \"url\": \"string\"\n        }\n      ],\n      \"galleryItems\": [\n        {\n          \"description\": \"string\",\n          \"isFeatured\": true,\n          \"displayIndex\": 4469,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 0\n        },\n        {\n          \"description\": \"string\",\n          \"isFeatured\": true,\n          \"displayIndex\": 9734,\n          \"title\": \"string\",\n          \"url\": \"string\",\n          \"thumbnailUrl\": \"string\",\n          \"type\": 1\n        }\n      ],\n      \"featuredProjectTag\": 1\n    }\n  ],\n  \"pagination\": {\n    \"index\": 9584,\n    \"pageSize\": 9591,\n    \"resultCount\": 1754,\n    \"totalCount\": 8006\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "268e8de5-6212-4d54-bd4a-d0e4614e6976",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5c10011-ef7e-4891-87e6-48ccdab5a58c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e8a0dad-dc4e-4558-8a2f-f12294ea4cd9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73949cff-5164-4a58-9c34-616e84a904cf",
+          "name": "Add a list of mod ids to the user's subscribed mods",
+          "request": {
+            "name": "Add a list of mod ids to the user's subscribed mods",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                "me",
+                "mods",
+                "subscriptions",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"modIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7be7b87-1ba7-42dd-9b57-021bb505b60c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "933e3145-eab9-4cbd-8a2f-3062faca89db",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea6216a9-5027-4ded-9ad0-10037f8cae07",
+          "name": "Add a mod id to the user's subscribed mods",
+          "request": {
+            "name": "Add a mod id to the user's subscribed mods",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                "me",
+                "mods",
+                "subscriptions",
+                "subscribe",
+                ":modId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55ba71c5-8c1d-4432-8bc6-b7b9ccf63778",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 1033,\n    \"gameId\": 1104,\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"links\": {\n      \"websiteUrl\": \"string\",\n      \"wikiUrl\": \"string\",\n      \"issuesUrl\": \"string\",\n      \"sourceUrl\": \"string\"\n    },\n    \"summary\": \"string\",\n    \"status\": 9,\n    \"downloadCount\": 498,\n    \"isFeatured\": false,\n    \"primaryCategoryId\": 4610,\n    \"categories\": [\n      {\n        \"id\": 7739,\n        \"gameId\": 4030,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"url\": \"string\",\n        \"iconUrl\": \"string\",\n        \"dateModified\": \"1968-04-15T11:21:01.254Z\",\n        \"isClass\": false,\n        \"classId\": 5920,\n        \"parentCategoryId\": 191,\n        \"displayIndex\": 6778\n      },\n      {\n        \"id\": 5033,\n        \"gameId\": 533,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"url\": \"string\",\n        \"iconUrl\": \"string\",\n        \"dateModified\": \"1951-02-01T08:05:35.142Z\",\n        \"isClass\": true,\n        \"classId\": 5660,\n        \"parentCategoryId\": 1915,\n        \"displayIndex\": 4604\n      }\n    ],\n    \"classId\": 6496,\n    \"authors\": [\n      {\n        \"id\": 8296,\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"avatarUrl\": \"string\"\n      },\n      {\n        \"id\": 6549,\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"avatarUrl\": \"string\"\n      }\n    ],\n    \"logo\": {\n      \"id\": 4131,\n      \"modId\": 8555,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"thumbnailUrl\": \"string\",\n      \"url\": \"string\"\n    },\n    \"screenshots\": [\n      {\n        \"id\": 6923,\n        \"modId\": 4211,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"id\": 5900,\n        \"modId\": 7828,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"videos\": [\n      {\n        \"id\": 4265,\n        \"modId\": 1086,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"id\": 9474,\n        \"modId\": 5244,\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"mainFileId\": 8694,\n    \"latestFiles\": [\n      {\n        \"id\": 6851,\n        \"gameId\": 4014,\n        \"modId\": 8978,\n        \"isAvailable\": false,\n        \"displayName\": \"string\",\n        \"fileName\": \"string\",\n        \"releaseType\": 1,\n        \"fileStatus\": 7,\n        \"hashes\": [\n          {\n            \"value\": \"string\",\n            \"algo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"value\": \"string\",\n            \"algo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fileDate\": \"2018-01-14T09:03:16.577Z\",\n        \"fileLength\": 3527,\n        \"downloadCount\": 3507,\n        \"fileSizeOnDisk\": 7172,\n        \"downloadUrl\": \"string\",\n        \"gameVersions\": [\n          \"string\",\n          \"string\"\n        ],\n        \"sortableGameVersions\": [\n          {\n            \"gameVersionName\": \"string\",\n            \"gameVersionPadded\": \"string\",\n            \"gameVersion\": \"string\",\n            \"gameVersionReleaseDate\": \"1969-04-09T01:02:03.718Z\",\n            \"gameVersionTypeId\": 3371\n          },\n          {\n            \"gameVersionName\": \"string\",\n            \"gameVersionPadded\": \"string\",\n            \"gameVersion\": \"string\",\n            \"gameVersionReleaseDate\": \"1951-06-10T18:55:23.305Z\",\n            \"gameVersionTypeId\": 4724\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"modId\": 5620,\n            \"relationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"modId\": 6092,\n            \"relationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"exposeAsAlternative\": false,\n        \"parentProjectFileId\": 5562,\n        \"alternateFileId\": 4031,\n        \"isServerPack\": true,\n        \"serverPackFileId\": 118,\n        \"isEarlyAccessContent\": false,\n        \"earlyAccessEndDate\": \"1993-11-14T03:59:16.482Z\",\n        \"fileFingerprint\": 5104,\n        \"modules\": [\n          {\n            \"name\": \"string\",\n            \"fingerprint\": 1835\n          },\n          {\n            \"name\": \"string\",\n            \"fingerprint\": 3596\n          }\n        ],\n        \"cookingInfo\": {\n          \"cookerVersion\": \"string\",\n          \"cookerRevision\": \"string\"\n        }\n      },\n      {\n        \"id\": 6832,\n        \"gameId\": 9930,\n        \"modId\": 3236,\n        \"isAvailable\": false,\n        \"displayName\": \"string\",\n        \"fileName\": \"string\",\n        \"releaseType\": 3,\n        \"fileStatus\": 8,\n        \"hashes\": [\n          {\n            \"value\": \"string\",\n            \"algo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"value\": \"string\",\n            \"algo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fileDate\": \"2016-07-26T05:46:38.593Z\",\n        \"fileLength\": 9937,\n        \"downloadCount\": 4812,\n        \"fileSizeOnDisk\": 4425,\n        \"downloadUrl\": \"string\",\n        \"gameVersions\": [\n          \"string\",\n          \"string\"\n        ],\n        \"sortableGameVersions\": [\n          {\n            \"gameVersionName\": \"string\",\n            \"gameVersionPadded\": \"string\",\n            \"gameVersion\": \"string\",\n            \"gameVersionReleaseDate\": \"1980-02-04T10:05:36.333Z\",\n            \"gameVersionTypeId\": 5638\n          },\n          {\n            \"gameVersionName\": \"string\",\n            \"gameVersionPadded\": \"string\",\n            \"gameVersion\": \"string\",\n            \"gameVersionReleaseDate\": \"1990-05-08T07:45:27.290Z\",\n            \"gameVersionTypeId\": 959\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"modId\": 6751,\n            \"relationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"modId\": 9994,\n            \"relationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"exposeAsAlternative\": false,\n        \"parentProjectFileId\": 5104,\n        \"alternateFileId\": 705,\n        \"isServerPack\": true,\n        \"serverPackFileId\": 1361,\n        \"isEarlyAccessContent\": true,\n        \"earlyAccessEndDate\": \"2019-09-23T19:45:53.141Z\",\n        \"fileFingerprint\": 1060,\n        \"modules\": [\n          {\n            \"name\": \"string\",\n            \"fingerprint\": 9960\n          },\n          {\n            \"name\": \"string\",\n            \"fingerprint\": 8994\n          }\n        ],\n        \"cookingInfo\": {\n          \"cookerVersion\": \"string\",\n          \"cookerRevision\": \"string\"\n        }\n      }\n    ],\n    \"latestFilesIndexes\": [\n      {\n        \"gameVersion\": \"string\",\n        \"fileId\": 9279,\n        \"filename\": \"string\",\n        \"releaseType\": 1,\n        \"gameVersionTypeId\": 4529,\n        \"modLoader\": 4\n      },\n      {\n        \"gameVersion\": \"string\",\n        \"fileId\": 4443,\n        \"filename\": \"string\",\n        \"releaseType\": 1,\n        \"gameVersionTypeId\": 8249,\n        \"modLoader\": 4\n      }\n    ],\n    \"latestEarlyAccessFilesIndexes\": [\n      {\n        \"gameVersion\": \"string\",\n        \"fileId\": 2669,\n        \"filename\": \"string\",\n        \"releaseType\": 3,\n        \"gameVersionTypeId\": 8347,\n        \"modLoader\": 5\n      },\n      {\n        \"gameVersion\": \"string\",\n        \"fileId\": 5566,\n        \"filename\": \"string\",\n        \"releaseType\": 3,\n        \"gameVersionTypeId\": 9108,\n        \"modLoader\": 3\n      }\n    ],\n    \"dateCreated\": \"1969-09-06T15:17:55.212Z\",\n    \"dateModified\": \"1993-08-02T05:04:43.000Z\",\n    \"dateReleased\": \"1984-09-05T15:34:39.757Z\",\n    \"dateLastReleasedFile\": \"2007-05-20T15:18:51.909Z\",\n    \"allowModDistribution\": true,\n    \"gamePopularityRank\": 6935,\n    \"isAvailable\": false,\n    \"hasCommentsEnabled\": true,\n    \"thumbsUpCount\": 4314,\n    \"ratingDetails\": {\n      \"rating\": 8879.34808454257,\n      \"totalRatings\": 9543,\n      \"positiveRatings\": 4572,\n      \"score\": 8\n    },\n    \"serverAffiliation\": {\n      \"isEnabled\": true,\n      \"isDefaultBanner\": false,\n      \"hasDiscount\": true,\n      \"affiliationService\": 1,\n      \"defaultBannerCustomTitle\": \"string\",\n      \"customImageUrl\": \"string\",\n      \"affiliationLink\": \"string\"\n    },\n    \"socialLinks\": [\n      {\n        \"type\": 17,\n        \"url\": \"string\"\n      },\n      {\n        \"type\": 4,\n        \"url\": \"string\"\n      }\n    ],\n    \"galleryItems\": [\n      {\n        \"description\": \"string\",\n        \"isFeatured\": true,\n        \"displayIndex\": 4450,\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"type\": 1\n      },\n      {\n        \"description\": \"string\",\n        \"isFeatured\": true,\n        \"displayIndex\": 6175,\n        \"title\": \"string\",\n        \"url\": \"string\",\n        \"thumbnailUrl\": \"string\",\n        \"type\": 0\n      }\n    ],\n    \"featuredProjectTag\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8577f69d-05c6-4bcf-84fa-45c090da1bc3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48025d59-8908-4027-8ffd-0e7c12cc68b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "637c0b71-d510-404c-9a96-8997b07dcd45",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8ab2316-d86a-4c20-af09-595549ce9e33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9be0c3f3-97dc-46ff-9156-20db28109ce9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "subscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f565d3d0-f091-4545-a079-960493f2a304",
+          "name": "Remove a mod id from the user's subscribed mods",
+          "request": {
+            "name": "Remove a mod id from the user's subscribed mods",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                "me",
+                "mods",
+                "subscriptions",
+                "unsubscribe",
+                ":modId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaf085c5-04f1-41cd-bbb4-c754b8027226",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "unsubscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26999d99-f3c4-4d0c-acf0-447b9f207d6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "unsubscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5246f4c7-02f2-45a5-bc2c-44c74b80e44f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "unsubscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d4b20af-841d-44fc-a05d-ab5fbfe8b7f3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    "me",
+                    "mods",
+                    "subscriptions",
+                    "unsubscribe",
+                    ":modId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.curseforge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7237422c-dfac-4e74-be7a-fb50ca8bf769",
+    "name": "CurseForge Core Categories Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)",
+      "type": "text/plain"
+    }
+  }
+}

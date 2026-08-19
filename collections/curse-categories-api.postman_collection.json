@@ -1,0 +1,264 @@
+{
+  "item": [
+    {
+      "id": "e2365639-6c83-4273-921f-71f5288dcb26",
+      "name": "Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b92680a-d60b-4706-b10b-ef217b0586ac",
+          "name": "Get Categories",
+          "request": {
+            "name": "Get Categories",
+            "description": {
+              "content": "Get all available classes and categories of the specified game. Specify a game id for a list of all game categories, or a class id for a list of categories under that class.\nspecifiy the classes Only flag to just get the classes for a given game.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "gameId",
+                  "value": "<integer>",
+                  "description": "(Required) A game unique id"
+                },
+                {
+                  "disabled": false,
+                  "key": "classId",
+                  "value": "<integer>",
+                  "description": "A class unique id"
+                },
+                {
+                  "disabled": false,
+                  "key": "classesOnly",
+                  "value": "<boolean>",
+                  "description": "A flag used with gameId to return only classes"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a038425-12ba-41bc-af05-d59be2902e3b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classesOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 8156,\n      \"gameId\": 9335,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"url\": \"string\",\n      \"iconUrl\": \"string\",\n      \"dateModified\": \"1963-02-01T15:12:33.348Z\",\n      \"isClass\": true,\n      \"classId\": 3420,\n      \"parentCategoryId\": 1737,\n      \"displayIndex\": 5349\n    },\n    {\n      \"id\": 1199,\n      \"gameId\": 4792,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"url\": \"string\",\n      \"iconUrl\": \"string\",\n      \"dateModified\": \"2014-08-10T02:25:35.900Z\",\n      \"isClass\": false,\n      \"classId\": 9314,\n      \"parentCategoryId\": 5519,\n      \"displayIndex\": 3844\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39990aa3-4ece-4715-a7cd-9e27857af9b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classesOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2da0dcad-ccc6-4693-8d85-56a2a51d2fbf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "gameId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "classesOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.curseforge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc22fb37-0a75-4d2d-8ad4-2fc42c763e9f",
+    "name": "CurseForge Core Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)",
+      "type": "text/plain"
+    }
+  }
+}

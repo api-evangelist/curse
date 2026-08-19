@@ -1,0 +1,812 @@
+{
+  "item": [
+    {
+      "id": "1b6d840a-ab95-43c3-80e3-e79405bd3d11",
+      "name": "Minecraft",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e60fc1a7-9fe5-4e4c-8be4-9fc71c101725",
+          "name": "Get Minecraft Versions",
+          "request": {
+            "name": "Get Minecraft Versions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "minecraft",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sortDescending",
+                  "value": "true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7142279d-4da0-498c-acb9-6500f0a9bf52",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDescending",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 8241,\n      \"gameVersionId\": 7428,\n      \"versionString\": \"string\",\n      \"jarDownloadUrl\": \"string\",\n      \"jsonDownloadUrl\": \"string\",\n      \"approved\": true,\n      \"dateModified\": \"2010-12-19T14:43:04.620Z\",\n      \"gameVersionTypeId\": 9849,\n      \"gameVersionStatus\": 2,\n      \"gameVersionTypeStatus\": 2\n    },\n    {\n      \"id\": 3389,\n      \"gameVersionId\": 3007,\n      \"versionString\": \"string\",\n      \"jarDownloadUrl\": \"string\",\n      \"jsonDownloadUrl\": \"string\",\n      \"approved\": true,\n      \"dateModified\": \"1997-02-17T13:19:47.938Z\",\n      \"gameVersionTypeId\": 6467,\n      \"gameVersionStatus\": 2,\n      \"gameVersionTypeStatus\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d5c4e4f-109a-4361-8660-86ae030168c7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDescending",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70707054-cbdd-454a-860d-35890cb1cd08",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDescending",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41b366b9-b283-4c73-8638-f1e2fc93b1ec",
+          "name": "Get Specific Minecraft Version",
+          "request": {
+            "name": "Get Specific Minecraft Version",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "minecraft",
+                "version",
+                ":gameVersionString"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "gameVersionString",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffa6977d-1a36-43bf-adce-e2b8ebd3fc19",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version",
+                    ":gameVersionString"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameVersionString",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 2250,\n    \"gameVersionId\": 8463,\n    \"versionString\": \"string\",\n    \"jarDownloadUrl\": \"string\",\n    \"jsonDownloadUrl\": \"string\",\n    \"approved\": true,\n    \"dateModified\": \"2013-08-26T03:24:38.016Z\",\n    \"gameVersionTypeId\": 8983,\n    \"gameVersionStatus\": 1,\n    \"gameVersionTypeStatus\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f6b8724-89dd-41ba-983c-c64bcccb5255",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version",
+                    ":gameVersionString"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameVersionString",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f97f962-c7ba-4a3b-b4ac-a0feed50e12a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "version",
+                    ":gameVersionString"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "gameVersionString",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13130f12-4b13-4fee-9328-10bbf6c1b7a2",
+          "name": "Get Minecraft Mod Loaders",
+          "request": {
+            "name": "Get Minecraft Mod Loaders",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "minecraft",
+                "modloader"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAll",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e2b911f-7e0a-40bd-901c-3208a2e2c5ec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeAll",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"gameVersion\": \"string\",\n      \"latest\": true,\n      \"recommended\": false,\n      \"dateModified\": \"1954-05-25T02:03:24.339Z\",\n      \"type\": 3\n    },\n    {\n      \"name\": \"string\",\n      \"gameVersion\": \"string\",\n      \"latest\": true,\n      \"recommended\": true,\n      \"dateModified\": \"2013-10-02T14:41:35.356Z\",\n      \"type\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38c8bb42-fb96-4105-9fe2-fed7cd72a4f4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeAll",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ce3796f-6ecf-48bb-bc05-bc71fa02e20a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeAll",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79fc4068-0207-41a0-8932-553c536442a9",
+          "name": "Get Specific Minecraft Mod Loader",
+          "request": {
+            "name": "Get Specific Minecraft Mod Loader",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "minecraft",
+                "modloader",
+                ":modLoaderName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modLoaderName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05935f23-ae50-446f-bb36-ea3cc88982ab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader",
+                    ":modLoaderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modLoaderName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 3655,\n    \"gameVersionId\": 8891,\n    \"minecraftGameVersionId\": 5675,\n    \"forgeVersion\": \"string\",\n    \"name\": \"string\",\n    \"type\": 3,\n    \"downloadUrl\": \"string\",\n    \"filename\": \"string\",\n    \"installMethod\": 1,\n    \"latest\": false,\n    \"recommended\": true,\n    \"approved\": true,\n    \"dateModified\": \"1980-07-26T08:04:06.438Z\",\n    \"mavenVersionString\": \"string\",\n    \"versionJson\": \"string\",\n    \"librariesInstallLocation\": \"string\",\n    \"minecraftVersion\": \"string\",\n    \"additionalFilesJson\": \"string\",\n    \"modLoaderGameVersionId\": 1640,\n    \"modLoaderGameVersionTypeId\": 4736,\n    \"modLoaderGameVersionStatus\": 1,\n    \"modLoaderGameVersionTypeStatus\": 1,\n    \"mcGameVersionId\": 3449,\n    \"mcGameVersionTypeId\": 7098,\n    \"mcGameVersionStatus\": 1,\n    \"mcGameVersionTypeStatus\": 1,\n    \"installProfileJson\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "040be096-76e9-430d-abb2-5d3d5af1b92d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader",
+                    ":modLoaderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modLoaderName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b26138a1-34eb-4a67-8e71-ecf4b4f806dc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "minecraft",
+                    "modloader",
+                    ":modLoaderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modLoaderName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.curseforge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "56c5c48f-9848-4983-8f1b-0bf4c4576949",
+    "name": "CurseForge Core Categories Minecraft API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)",
+      "type": "text/plain"
+    }
+  }
+}

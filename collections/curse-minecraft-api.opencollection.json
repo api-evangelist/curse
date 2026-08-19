@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories Minecraft API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Minecraft",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Minecraft Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/minecraft/version",
+            "params": [
+              {
+                "name": "sortDescending",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get Specific Minecraft Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/minecraft/version/:gameVersionString",
+            "params": [
+              {
+                "name": "gameVersionString",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get Minecraft ModLoaders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/minecraft/modloader",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeAll",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get Specific Minecraft ModLoader",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/minecraft/modloader/:modLoaderName",
+            "params": [
+              {
+                "name": "modLoaderName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

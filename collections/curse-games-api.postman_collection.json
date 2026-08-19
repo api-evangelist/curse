@@ -1,0 +1,1176 @@
+{
+  "item": [
+    {
+      "id": "1e054edf-a9d9-4a60-abe0-5b6713d12d87",
+      "name": "Games",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e334255-b136-496c-b672-cea084d8ed63",
+          "name": "Get Games",
+          "request": {
+            "name": "Get Games",
+            "description": {
+              "content": "Get all games that are available to the provided API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "games"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<integer>",
+                  "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The number of items to include in the response,  the default/maximum value is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "389c18fb-2d03-4419-9a78-7b4d6fd8fa55",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 8930,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"dateModified\": \"1986-07-26T15:09:33.783Z\",\n      \"assets\": {\n        \"iconUrl\": \"string\",\n        \"tileUrl\": \"string\",\n        \"coverUrl\": \"string\"\n      },\n      \"status\": 1,\n      \"apiStatus\": 1,\n      \"supportedFeatures\": {\n        \"supportModSubscriptions\": false\n      }\n    },\n    {\n      \"id\": 2737,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"dateModified\": \"1966-11-28T18:28:21.779Z\",\n      \"assets\": {\n        \"iconUrl\": \"string\",\n        \"tileUrl\": \"string\",\n        \"coverUrl\": \"string\"\n      },\n      \"status\": 3,\n      \"apiStatus\": 1,\n      \"supportedFeatures\": {\n        \"supportModSubscriptions\": false\n      }\n    }\n  ],\n  \"pagination\": {\n    \"index\": 5431,\n    \"pageSize\": 9152,\n    \"resultCount\": 8194,\n    \"totalCount\": 9733\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af2bed7d-4b6f-400c-ab26-b0c11c1a2468",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6c1bdab-7e9a-4563-9302-693d95fbf94a",
+          "name": "Get Game",
+          "request": {
+            "name": "Get Game",
+            "description": {
+              "content": "Get a single game. A private game is only accessible by its respective API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "games",
+                ":gameId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "gameId",
+                  "description": "(Required) A game unique id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec376f81-b7dc-4a3f-8c88-ce742ee78508",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 7233,\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"dateModified\": \"2022-07-06T14:49:32.425Z\",\n    \"assets\": {\n      \"iconUrl\": \"string\",\n      \"tileUrl\": \"string\",\n      \"coverUrl\": \"string\"\n    },\n    \"status\": 1,\n    \"apiStatus\": 1,\n    \"supportedFeatures\": {\n      \"supportModSubscriptions\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29bc29f5-ab5d-4a57-bac2-ef991025952e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c362d173-9342-4cef-b9c6-422d88088ba6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29e8ee48-cf72-4fd0-b297-5f2c4167aa06",
+          "name": "Get Versions",
+          "request": {
+            "name": "Get Versions",
+            "description": {
+              "content": "Get all available versions for each known version type of the specified game. A private game is only accessible to its respective API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "games",
+                ":gameId",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "gameId",
+                  "description": "(Required) A game unique id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95df67d9-50c8-41d2-8023-7e48705eee0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": 6356,\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"type\": 3831,\n      \"versions\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e16c74cd-2323-4b96-b6b3-8b39c0aabb07",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7750c157-d31e-4a7d-a79d-424540fff9cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac277545-deab-4bb8-b5db-4874c0e02910",
+          "name": "Get Version Types",
+          "request": {
+            "name": "Get Version Types",
+            "description": {
+              "content": "Get all available version types of the specified game.\n\nA private game is only accessible to its respective API key.\n\n\nCurrently, when creating games via the CurseForge for Studios Console, you are limited to a single game version type.\nThis means that this endpoint is probably not useful in most cases and is relevant mostly when handling\nexisting games that have multiple game versions such as World of Warcraft and Minecraft (e.g. 517 for wow_retail).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "games",
+                ":gameId",
+                "version-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "gameId",
+                  "description": "(Required) A game unique id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfe88ced-c661-4957-9c94-65717abd7c88",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "version-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 5790,\n      \"gameId\": 9977,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"isSyncable\": true,\n      \"status\": 1\n    },\n    {\n      \"id\": 2720,\n      \"gameId\": 7777,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"isSyncable\": false,\n      \"status\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ffa57d7-c897-437d-98da-9b31e1d0b0f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "version-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "882267ec-dcf8-44a6-8323-a25355f7c406",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "games",
+                    ":gameId",
+                    "version-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e93dac14-504a-485c-9768-c8ad2e4c319c",
+          "name": "Get Versions - V2",
+          "request": {
+            "name": "Get Versions - V2",
+            "description": {
+              "content": "Get all available versions for each known version type of the specified game. A private game is only accessible to its respective API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "games",
+                ":gameId",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "gameId",
+                  "description": "(Required) A game unique id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f19c37f7-5a4b-4bd0-81f8-5c783d1f1217",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": 9323,\n      \"versions\": [\n        {\n          \"id\": 7755,\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 1514,\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"type\": 378,\n      \"versions\": [\n        {\n          \"id\": 1338,\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3793,\n          \"slug\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9e1897b-53c4-4eee-833d-3933df8bb172",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5288eae-8704-47c1-9f6b-e91d92955999",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) A game unique id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec11c9ae-a2c9-4fe6-8f46-0112292049b9",
+          "name": "Get additional client featured projects",
+          "request": {
+            "name": "Get additional client featured projects",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "games",
+                ":gameId",
+                "additional-client-featured-projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "gameId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95e3674c-ad0d-4f37-aa34-9eb24d73f0a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "additional-client-featured-projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 369,\n      \"gameId\": 6611,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"isSyncable\": false,\n      \"status\": 2\n    },\n    {\n      \"id\": 7622,\n      \"gameId\": 5041,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"isSyncable\": false,\n      \"status\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8dcdf89-3ee0-4042-accb-ede6863113b5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "additional-client-featured-projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e9fa2b3-44af-4b69-806b-b4d37af1d2d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "games",
+                    ":gameId",
+                    "additional-client-featured-projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "gameId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.curseforge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7e6ecc03-22b6-42a5-b410-10f0eb19e9e3",
+    "name": "CurseForge Core Categories Games API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)",
+      "type": "text/plain"
+    }
+  }
+}

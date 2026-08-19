@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/categories",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query",
+                "description": "A game unique id"
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "A class unique id"
+              },
+              {
+                "name": "classesOnly",
+                "value": "",
+                "type": "query",
+                "description": "A flag used with gameId to return only classes"
+              }
+            ]
+          },
+          "docs": "Get all available classes and categories of the specified game. Specify a game id for a list of all game categories, or a class id for a list of categories under that class.\nspecifiy the classes Only flag to just get the classes for a given game."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

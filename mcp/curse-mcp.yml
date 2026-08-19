@@ -152,3 +152,9 @@ tools:
   description: Remove a mod id from the user's subscribed mods
   source_operation: openapi/curse-core-openapi-original.yml#Remove a mod id from the user's subscribed
     mods
+deployment:
+  mode: none
+  verified: derived
+  tools: 46
+  checked: '2026-08-12'
+  source: catalog MCP census

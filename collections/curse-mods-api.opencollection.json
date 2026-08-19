@@ -1,0 +1,579 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories Mods API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/search",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game id."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by section id (discoverable via Categories)"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by category id"
+              },
+              {
+                "name": "categoryIds",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of category ids - this will override categoryId\ncategoryIds=[1,2,3...]\n            \nThe maximum allowed category ids per query is 10"
+              },
+              {
+                "name": "gameVersion",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game version string"
+              },
+              {
+                "name": "gameVersions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of game version strings - this will override\ngameVersion\n            \ngameVersions=[\"1.19.1\", \"1.19.2\", \"1.20.1\" ...]\n            \nThe maximum allowed category ids per query is 4"
+              },
+              {
+                "name": "searchFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by free text search in the mod name and author"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ModsSearchSortField enumeration"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "'asc' if sort is in ascending order, 'desc' if sort is in descending order"
+              },
+              {
+                "name": "modLoaderType",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion."
+              },
+              {
+                "name": "modLoaderTypes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of mod loader types - this will override modLoaderType\nmodLoaderTypes=[Forge, Fabric, ...]\n            \nMax values = 5"
+              },
+              {
+                "name": "gameVersionTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that contain files tagged with versions of the given gameVersionTypeId"
+              },
+              {
+                "name": "authorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that the given authorId is a member of."
+              },
+              {
+                "name": "primaryAuthorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that the given primaryAuthorId is the owner of."
+              },
+              {
+                "name": "PremiumType",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that are Premium or not."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by slug (coupled with classId will result in a unique result)."
+              },
+              {
+                "name": "clientCompatible",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, will filter out any mod that doesn't have a default\nfile that is compatible with the client. This is usually due to a bad\nfile structure of the file (which might cause unexpected behaviours on\nthe user's machine - such as overriding other mods installed)."
+              },
+              {
+                "name": "modsSearchEnhancedFeatures",
+                "value": "",
+                "type": "query",
+                "description": "Bitwise number with values from ModsSearchEnhancedFeatures"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              }
+            ]
+          },
+          "docs": "Get all mods that match the search criteria."
+        },
+        {
+          "info": {
+            "name": "App Mods Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods/app-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get Mod",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id"
+              }
+            ]
+          },
+          "docs": "Get a single mod."
+        },
+        {
+          "info": {
+            "name": "Get Mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods/get-mods-by-ids",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of mods belonging the the same game."
+        },
+        {
+          "info": {
+            "name": "Get Mods2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of mods belonging the the same game."
+        },
+        {
+          "info": {
+            "name": "Get Featured Mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods/featured",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of featured, popular and recently updated mods."
+        },
+        {
+          "info": {
+            "name": "Get Mod Description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/description",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id"
+              },
+              {
+                "name": "raw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "stripped",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "markup",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the full description of a mod in HTML format."
+        },
+        {
+          "info": {
+            "name": "Mods_GetAppModHighlights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/app-highlights",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get Mod Highlights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods/highlights",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get Mod Highlights2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v3/mods/highlights",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Mods_GetById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v3/mods",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Mods_GetAppModHighlights2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v2/mods/app-highlights",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Get Mod Highlights22",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v2/mods/highlights",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Search Mods2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v2/mods/search",
+            "params": [
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game id."
+              },
+              {
+                "name": "classId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by section id (discoverable via Categories)"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by category id"
+              },
+              {
+                "name": "categoryIds",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of category ids - this will override categoryId\ncategoryIds=[1,2,3...]\n            \nThe maximum allowed category ids per query is 10"
+              },
+              {
+                "name": "gameVersion",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game version string"
+              },
+              {
+                "name": "gameVersions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of game version strings - this will override\ngameVersion\n            \ngameVersions=[\"1.19.1\", \"1.19.2\", \"1.20.1\" ...]\n            \nThe maximum allowed category ids per query is 4"
+              },
+              {
+                "name": "searchFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by free text search in the mod name and author"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ModsSearchSortField enumeration"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "'asc' if sort is in ascending order, 'desc' if sort is in descending order"
+              },
+              {
+                "name": "modLoaderType",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods associated to a given modloader (Forge, Fabric ...). Must be coupled with gameVersion."
+              },
+              {
+                "name": "modLoaderTypes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a list of mod loader types - this will override modLoaderType\nmodLoaderTypes=[Forge, Fabric, ...]\n            \nMax values = 5"
+              },
+              {
+                "name": "gameVersionTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that contain files tagged with versions of the given gameVersionTypeId"
+              },
+              {
+                "name": "authorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that the given authorId is a member of."
+              },
+              {
+                "name": "primaryAuthorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that the given primaryAuthorId is the owner of."
+              },
+              {
+                "name": "PremiumType",
+                "value": "",
+                "type": "query",
+                "description": "Filter only mods that are Premium or not."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter by slug (coupled with classId will result in a unique result)."
+              },
+              {
+                "name": "clientCompatible",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, will filter out any mod that doesn't have a default\nfile that is compatible with the client. This is usually due to a bad\nfile structure of the file (which might cause unexpected behaviours on\nthe user's machine - such as overriding other mods installed)."
+              },
+              {
+                "name": "modsSearchEnhancedFeatures",
+                "value": "",
+                "type": "query",
+                "description": "Bitwise number with values from ModsSearchEnhancedFeatures"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              }
+            ]
+          },
+          "docs": "Get all mods that match the search criteria."
+        },
+        {
+          "info": {
+            "name": "Mods_GetCommunityPicksCandidates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v2/mods/community-picks-candidates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "App Mods Search2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v2/mods/app-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Get Mod2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v2/mods/:modId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id"
+              }
+            ]
+          },
+          "docs": "Get a single mod."
+        },
+        {
+          "info": {
+            "name": "Get Mods22",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v2/mods/get-mods-by-ids",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of mods belonging the the same game."
+        },
+        {
+          "info": {
+            "name": "Get Featured Mods2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v2/mods/featured",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of featured, popular and recently updated mods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

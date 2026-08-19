@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories Subscriptions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Mods Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/users/me/mods/subscriptions",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              },
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the current user's subscribed mods for the given game key"
+        },
+        {
+          "info": {
+            "name": "Get Mods Subscriptions2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/users/me/mods/subscriptions/ids",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              },
+              {
+                "name": "gameId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the current user's subscribed mods for the given game key"
+        },
+        {
+          "info": {
+            "name": "Add a list of mod ids to the user's subscribed mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/users/me/mods/subscriptions/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Add a mod id to the user's subscribed mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/users/me/mods/subscriptions/subscribe/:modId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Remove a mod id from the user's subscribed mods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/users/me/mods/subscriptions/unsubscribe/:modId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

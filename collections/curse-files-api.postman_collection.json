@@ -1,0 +1,1943 @@
+{
+  "item": [
+    {
+      "id": "a54916a3-e75d-4966-9ad0-6249b8452e3d",
+      "name": "Files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c442c8ed-971c-41d5-bfe2-3bd19f0338ef",
+          "name": "Get Mod File",
+          "request": {
+            "name": "Get Mod File",
+            "description": {
+              "content": "Get a single file of the specified mod.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files",
+                ":fileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the file belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "fileId",
+                  "description": "(Required) The file id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "692cbd26-6fd8-4b5e-a1c5-8ab4ea48a9a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 8986,\n    \"gameId\": 4065,\n    \"modId\": 5676,\n    \"isAvailable\": true,\n    \"displayName\": \"string\",\n    \"fileName\": \"string\",\n    \"releaseType\": 3,\n    \"fileStatus\": 11,\n    \"hashes\": [\n      {\n        \"value\": \"string\",\n        \"algo\": 2\n      },\n      {\n        \"value\": \"string\",\n        \"algo\": 2\n      }\n    ],\n    \"fileDate\": \"2005-07-06T20:36:03.599Z\",\n    \"fileLength\": 120,\n    \"downloadCount\": 5782,\n    \"fileSizeOnDisk\": 1355,\n    \"downloadUrl\": \"string\",\n    \"gameVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"sortableGameVersions\": [\n      {\n        \"gameVersionName\": \"string\",\n        \"gameVersionPadded\": \"string\",\n        \"gameVersion\": \"string\",\n        \"gameVersionReleaseDate\": \"1966-12-10T02:42:56.394Z\",\n        \"gameVersionTypeId\": 4658\n      },\n      {\n        \"gameVersionName\": \"string\",\n        \"gameVersionPadded\": \"string\",\n        \"gameVersion\": \"string\",\n        \"gameVersionReleaseDate\": \"1996-08-08T04:46:20.007Z\",\n        \"gameVersionTypeId\": 8766\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"modId\": 9330,\n        \"relationType\": 6\n      },\n      {\n        \"modId\": 9603,\n        \"relationType\": 6\n      }\n    ],\n    \"exposeAsAlternative\": true,\n    \"parentProjectFileId\": 3686,\n    \"alternateFileId\": 2909,\n    \"isServerPack\": false,\n    \"serverPackFileId\": 1946,\n    \"isEarlyAccessContent\": true,\n    \"earlyAccessEndDate\": \"1983-09-05T12:40:11.007Z\",\n    \"fileFingerprint\": 4238,\n    \"modules\": [\n      {\n        \"name\": \"string\",\n        \"fingerprint\": 539\n      },\n      {\n        \"name\": \"string\",\n        \"fingerprint\": 549\n      }\n    ],\n    \"cookingInfo\": {\n      \"cookerVersion\": \"string\",\n      \"cookerRevision\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32b015e8-59b0-42d6-ba79-27cca9436869",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9db3c614-f7b9-421c-a471-99881395273b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15e63832-48d3-44f9-b31d-aa4ebf5e6fcb",
+          "name": "Get Mod Files",
+          "request": {
+            "name": "Get Mod Files",
+            "description": {
+              "content": "Get all files of the specified mod.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "olderThanProjectFileId",
+                  "value": "<integer>",
+                  "description": "Filter only files older than the given file ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameVersion",
+                  "value": "<string>",
+                  "description": "Filter by game version string"
+                },
+                {
+                  "disabled": false,
+                  "key": "modLoaderType",
+                  "value": "<integer>",
+                  "description": "ModLoaderType enumeration\nFilter only files associated to a given modloader (Forge, Fabric ...)."
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseTypes",
+                  "value": "<integer>",
+                  "description": "Filter only files that are of the given release types"
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseTypes",
+                  "value": "<integer>",
+                  "description": "Filter only files that are of the given release types"
+                },
+                {
+                  "disabled": false,
+                  "key": "platformType",
+                  "value": "<integer>",
+                  "description": "Filter only files supporting the given platform type"
+                },
+                {
+                  "disabled": false,
+                  "key": "gameVersionTypeId",
+                  "value": "<integer>",
+                  "description": "Filter only files that are tagged with versions of the given gameVersionTypeId"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientCompatible",
+                  "value": "<boolean>",
+                  "description": "When set to true, filter OUT any file that isn't client compatible."
+                },
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<integer>",
+                  "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The number of items to include in the response,  the default/maximum value is 50."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the files belong to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ca609d8-ffd3-4248-882b-c18a61b35cd4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "olderThanProjectFileId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modLoaderType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "platformType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersionTypeId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "clientCompatible",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the files belong to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 1010,\n      \"gameId\": 3483,\n      \"modId\": 3523,\n      \"isAvailable\": false,\n      \"displayName\": \"string\",\n      \"fileName\": \"string\",\n      \"releaseType\": 1,\n      \"fileStatus\": 11,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 1\n        }\n      ],\n      \"fileDate\": \"1968-12-02T00:42:42.559Z\",\n      \"fileLength\": 6098,\n      \"downloadCount\": 4138,\n      \"fileSizeOnDisk\": 5892,\n      \"downloadUrl\": \"string\",\n      \"gameVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sortableGameVersions\": [\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1966-05-25T08:46:40.753Z\",\n          \"gameVersionTypeId\": 5216\n        },\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1981-06-22T01:59:41.955Z\",\n          \"gameVersionTypeId\": 6959\n        }\n      ],\n      \"dependencies\": [\n        {\n          \"modId\": 6500,\n          \"relationType\": 5\n        },\n        {\n          \"modId\": 6254,\n          \"relationType\": 6\n        }\n      ],\n      \"exposeAsAlternative\": false,\n      \"parentProjectFileId\": 9732,\n      \"alternateFileId\": 5147,\n      \"isServerPack\": true,\n      \"serverPackFileId\": 3546,\n      \"isEarlyAccessContent\": true,\n      \"earlyAccessEndDate\": \"2023-01-21T16:35:53.305Z\",\n      \"fileFingerprint\": 1827,\n      \"modules\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 2899\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 7752\n        }\n      ],\n      \"cookingInfo\": {\n        \"cookerVersion\": \"string\",\n        \"cookerRevision\": \"string\"\n      }\n    },\n    {\n      \"id\": 2819,\n      \"gameId\": 2883,\n      \"modId\": 4375,\n      \"isAvailable\": false,\n      \"displayName\": \"string\",\n      \"fileName\": \"string\",\n      \"releaseType\": 3,\n      \"fileStatus\": 4,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        }\n      ],\n      \"fileDate\": \"1960-11-01T12:05:06.118Z\",\n      \"fileLength\": 6525,\n      \"downloadCount\": 9875,\n      \"fileSizeOnDisk\": 5391,\n      \"downloadUrl\": \"string\",\n      \"gameVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sortableGameVersions\": [\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"2004-06-17T02:44:40.235Z\",\n          \"gameVersionTypeId\": 3898\n        },\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1973-11-04T02:47:49.101Z\",\n          \"gameVersionTypeId\": 9374\n        }\n      ],\n      \"dependencies\": [\n        {\n          \"modId\": 1170,\n          \"relationType\": 2\n        },\n        {\n          \"modId\": 7955,\n          \"relationType\": 4\n        }\n      ],\n      \"exposeAsAlternative\": true,\n      \"parentProjectFileId\": 2530,\n      \"alternateFileId\": 1485,\n      \"isServerPack\": false,\n      \"serverPackFileId\": 7577,\n      \"isEarlyAccessContent\": false,\n      \"earlyAccessEndDate\": \"1984-05-12T14:06:29.369Z\",\n      \"fileFingerprint\": 9985,\n      \"modules\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 3062\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 6201\n        }\n      ],\n      \"cookingInfo\": {\n        \"cookerVersion\": \"string\",\n        \"cookerRevision\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"index\": 92,\n    \"pageSize\": 7981,\n    \"resultCount\": 879,\n    \"totalCount\": 1894\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79e89a0a-5bf8-4ed6-9ec7-41198769e1db",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "olderThanProjectFileId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modLoaderType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "platformType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersionTypeId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "clientCompatible",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the files belong to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee9cee98-87c3-41c2-bf2b-d6ddb7c363fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "olderThanProjectFileId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modLoaderType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "releaseTypes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "platformType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "gameVersionTypeId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "clientCompatible",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the files belong to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b06a30e-7654-44cd-b918-17656d722191",
+          "name": "Get Files",
+          "request": {
+            "name": "Get Files",
+            "description": {
+              "content": "Get a list of files.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f72d3329-6127-4f57-9775-27719b42078b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 5187,\n      \"gameId\": 4764,\n      \"modId\": 1878,\n      \"isAvailable\": false,\n      \"displayName\": \"string\",\n      \"fileName\": \"string\",\n      \"releaseType\": 2,\n      \"fileStatus\": 10,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 1\n        }\n      ],\n      \"fileDate\": \"2006-10-22T23:45:10.550Z\",\n      \"fileLength\": 691,\n      \"downloadCount\": 6941,\n      \"fileSizeOnDisk\": 87,\n      \"downloadUrl\": \"string\",\n      \"gameVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sortableGameVersions\": [\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1998-01-10T00:40:07.054Z\",\n          \"gameVersionTypeId\": 6662\n        },\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1964-02-20T04:20:54.177Z\",\n          \"gameVersionTypeId\": 1622\n        }\n      ],\n      \"dependencies\": [\n        {\n          \"modId\": 7264,\n          \"relationType\": 5\n        },\n        {\n          \"modId\": 6978,\n          \"relationType\": 6\n        }\n      ],\n      \"exposeAsAlternative\": true,\n      \"parentProjectFileId\": 470,\n      \"alternateFileId\": 4393,\n      \"isServerPack\": false,\n      \"serverPackFileId\": 3242,\n      \"isEarlyAccessContent\": true,\n      \"earlyAccessEndDate\": \"2019-07-29T10:03:09.857Z\",\n      \"fileFingerprint\": 5364,\n      \"modules\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 5163\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 564\n        }\n      ],\n      \"cookingInfo\": {\n        \"cookerVersion\": \"string\",\n        \"cookerRevision\": \"string\"\n      }\n    },\n    {\n      \"id\": 4151,\n      \"gameId\": 7450,\n      \"modId\": 642,\n      \"isAvailable\": true,\n      \"displayName\": \"string\",\n      \"fileName\": \"string\",\n      \"releaseType\": 3,\n      \"fileStatus\": 13,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 1\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        }\n      ],\n      \"fileDate\": \"1992-12-16T03:43:25.841Z\",\n      \"fileLength\": 6404,\n      \"downloadCount\": 4455,\n      \"fileSizeOnDisk\": 9379,\n      \"downloadUrl\": \"string\",\n      \"gameVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sortableGameVersions\": [\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"2010-04-21T23:59:29.311Z\",\n          \"gameVersionTypeId\": 4724\n        },\n        {\n          \"gameVersionName\": \"string\",\n          \"gameVersionPadded\": \"string\",\n          \"gameVersion\": \"string\",\n          \"gameVersionReleaseDate\": \"1967-02-21T19:45:02.357Z\",\n          \"gameVersionTypeId\": 2800\n        }\n      ],\n      \"dependencies\": [\n        {\n          \"modId\": 2701,\n          \"relationType\": 3\n        },\n        {\n          \"modId\": 6792,\n          \"relationType\": 5\n        }\n      ],\n      \"exposeAsAlternative\": true,\n      \"parentProjectFileId\": 5184,\n      \"alternateFileId\": 8729,\n      \"isServerPack\": false,\n      \"serverPackFileId\": 1919,\n      \"isEarlyAccessContent\": false,\n      \"earlyAccessEndDate\": \"1983-06-13T07:56:41.206Z\",\n      \"fileFingerprint\": 8713,\n      \"modules\": [\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 1406\n        },\n        {\n          \"name\": \"string\",\n          \"fingerprint\": 3725\n        }\n      ],\n      \"cookingInfo\": {\n        \"cookerVersion\": \"string\",\n        \"cookerRevision\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8081bc4f-de1f-481a-b9bd-e640f8165605",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6eeb1246-1da9-4387-819a-da4b4f6e4c89",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d656f5b8-c359-41c8-bd23-3d50a828f2ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21d845b8-ce36-44a5-853b-6683eb617a11",
+          "name": "Get Mod File Changelog",
+          "request": {
+            "name": "Get Mod File Changelog",
+            "description": {
+              "content": "Get the changelog of a file in HTML format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files",
+                ":fileId",
+                "changelog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "raw",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stripped",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "markup",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the file belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "fileId",
+                  "description": "(Required) The file id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5589f68e-ca0a-45a2-b698-0d3afd838ddc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stripped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "markup",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb56848c-bcb4-4c3a-a29a-2805f3806785",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stripped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "markup",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd4de996-b465-494e-bfae-05d2a6585a78",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "changelog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stripped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "markup",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96d14da7-021c-46c5-a239-8847464894dd",
+          "name": "Get Mod File Download URL",
+          "request": {
+            "name": "Get Mod File Download URL",
+            "description": {
+              "content": "Get a download url for a specific file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files",
+                ":fileId",
+                "download-url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the file belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "fileId",
+                  "description": "(Required) The file id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b75385e3-82f8-440b-b56b-394cf3e6db8c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63f16f56-c101-4876-97bc-ca22e701c0fa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ecda34b8-7735-490b-bebc-17980f7055d6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b62f157-b771-472e-8555-b1d4b38d8d66",
+          "name": "Get a download information for a specific file. This can include\ndifferent formats and delta-diffs and allows the client to select the\nbest suited file to download.",
+          "request": {
+            "name": "Get a download information for a specific file. This can include\ndifferent formats and delta-diffs and allows the client to select the\nbest suited file to download.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files",
+                ":fileId",
+                "download-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateFrom",
+                  "value": "<integer>",
+                  "description": "Optional. A file id which the client currently has and wants to update\nfrom. This allows searching for more efficient methods of updates - like\na delta diff file."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the file belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "fileId",
+                  "description": "(Required) The file id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28aff2fd-4de0-4b33-ab3d-f9ed99e452ab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateFrom",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": 2,\n      \"downloadUrl\": \"string\",\n      \"fileName\": \"string\",\n      \"fileLength\": 3287,\n      \"fileSizeOnDisk\": 7734,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 2\n        }\n      ],\n      \"extraJsonData\": \"string\"\n    },\n    {\n      \"type\": 2,\n      \"downloadUrl\": \"string\",\n      \"fileName\": \"string\",\n      \"fileLength\": 3496,\n      \"fileSizeOnDisk\": 7293,\n      \"hashes\": [\n        {\n          \"value\": \"string\",\n          \"algo\": 1\n        },\n        {\n          \"value\": \"string\",\n          \"algo\": 1\n        }\n      ],\n      \"extraJsonData\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54fab8e3-bb44-425e-b1ab-301708d4a9eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateFrom",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29756765-ad9f-456e-b4f0-33c3635ed0c6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":fileId",
+                    "download-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateFrom",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "fileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2366887b-44e2-4799-899e-4bc72f9d7154",
+          "name": "Get Mod File2",
+          "request": {
+            "name": "Get Mod File2",
+            "description": {
+              "content": "Get a single file of the specified mod.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "mods",
+                ":modId",
+                "files",
+                ":newFileId",
+                "deltas",
+                ":oldFileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "modId",
+                  "description": "(Required) The mod id the file belongs to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "newFileId",
+                  "description": "(Required) The file id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "oldFileId",
+                  "description": "(Required) The file id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38a40a13-0111-402f-b82e-efa9b32be69f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":newFileId",
+                    "deltas",
+                    ":oldFileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "newFileId",
+                      "description": "(Required) The file id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "oldFileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 8226,\n    \"gameId\": 348,\n    \"modId\": 5595,\n    \"oldFileId\": 4936,\n    \"newFileId\": 4079,\n    \"status\": 1,\n    \"downloadUrl\": \"string\",\n    \"fileName\": \"string\",\n    \"dateCreated\": \"2005-05-03T20:52:47.295Z\",\n    \"dateModified\": \"1964-03-21T17:52:54.583Z\",\n    \"fileLength\": 5488,\n    \"fileSizeOnDisk\": 967,\n    \"hashes\": [\n      {\n        \"value\": \"string\",\n        \"algo\": 1\n      },\n      {\n        \"value\": \"string\",\n        \"algo\": 1\n      }\n    ],\n    \"extraJsonData\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca94205a-6040-412a-b973-fde55751aad6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":newFileId",
+                    "deltas",
+                    ":oldFileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "newFileId",
+                      "description": "(Required) The file id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "oldFileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a689d72-6dc2-4842-9c03-c0014d5f6e72",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "mods",
+                    ":modId",
+                    "files",
+                    ":newFileId",
+                    "deltas",
+                    ":oldFileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "modId",
+                      "description": "(Required) The mod id the file belongs to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "newFileId",
+                      "description": "(Required) The file id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "oldFileId",
+                      "description": "(Required) The file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.curseforge.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b80f86c2-4e0f-478c-8059-ae11b886b5c3",
+    "name": "CurseForge Core Categories Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)",
+      "type": "text/plain"
+    }
+  }
+}

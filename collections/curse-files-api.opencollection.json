@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CurseForge Core Categories Files API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Mod File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files/:fileId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the file belongs to"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              }
+            ]
+          },
+          "docs": "Get a single file of the specified mod."
+        },
+        {
+          "info": {
+            "name": "Get Mod Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the files belong to"
+              },
+              {
+                "name": "olderThanProjectFileId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only files older than the given file ID"
+              },
+              {
+                "name": "gameVersion",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game version string"
+              },
+              {
+                "name": "modLoaderType",
+                "value": "",
+                "type": "query",
+                "description": "ModLoaderType enumeration\nFilter only files associated to a given modloader (Forge, Fabric ...)."
+              },
+              {
+                "name": "releaseTypes",
+                "value": "",
+                "type": "query",
+                "description": "Filter only files that are of the given release types"
+              },
+              {
+                "name": "platformType",
+                "value": "",
+                "type": "query",
+                "description": "Filter only files supporting the given platform type"
+              },
+              {
+                "name": "gameVersionTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter only files that are tagged with versions of the given gameVersionTypeId"
+              },
+              {
+                "name": "clientCompatible",
+                "value": "",
+                "type": "query",
+                "description": "When set to true, filter OUT any file that isn't client compatible."
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "A zero based index of the first item to include in the response,  the limit is: (index + pageSize <= 10,000)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include in the response,  the default/maximum value is 50."
+              }
+            ]
+          },
+          "docs": "Get all files of the specified mod."
+        },
+        {
+          "info": {
+            "name": "Get Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.curseforge.com/v1/mods/files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a list of files."
+        },
+        {
+          "info": {
+            "name": "Get Mod File Changelog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files/:fileId/changelog",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the file belongs to"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              },
+              {
+                "name": "raw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "stripped",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "markup",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the changelog of a file in HTML format."
+        },
+        {
+          "info": {
+            "name": "Get Mod File Download URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files/:fileId/download-url",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the file belongs to"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              }
+            ]
+          },
+          "docs": "Get a download url for a specific file."
+        },
+        {
+          "info": {
+            "name": "Get a download information for a specific file. This can include\ndifferent formats and delta-diffs and allows the client to select the\nbest suited file to download.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files/:fileId/download-info",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the file belongs to"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              },
+              {
+                "name": "updateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Optional. A file id which the client currently has and wants to update\nfrom. This allows searching for more efficient methods of updates - like\na delta diff file."
+              }
+            ]
+          },
+          "docs": "Get a download information for a specific file. This can include\ndifferent formats and delta-diffs and allows the client to select the\nbest suited file to download."
+        },
+        {
+          "info": {
+            "name": "Get Mod File2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.curseforge.com/v1/mods/:modId/files/:newFileId/deltas/:oldFileId",
+            "params": [
+              {
+                "name": "modId",
+                "value": "",
+                "type": "path",
+                "description": "The mod id the file belongs to"
+              },
+              {
+                "name": "newFileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              },
+              {
+                "name": "oldFileId",
+                "value": "",
+                "type": "path",
+                "description": "The file id"
+              }
+            ]
+          },
+          "docs": "Get a single file of the specified mod."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
