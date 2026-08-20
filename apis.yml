@@ -33,6 +33,14 @@ image: https://www.curseforge.com/images/mods/logos/curseforge.png
 tags:
 - Company
 - Gaming
+- MODS
+- Minecraft
+- Game Content
+- Developer Platform
+- Catalog
+tags_raw:
+- Company
+- Gaming
 - Mods
 - Minecraft
 - Game Content
@@ -59,6 +67,8 @@ apis:
   humanURL: https://docs.curseforge.com/rest-api/
   baseURL: https://api.curseforge.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -115,6 +125,8 @@ apis:
   humanURL: https://docs.curseforge.com/rest-api/
   baseURL: https://api.curseforge.com
   tags:
+  - MODS
+  tags_raw:
   - Mods
   properties:
   - type: OpenAPI
@@ -129,6 +141,8 @@ apis:
   humanURL: https://docs.curseforge.com/rest-api/
   baseURL: https://api.curseforge.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
