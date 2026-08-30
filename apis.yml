@@ -45,7 +45,7 @@ image: https://www.curseforge.com/images/mods/logos/curseforge.png
 tags:
 - Company
 - Gaming
-- MODS
+- Mods
 - Minecraft
 - Game Content
 - Developer Platform
@@ -137,7 +137,7 @@ apis:
   humanURL: https://docs.curseforge.com/rest-api/
   baseURL: https://api.curseforge.com
   tags:
-  - MODS
+  - Mods
   tags_raw:
   - Mods
   properties:
