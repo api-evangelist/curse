@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: CurseForge Core Categories Fingerprints API
-  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  title: CurseForge Core Fingerprints API
+  description: All endpoints use the same base URL - https://api.curseforge.com
   version: v1
 servers:
 - url: https://api.curseforge.com
@@ -40,7 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+                $ref: '#/components/schemas/Get_Fingerprint_Matches_Response'
         '400':
           description: ''
         '503':
@@ -49,6 +49,8 @@ paths:
             application/json:
               schema:
                 type: string
+      summary: Get fingerprints matches by game id
+      x-summary-source: derived
   /v1/fingerprints:
     post:
       tags:
@@ -70,7 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Fingerprint Matches Response'
+                $ref: '#/components/schemas/Get_Fingerprint_Matches_Response'
         '400':
           description: ''
         '503':
@@ -79,6 +81,8 @@ paths:
             application/json:
               schema:
                 type: string
+      summary: Get fingerprints matches
+      x-summary-source: derived
   /v1/fingerprints/fuzzy/{gameId}:
     post:
       tags:
@@ -109,7 +113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+                $ref: '#/components/schemas/Get_Fingerprints_Fuzzy_Matches_Response'
         '400':
           description: ''
         '503':
@@ -118,6 +122,8 @@ paths:
             application/json:
               schema:
                 type: string
+      summary: Get fingerprints fuzzy matches by game id
+      x-summary-source: derived
   /v1/fingerprints/fuzzy:
     post:
       tags:
@@ -139,7 +145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Fingerprints Fuzzy Matches Response'
+                $ref: '#/components/schemas/Get_Fingerprints_Fuzzy_Matches_Response'
         '400':
           description: ''
         '503':
@@ -148,126 +154,75 @@ paths:
             application/json:
               schema:
                 type: string
+      summary: Get fingerprints fuzzy matches
+      x-summary-source: derived
 components:
   schemas:
-    File:
+    GetFingerprintMatchesRequestBody:
       type: object
       additionalProperties: false
       properties:
-        id:
-          type: integer
-          description: The file id
-          format: int32
-        gameId:
-          type: integer
-          description: The game id related to the mod that this file belongs to
-          format: int32
-        modId:
-          type: integer
-          description: The mod id
-          format: int32
-        isAvailable:
-          type: boolean
-          description: Whether the file is available to download
-        displayName:
-          type: string
-          description: Display name of the file
-        fileName:
-          type: string
-          description: Exact file name
-        releaseType:
-          description: The file release type
-          $ref: '#/components/schemas/FileReleaseType'
-        fileStatus:
-          description: Status of the file
-          $ref: '#/components/schemas/FileStatus'
-        hashes:
-          type: array
-          description: The file hash (i.e. md5 or sha1)
-          items:
-            $ref: '#/components/schemas/FileHash'
-        fileDate:
-          type: string
-          description: The file timestamp
-          format: date-time
-        fileLength:
-          type: integer
-          description: The file length in bytes
-          format: int64
-        downloadCount:
-          type: integer
-          description: The number of downloads for the file
-          format: int64
-        fileSizeOnDisk:
-          type: integer
-          description: The file's size on disk
-          format: int64
-          nullable: true
-        downloadUrl:
-          type: string
-          description: The file download URL
-        gameVersions:
-          type: array
-          description: List of game versions this file is relevant for
-          items:
-            type: string
-        sortableGameVersions:
-          type: array
-          description: Metadata used for sorting by game versions
-          items:
-            $ref: '#/components/schemas/SortableGameVersion'
-        dependencies:
-          type: array
-          description: List of dependencies files
-          items:
-            $ref: '#/components/schemas/FileDependency'
-        exposeAsAlternative:
-          type: boolean
-          nullable: true
-        parentProjectFileId:
-          type: integer
-          format: int32
-          nullable: true
-        alternateFileId:
-          type: integer
-          format: int32
-          nullable: true
-        isServerPack:
-          type: boolean
-          nullable: true
-        serverPackFileId:
-          type: integer
-          format: int32
-          nullable: true
-        isEarlyAccessContent:
-          type: boolean
-          nullable: true
-        earlyAccessEndDate:
-          type: string
-          format: date-time
-          nullable: true
-        fileFingerprint:
-          type: integer
-          format: int64
-        modules:
+        fingerprints:
           type: array
           items:
-            $ref: '#/components/schemas/FileModule'
-        cookingInfo:
-          $ref: '#/components/schemas/CookerInfo'
-    FingerprintFuzzyMatch:
+            type: integer
+            format: int64
+    FingerprintsMatchesResult:
       type: object
       additionalProperties: false
       properties:
-        id:
-          type: integer
-          format: int32
-        file:
-          $ref: '#/components/schemas/File'
-        latestFiles:
+        isCacheBuilt:
+          type: boolean
+        exactMatches:
           type: array
           items:
-            $ref: '#/components/schemas/File'
+            $ref: '#/components/schemas/FingerprintMatch'
+        exactFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        partialMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        partialMatchFingerprints:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: integer
+              format: int64
+        installedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        unmatchedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    Get_Fingerprints_Fuzzy_Matches_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
+    Get_Fingerprint_Matches_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintsMatchesResult'
+    FolderFingerprint:
+      type: object
+      additionalProperties: false
+      properties:
+        foldername:
+          type: string
         fingerprints:
           type: array
           items:
@@ -286,6 +241,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/File'
+    CookerInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
     FileHash:
       type: object
       additionalProperties: false
@@ -294,33 +257,26 @@ components:
           type: string
         algo:
           $ref: '#/components/schemas/HashAlgo'
-    Get Fingerprint Matches Response:
+    FileDependency:
       type: object
       additionalProperties: false
       properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FingerprintsMatchesResult'
-    FileModule:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        fingerprint:
+        modId:
           type: integer
-          format: int64
-    HashAlgo:
-      type: integer
-      description: '1 = Sha1
-
-        2 = Md5'
-      x-enumNames:
-      - Sha1
-      - Md5
-      enum:
-      - 1
-      - 2
+          format: int32
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
+    GetFuzzyMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        fingerprints:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderFingerprint'
     SortableGameVersion:
       type: object
       additionalProperties: false
@@ -339,29 +295,20 @@ components:
           description: Game version release date
           format: date-time
         gameVersionTypeId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Game version type id
           format: int32
-          nullable: true
-    CookerInfo:
+    FileModule:
       type: object
       additionalProperties: false
       properties:
-        cookerVersion:
+        name:
           type: string
-        cookerRevision:
-          type: string
-    FolderFingerprint:
-      type: object
-      additionalProperties: false
-      properties:
-        foldername:
-          type: string
-        fingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
+        fingerprint:
+          type: integer
+          format: int64
     FileStatus:
       type: integer
       description: '1 = Processing
@@ -425,21 +372,148 @@ components:
       - 13
       - 14
       - 15
-    FileReleaseType:
+    HashAlgo:
       type: integer
-      description: '1 = Release
+      description: '1 = Sha1
 
-        2 = Beta
-
-        3 = Alpha'
+        2 = Md5'
       x-enumNames:
-      - Release
-      - Beta
-      - Alpha
+      - Sha1
+      - Md5
       enum:
       - 1
       - 2
-      - 3
+    File:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The file id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the mod that this file belongs to
+          format: int32
+        modId:
+          type: integer
+          description: The mod id
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Whether the file is available to download
+        displayName:
+          type: string
+          description: Display name of the file
+        fileName:
+          type: string
+          description: Exact file name
+        releaseType:
+          description: The file release type
+          $ref: '#/components/schemas/FileReleaseType'
+        fileStatus:
+          description: Status of the file
+          $ref: '#/components/schemas/FileStatus'
+        hashes:
+          type: array
+          description: The file hash (i.e. md5 or sha1)
+          items:
+            $ref: '#/components/schemas/FileHash'
+        fileDate:
+          type: string
+          description: The file timestamp
+          format: date-time
+        fileLength:
+          type: integer
+          description: The file length in bytes
+          format: int64
+        downloadCount:
+          type: integer
+          description: The number of downloads for the file
+          format: int64
+        fileSizeOnDisk:
+          type:
+          - integer
+          - 'null'
+          description: The file's size on disk
+          format: int64
+        downloadUrl:
+          type: string
+          description: The file download URL
+        gameVersions:
+          type: array
+          description: List of game versions this file is relevant for
+          items:
+            type: string
+        sortableGameVersions:
+          type: array
+          description: Metadata used for sorting by game versions
+          items:
+            $ref: '#/components/schemas/SortableGameVersion'
+        dependencies:
+          type: array
+          description: List of dependencies files
+          items:
+            $ref: '#/components/schemas/FileDependency'
+        exposeAsAlternative:
+          type:
+          - boolean
+          - 'null'
+        parentProjectFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        alternateFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isServerPack:
+          type:
+          - boolean
+          - 'null'
+        serverPackFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isEarlyAccessContent:
+          type:
+          - boolean
+          - 'null'
+        earlyAccessEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        fileFingerprint:
+          type: integer
+          format: int64
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileModule'
+        cookingInfo:
+          $ref: '#/components/schemas/CookerInfo'
+    FingerprintFuzzyMatch:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        file:
+          $ref: '#/components/schemas/File'
+        latestFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
     FingerprintFuzzyMatchResult:
       type: object
       additionalProperties: false
@@ -448,78 +522,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FingerprintFuzzyMatch'
-    Get Fingerprints Fuzzy Matches Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
-    GetFingerprintMatchesRequestBody:
-      type: object
-      additionalProperties: false
-      properties:
-        fingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    FingerprintsMatchesResult:
-      type: object
-      additionalProperties: false
-      properties:
-        isCacheBuilt:
-          type: boolean
-        exactMatches:
-          type: array
-          items:
-            $ref: '#/components/schemas/FingerprintMatch'
-        exactFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-        partialMatches:
-          type: array
-          items:
-            $ref: '#/components/schemas/FingerprintMatch'
-        partialMatchFingerprints:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: integer
-              format: int64
-        installedFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-        unmatchedFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    FileDependency:
-      type: object
-      additionalProperties: false
-      properties:
-        modId:
-          type: integer
-          format: int32
-        relationType:
-          $ref: '#/components/schemas/FileRelationType'
-    GetFuzzyMatchesRequestBody:
-      type: object
-      additionalProperties: false
-      properties:
-        gameId:
-          type: integer
-          format: int32
-        fingerprints:
-          type: array
-          items:
-            $ref: '#/components/schemas/FolderFingerprint'
     FileRelationType:
       type: integer
       description: '1 = EmbeddedLibrary
@@ -547,6 +549,21 @@ components:
       - 4
       - 5
       - 6
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
   securitySchemes:
     API_KEY:
       type: apiKey

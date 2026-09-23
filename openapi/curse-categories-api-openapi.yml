@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: CurseForge Core Categories API
-  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  description: All endpoints use the same base URL - https://api.curseforge.com
   version: v1
 servers:
 - url: https://api.curseforge.com
@@ -31,9 +31,10 @@ paths:
         in: query
         description: A class unique id
         schema:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         x-position: 2
       - name: classesOnly
         in: query
@@ -47,14 +48,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Categories Response'
+                $ref: '#/components/schemas/Get_Categories_Response'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get categories
+      x-summary-source: derived
 components:
   schemas:
-    Get Categories Response:
+    Get_Categories_Response:
       type: object
       additionalProperties: false
       properties:
@@ -92,24 +95,28 @@ components:
           description: Last modified date of the category
           format: date-time
         isClass:
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           description: A top level category for other categories
-          nullable: true
         classId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: The class id of the category, meaning - the class of which this category is under
           format: int32
-          nullable: true
         parentCategoryId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: The parent category for this category
           format: int32
-          nullable: true
         displayIndex:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: The display index for this category
           format: int32
-          nullable: true
   securitySchemes:
     API_KEY:
       type: apiKey

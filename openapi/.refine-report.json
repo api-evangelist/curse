@@ -1,13 +1,7 @@
 {
   "provider": "curse",
   "sources": [
-    "curse-categories-api-openapi.yml",
-    "curse-files-api-openapi.yml",
-    "curse-fingerprints-api-openapi.yml",
-    "curse-games-api-openapi.yml",
-    "curse-minecraft-api-openapi.yml",
-    "curse-mods-api-openapi.yml",
-    "curse-subscriptions-api-openapi.yml"
+    "_original/curse-core-openapi-original.yml"
   ],
   "outputs": [
     "curse-categories-api-openapi.yml",
@@ -21,6 +15,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "curse-core-openapi-original.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 14 component key(s) illegal in 3.x (e.g. Get Categories Response)",
+    "curse-core-openapi-original.yml: declared missing tag: Categories",
+    "curse-core-openapi-original.yml: declared missing tag: Files",
+    "curse-core-openapi-original.yml: declared missing tag: Fingerprints",
+    "curse-core-openapi-original.yml: declared missing tag: Games",
+    "curse-core-openapi-original.yml: declared missing tag: Minecraft",
+    "curse-core-openapi-original.yml: declared missing tag: Mods",
+    "curse-core-openapi-original.yml: declared missing tag: Subscriptions",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "curse-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-fingerprints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-games-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-minecraft-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-mods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "curse-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

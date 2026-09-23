@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: CurseForge Core Categories Games API
-  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  title: CurseForge Core Games API
+  description: All endpoints use the same base URL - https://api.curseforge.com
   version: v1
 servers:
 - url: https://api.curseforge.com
@@ -37,9 +37,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Games Response'
+                $ref: '#/components/schemas/Get_Games_Response'
         '500':
           description: ''
+      summary: Get games
+      x-summary-source: derived
   /v1/games/{gameId}:
     get:
       tags:
@@ -61,11 +63,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Game Response'
+                $ref: '#/components/schemas/Get_Game_Response'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get game
+      x-summary-source: derived
   /v1/games/{gameId}/versions:
     get:
       tags:
@@ -87,11 +91,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Versions Response - V1'
+                $ref: '#/components/schemas/Get_Versions_Response_-_V1'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get versions
+      x-summary-source: derived
   /v1/games/{gameId}/version-types:
     get:
       tags:
@@ -100,7 +106,6 @@ paths:
 
 
         A private game is only accessible to its respective API key.
-
 
 
         Currently, when creating games via the CurseForge for Studios Console, you are limited to a single game version type.
@@ -124,11 +129,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Version Types Response'
+                $ref: '#/components/schemas/Get_Version_Types_Response'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get version types
+      x-summary-source: derived
   /v2/games/{gameId}/versions:
     get:
       tags:
@@ -150,11 +157,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Versions Response - V2'
+                $ref: '#/components/schemas/Get_Versions_Response_-_V2'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get versions V2
+      x-summary-source: derived
   /v2/games/{gameId}/additional-client-featured-projects:
     get:
       tags:
@@ -174,151 +183,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Get Version Types Response'
+                $ref: '#/components/schemas/Get_Version_Types_Response'
         '500':
           description: ''
         '404':
           description: ''
+      summary: Get additional client featured projects
+      x-summary-source: derived
 components:
   schemas:
-    Get Version Types Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionType'
-    Get Versions Response - V2:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionsByType2'
-    CoreApiStatus:
-      type: integer
-      description: '1 = Private
-
-        2 = Public'
-      x-enumNames:
-      - Private
-      - Public
-      enum:
-      - 1
-      - 2
-    Game:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type: string
-        slug:
-          type: string
-        dateModified:
-          type: string
-          format: date-time
-        assets:
-          $ref: '#/components/schemas/GameAssets'
-        status:
-          $ref: '#/components/schemas/CoreStatus'
-        apiStatus:
-          $ref: '#/components/schemas/CoreApiStatus'
-        supportedFeatures:
-          $ref: '#/components/schemas/GameSupportedFeatures'
-    Get Games Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/Game'
-        pagination:
-          description: The response pagination information
-          $ref: '#/components/schemas/Pagination'
-    GameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        slug:
-          type: string
-        name:
-          type: string
-    Get Game Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/Game'
-    Get Versions Response - V1:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionsByType'
-    CoreStatus:
-      type: integer
-      description: '1 = Draft
-
-        2 = Test
-
-        3 = PendingReview
-
-        4 = Rejected
-
-        5 = Approved
-
-        6 = Live'
-      x-enumNames:
-      - Draft
-      - Test
-      - PendingReview
-      - Rejected
-      - Approved
-      - Live
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    GameVersionsByType2:
-      type: object
-      additionalProperties: false
-      properties:
-        type:
-          type: integer
-          format: int32
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameVersion'
-    GameAssets:
-      type: object
-      additionalProperties: false
-      properties:
-        iconUrl:
-          type: string
-        tileUrl:
-          type: string
-        coverUrl:
-          type: string
     Pagination:
       type: object
       additionalProperties: false
@@ -357,12 +230,78 @@ components:
           type: boolean
         status:
           $ref: '#/components/schemas/GameVersionTypeStatus'
+    GameAssets:
+      type: object
+      additionalProperties: false
+      properties:
+        iconUrl:
+          type: string
+        tileUrl:
+          type: string
+        coverUrl:
+          type: string
+    GameVersionsByType2:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameVersion'
+    CoreStatus:
+      type: integer
+      description: '1 = Draft
+
+        2 = Test
+
+        3 = PendingReview
+
+        4 = Rejected
+
+        5 = Approved
+
+        6 = Live'
+      x-enumNames:
+      - Draft
+      - Test
+      - PendingReview
+      - Rejected
+      - Approved
+      - Live
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    Get_Game_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Game'
     GameSupportedFeatures:
       type: object
       additionalProperties: false
       properties:
         supportModSubscriptions:
           type: boolean
+    GameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        slug:
+          type: string
+        name:
+          type: string
     GameVersionsByType:
       type: object
       additionalProperties: false
@@ -374,6 +313,49 @@ components:
           type: array
           items:
             type: string
+    Get_Versions_Response_-_V1:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType'
+    Game:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        dateModified:
+          type: string
+          format: date-time
+        assets:
+          $ref: '#/components/schemas/GameAssets'
+        status:
+          $ref: '#/components/schemas/CoreStatus'
+        apiStatus:
+          $ref: '#/components/schemas/CoreApiStatus'
+        supportedFeatures:
+          $ref: '#/components/schemas/GameSupportedFeatures'
+    Get_Games_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Game'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
     GameVersionTypeStatus:
       type: integer
       description: '1 = Normal
@@ -385,6 +367,35 @@ components:
       enum:
       - 1
       - 2
+    CoreApiStatus:
+      type: integer
+      description: '1 = Private
+
+        2 = Public'
+      x-enumNames:
+      - Private
+      - Public
+      enum:
+      - 1
+      - 2
+    Get_Versions_Response_-_V2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType2'
+    Get_Version_Types_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionType'
   securitySchemes:
     API_KEY:
       type: apiKey

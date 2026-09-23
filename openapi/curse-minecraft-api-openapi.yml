@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: CurseForge Core Categories Minecraft API
-  description: All endpoints use the same base URL - [https://api.curseforge.com](https://api.curseforge.com)
+  title: CurseForge Core Minecraft API
+  description: All endpoints use the same base URL - https://api.curseforge.com
   version: v1
 servers:
 - url: https://api.curseforge.com
@@ -33,6 +33,8 @@ paths:
           description: ''
         '404':
           description: ''
+      summary: Get minecraft versions
+      x-summary-source: derived
   /v1/minecraft/version/{gameVersionString}:
     get:
       tags:
@@ -56,6 +58,8 @@ paths:
           description: ''
         '404':
           description: ''
+      summary: Get specific minecraft version
+      x-summary-source: derived
   /v1/minecraft/modloader:
     get:
       tags:
@@ -70,8 +74,9 @@ paths:
       - name: includeAll
         in: query
         schema:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         x-position: 2
       responses:
         '200':
@@ -84,6 +89,8 @@ paths:
           description: ''
         '404':
           description: ''
+      summary: Get minecraft mod loaders
+      x-summary-source: derived
   /v1/minecraft/modloader/{modLoaderName}:
     get:
       tags:
@@ -107,8 +114,24 @@ paths:
           description: ''
         '404':
           description: ''
+      summary: Get specific minecraft mod loader
+      x-summary-source: derived
 components:
   schemas:
+    ApiResponseOfMinecraftModLoaderVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftModLoaderVersion'
+    ApiResponseOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftGameVersion'
     ModLoaderInstallMethod:
       type: integer
       description: '1 = ForgeInstaller
@@ -124,24 +147,37 @@ components:
       - 1
       - 2
       - 3
-    MinecraftModLoaderIndex:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        gameVersion:
-          type: string
-        latest:
-          type: boolean
-        recommended:
-          type: boolean
-        dateModified:
-          type: string
-          format: date-time
-        type:
-          nullable: true
-          $ref: '#/components/schemas/ModLoaderType'
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
     MinecraftModLoaderVersion:
       type: object
       additionalProperties: false
@@ -208,30 +244,6 @@ components:
           $ref: '#/components/schemas/GameVersionTypeStatus'
         installProfileJson:
           type: string
-    GameVersionStatus:
-      type: integer
-      description: '1 = Approved
-
-        2 = Deleted
-
-        3 = New'
-      x-enumNames:
-      - Approved
-      - Deleted
-      - New
-      enum:
-      - 1
-      - 2
-      - 3
-    ApiResponseOfListOfMinecraftGameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/MinecraftGameVersion'
     MinecraftGameVersion:
       type: object
       additionalProperties: false
@@ -260,20 +272,15 @@ components:
           $ref: '#/components/schemas/GameVersionStatus'
         gameVersionTypeStatus:
           $ref: '#/components/schemas/GameVersionTypeStatus'
-    ApiResponseOfMinecraftModLoaderVersion:
+    ApiResponseOfListOfMinecraftGameVersion:
       type: object
       additionalProperties: false
       properties:
         data:
+          type: array
           description: The response data
-          $ref: '#/components/schemas/MinecraftModLoaderVersion'
-    ApiResponseOfMinecraftGameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/MinecraftGameVersion'
+          items:
+            $ref: '#/components/schemas/MinecraftGameVersion'
     ApiResponseOfListOfMinecraftModLoaderIndex:
       type: object
       additionalProperties: false
@@ -283,37 +290,6 @@ components:
           description: The response data
           items:
             $ref: '#/components/schemas/MinecraftModLoaderIndex'
-    ModLoaderType:
-      type: integer
-      description: '0 = Any
-
-        1 = Forge
-
-        2 = Cauldron
-
-        3 = LiteLoader
-
-        4 = Fabric
-
-        5 = Quilt
-
-        6 = NeoForge'
-      x-enumNames:
-      - Any
-      - Forge
-      - Cauldron
-      - LiteLoader
-      - Fabric
-      - Quilt
-      - NeoForge
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
     GameVersionTypeStatus:
       type: integer
       description: '1 = Normal
@@ -325,6 +301,38 @@ components:
       enum:
       - 1
       - 2
+    MinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        gameVersion:
+          type: string
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/ModLoaderType'
+    GameVersionStatus:
+      type: integer
+      description: '1 = Approved
+
+        2 = Deleted
+
+        3 = New'
+      x-enumNames:
+      - Approved
+      - Deleted
+      - New
+      enum:
+      - 1
+      - 2
+      - 3
   securitySchemes:
     API_KEY:
       type: apiKey
