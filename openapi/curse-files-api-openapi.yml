@@ -15,7 +15,7 @@ paths:
       tags:
       - Files
       description: Get a single file of the specified mod.
-      operationId: Get Mod File
+      operationId: GetModFile
       parameters:
       - name: modId
         in: path
@@ -46,12 +46,14 @@ paths:
           description: ''
       summary: Get mod file
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod File
   /v1/mods/{modId}/files:
     get:
       tags:
       - Files
       description: Get all files of the specified mod.
-      operationId: Get Mod Files
+      operationId: GetModFiles
       parameters:
       - name: modId
         in: path
@@ -142,12 +144,14 @@ paths:
           description: ''
       summary: Get mod files
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod Files
   /v1/mods/files:
     post:
       tags:
       - Files
       description: Get a list of files.
-      operationId: Get Files
+      operationId: GetFiles
       requestBody:
         x-name: requestBody
         description: Request body containing a list of file ids to fetch
@@ -172,12 +176,14 @@ paths:
           description: ''
       summary: Get files
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Files
   /v1/mods/{modId}/files/{fileId}/changelog:
     get:
       tags:
       - Files
       description: Get the changelog of a file in HTML format.
-      operationId: Get Mod File Changelog
+      operationId: GetModFileChangelog
       parameters:
       - name: modId
         in: path
@@ -223,12 +229,14 @@ paths:
           description: ''
       summary: Get mod file changelog
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod File Changelog
   /v1/mods/{modId}/files/{fileId}/download-url:
     get:
       tags:
       - Files
       description: Get a download url for a specific file.
-      operationId: Get Mod File Download URL
+      operationId: GetModFileDownloadURL
       parameters:
       - name: modId
         in: path
@@ -259,12 +267,14 @@ paths:
           description: ''
       summary: Get mod file download URL
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod File Download URL
   /v1/mods/{modId}/files/{fileId}/download-info:
     get:
       tags:
       - Files
       summary: Get a download information for a specific file.
-      operationId: Get Mod File Download URL2
+      operationId: GetModFileDownloadURL2
       parameters:
       - name: modId
         in: path
@@ -306,12 +316,14 @@ paths:
           description: ''
         '404':
           description: ''
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod File Download URL2
   /v1/mods/{modId}/files/{newFileId}/deltas/{oldFileId}:
     get:
       tags:
       - Files
       description: Get a single file of the specified mod.
-      operationId: Get Mod File2
+      operationId: GetModFile2
       parameters:
       - name: modId
         in: path
@@ -350,17 +362,10 @@ paths:
           description: ''
       summary: Get mod file2
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mod File2
 components:
   schemas:
-    ApiResponseOfListOfDownloadInfo:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/DownloadInfo'
     Get_Mod_Files_Response:
       type: object
       additionalProperties: false
@@ -373,38 +378,65 @@ components:
         pagination:
           description: The response pagination information
           $ref: '#/components/schemas/Pagination'
-    Get_Files_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/File'
-    CookerInfo:
-      type: object
-      additionalProperties: false
-      properties:
-        cookerVersion:
-          type: string
-        cookerRevision:
-          type: string
-    FileHash:
-      type: object
-      additionalProperties: false
-      properties:
-        value:
-          type: string
-        algo:
-          $ref: '#/components/schemas/HashAlgo'
-    ApiResponseOfFileDeltaDiff:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FileDeltaDiff'
+    PlatformType:
+      type: integer
+      description: '0 = Empty
+
+        1 = Windows
+
+        2 = XboxOne
+
+        3 = XboxXS
+
+        4 = Linux
+
+        5 = PS4
+
+        6 = PS5
+
+        7 = Mac
+
+        8 = IOS
+
+        9 = TVOS
+
+        10 = Android
+
+        11 = Switch
+
+        12 = WindowsServer
+
+        13 = LinuxServer'
+      x-enumNames:
+      - Empty
+      - Windows
+      - XboxOne
+      - XboxXS
+      - Linux
+      - PS4
+      - PS5
+      - Mac
+      - IOS
+      - TVOS
+      - Android
+      - Switch
+      - WindowsServer
+      - LinuxServer
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
     FileDependency:
       type: object
       additionalProperties: false
@@ -414,6 +446,37 @@ components:
           format: int32
         relationType:
           $ref: '#/components/schemas/FileRelationType'
+    FileHash:
+      type: object
+      additionalProperties: false
+      properties:
+        value:
+          type: string
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
+    CookerInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
+    ProjectFileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
     SortableGameVersion:
       type: object
       additionalProperties: false
@@ -437,22 +500,15 @@ components:
           - 'null'
           description: Game version type id
           format: int32
-    FileModule:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        fingerprint:
-          type: integer
-          format: int64
-    String_Response:
+    Get_Files_Response:
       type: object
       additionalProperties: false
       properties:
         data:
-          type: string
+          type: array
           description: The response data
+          items:
+            $ref: '#/components/schemas/File'
     FileStatus:
       type: integer
       description: '1 = Processing
@@ -516,59 +572,6 @@ components:
       - 13
       - 14
       - 15
-    ModLoaderType:
-      type: integer
-      description: '0 = Any
-
-        1 = Forge
-
-        2 = Cauldron
-
-        3 = LiteLoader
-
-        4 = Fabric
-
-        5 = Quilt
-
-        6 = NeoForge'
-      x-enumNames:
-      - Any
-      - Forge
-      - Cauldron
-      - LiteLoader
-      - Fabric
-      - Quilt
-      - NeoForge
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    FileDeltaDiffStatus:
-      type: integer
-      description: '1 = Generating
-
-        2 = Approved
-
-        3 = Deleted'
-      x-enumNames:
-      - Generating
-      - Approved
-      - Deleted
-      enum:
-      - 1
-      - 2
-      - 3
-    Get_Mod_File_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/File'
     HashAlgo:
       type: integer
       description: '1 = Sha1
@@ -580,6 +583,129 @@ components:
       enum:
       - 1
       - 2
+    FileDeltaDiff:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameId:
+          type: integer
+          format: int32
+        modId:
+          type: integer
+          format: int32
+        oldFileId:
+          type: integer
+          format: int32
+        newFileId:
+          type: integer
+          format: int32
+        status:
+          $ref: '#/components/schemas/FileDeltaDiffStatus'
+        downloadUrl:
+          type: string
+        fileName:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        dateModified:
+          type: string
+          format: date-time
+        fileLength:
+          type: integer
+          format: int64
+        fileSizeOnDisk:
+          type: integer
+          format: int64
+        hashes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileHash'
+        extraJsonData:
+          type: string
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    String_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: string
+          description: The response data
+    FileRelationType:
+      type: integer
+      description: '1 = EmbeddedLibrary
+
+        2 = OptionalDependency
+
+        3 = RequiredDependency
+
+        4 = Tool
+
+        5 = Incompatible
+
+        6 = Include'
+      x-enumNames:
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    FileModule:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        fingerprint:
+          type: integer
+          format: int64
+    DownloadInfoType:
+      type: integer
+      description: '1 = Default
+
+        2 = Diff
+
+        3 = Compression7z'
+      x-enumNames:
+      - Default
+      - Diff
+      - Compression7z
+      enum:
+      - 1
+      - 2
+      - 3
+    Get_Mod_File_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/File'
     File:
       type: object
       additionalProperties: false
@@ -713,63 +839,6 @@ components:
           type: integer
           description: The total number of items available by the request
           format: int64
-    FileRelationType:
-      type: integer
-      description: '1 = EmbeddedLibrary
-
-        2 = OptionalDependency
-
-        3 = RequiredDependency
-
-        4 = Tool
-
-        5 = Incompatible
-
-        6 = Include'
-      x-enumNames:
-      - EmbeddedLibrary
-      - OptionalDependency
-      - RequiredDependency
-      - Tool
-      - Incompatible
-      - Include
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    ProjectFileReleaseType:
-      type: integer
-      description: '1 = Release
-
-        2 = Beta
-
-        3 = Alpha'
-      x-enumNames:
-      - Release
-      - Beta
-      - Alpha
-      enum:
-      - 1
-      - 2
-      - 3
-    FileReleaseType:
-      type: integer
-      description: '1 = Release
-
-        2 = Beta
-
-        3 = Alpha'
-      x-enumNames:
-      - Release
-      - Beta
-      - Alpha
-      enum:
-      - 1
-      - 2
-      - 3
     DownloadInfo:
       type: object
       additionalProperties: false
@@ -794,6 +863,68 @@ components:
             $ref: '#/components/schemas/FileHash'
         extraJsonData:
           type: string
+    FileDeltaDiffStatus:
+      type: integer
+      description: '1 = Generating
+
+        2 = Approved
+
+        3 = Deleted'
+      x-enumNames:
+      - Generating
+      - Approved
+      - Deleted
+      enum:
+      - 1
+      - 2
+      - 3
+    ApiResponseOfFileDeltaDiff:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FileDeltaDiff'
+    ApiResponseOfListOfDownloadInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/DownloadInfo'
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
     GetModFilesRequestBody:
       type: object
       additionalProperties: false
@@ -803,123 +934,6 @@ components:
           items:
             type: integer
             format: int32
-    PlatformType:
-      type: integer
-      description: '0 = Empty
-
-        1 = Windows
-
-        2 = XboxOne
-
-        3 = XboxXS
-
-        4 = Linux
-
-        5 = PS4
-
-        6 = PS5
-
-        7 = Mac
-
-        8 = IOS
-
-        9 = TVOS
-
-        10 = Android
-
-        11 = Switch
-
-        12 = WindowsServer
-
-        13 = LinuxServer'
-      x-enumNames:
-      - Empty
-      - Windows
-      - XboxOne
-      - XboxXS
-      - Linux
-      - PS4
-      - PS5
-      - Mac
-      - IOS
-      - TVOS
-      - Android
-      - Switch
-      - WindowsServer
-      - LinuxServer
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      - 13
-    DownloadInfoType:
-      type: integer
-      description: '1 = Default
-
-        2 = Diff
-
-        3 = Compression7z'
-      x-enumNames:
-      - Default
-      - Diff
-      - Compression7z
-      enum:
-      - 1
-      - 2
-      - 3
-    FileDeltaDiff:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        gameId:
-          type: integer
-          format: int32
-        modId:
-          type: integer
-          format: int32
-        oldFileId:
-          type: integer
-          format: int32
-        newFileId:
-          type: integer
-          format: int32
-        status:
-          $ref: '#/components/schemas/FileDeltaDiffStatus'
-        downloadUrl:
-          type: string
-        fileName:
-          type: string
-        dateCreated:
-          type: string
-          format: date-time
-        dateModified:
-          type: string
-          format: date-time
-        fileLength:
-          type: integer
-          format: int64
-        fileSizeOnDisk:
-          type: integer
-          format: int64
-        hashes:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileHash'
-        extraJsonData:
-          type: string
   securitySchemes:
     API_KEY:
       type: apiKey

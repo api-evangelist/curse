@@ -15,7 +15,7 @@ paths:
       tags:
       - Subscriptions
       description: Get the current user's subscribed mods for the given game key
-      operationId: Get Mods Subscriptions
+      operationId: GetModsSubscriptions
       parameters:
       - name: index
         in: query
@@ -54,12 +54,14 @@ paths:
           description: ''
       summary: Get mods subscriptions
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mods Subscriptions
   /v1/users/me/mods/subscriptions/ids:
     get:
       tags:
       - Subscriptions
       description: Get the current user's subscribed mods for the given game key
-      operationId: Get Mods Subscriptions2
+      operationId: GetModsSubscriptions2
       parameters:
       - name: index
         in: query
@@ -98,12 +100,14 @@ paths:
           description: ''
       summary: Get mods subscriptions2
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Mods Subscriptions2
   /v1/users/me/mods/subscriptions/subscribe:
     post:
       tags:
       - Subscriptions
       summary: Add a list of mod ids to the user's subscribed mods
-      operationId: Add a list of mod ids to the user's subscribed mods
+      operationId: AddAListOfModIdsToTheUser'sSubscribedMods
       requestBody:
         x-name: request
         content:
@@ -118,12 +122,14 @@ paths:
         '400':
           description: ''
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Add a list of mod ids to the user's subscribed mods
   /v1/users/me/mods/subscriptions/subscribe/{modId}:
     post:
       tags:
       - Subscriptions
       summary: Add a mod id to the user's subscribed mods
-      operationId: Add a mod id to the user's subscribed mods
+      operationId: AddAModIdToTheUser'sSubscribedMods
       parameters:
       - name: modId
         in: path
@@ -150,12 +156,14 @@ paths:
         '400':
           description: ''
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Add a mod id to the user's subscribed mods
   /v1/users/me/mods/subscriptions/unsubscribe/{modId}:
     post:
       tags:
       - Subscriptions
       summary: Remove a mod id from the user's subscribed mods
-      operationId: Remove a mod id from the user's subscribed mods
+      operationId: RemoveAModIdFromTheUser'sSubscribedMods
       parameters:
       - name: modId
         in: path
@@ -179,104 +187,35 @@ paths:
         '405':
           description: ''
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Remove a mod id from the user's subscribed mods
 components:
   schemas:
-    ClientFeaturedProjectTag:
+    AffiliationServiceType:
       type: integer
-      description: '0 = None
-
-        1 = Sponsored
-
-        2 = HiddenGem
-
-        3 = Popular'
+      description: 1 = Bisect
       x-enumNames:
-      - None
-      - Sponsored
-      - HiddenGem
-      - Popular
+      - Bisect
       enum:
-      - 0
       - 1
-      - 2
-      - 3
-    Search_Mods_Response:
+    ServerAffiliation:
       type: object
       additionalProperties: false
       properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/Mod'
-        pagination:
-          description: The response pagination information
-          $ref: '#/components/schemas/Pagination'
-    GalleryItemType:
-      type: integer
-      description: '0 = None
-
-        1 = Screenshot
-
-        2 = EmbeddedVideo'
-      x-enumNames:
-      - None
-      - Screenshot
-      - EmbeddedVideo
-      enum:
-      - 0
-      - 1
-      - 2
-    ModAuthor:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
+        isEnabled:
+          type: boolean
+        isDefaultBanner:
+          type: boolean
+        hasDiscount:
+          type: boolean
+        affiliationService:
+          $ref: '#/components/schemas/AffiliationServiceType'
+        defaultBannerCustomTitle:
           type: string
-        url:
+        customImageUrl:
           type: string
-        avatarUrl:
+        affiliationLink:
           type: string
-    RatingDetails:
-      type: object
-      additionalProperties: false
-      properties:
-        rating:
-          type:
-          - number
-          - 'null'
-          format: decimal
-        totalRatings:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        positiveRatings:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        score:
-          $ref: '#/components/schemas/RatingScore'
-    CookerInfo:
-      type: object
-      additionalProperties: false
-      properties:
-        cookerVersion:
-          type: string
-        cookerRevision:
-          type: string
-    FileHash:
-      type: object
-      additionalProperties: false
-      properties:
-        value:
-          type: string
-        algo:
-          $ref: '#/components/schemas/HashAlgo'
     Category:
       type: object
       additionalProperties: false
@@ -328,24 +267,23 @@ components:
           - 'null'
           description: The display index for this category
           format: int32
-    ServerAffiliation:
+    FileDependency:
       type: object
       additionalProperties: false
       properties:
-        isEnabled:
-          type: boolean
-        isDefaultBanner:
-          type: boolean
-        hasDiscount:
-          type: boolean
-        affiliationService:
-          $ref: '#/components/schemas/AffiliationServiceType'
-        defaultBannerCustomTitle:
+        modId:
+          type: integer
+          format: int32
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
+    FileHash:
+      type: object
+      additionalProperties: false
+      properties:
+        value:
           type: string
-        customImageUrl:
-          type: string
-        affiliationLink:
-          type: string
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
     ModStatus:
       type: integer
       description: '1 = New
@@ -389,15 +327,70 @@ components:
       - 8
       - 9
       - 10
-    FileDependency:
+    CookerInfo:
       type: object
       additionalProperties: false
       properties:
-        modId:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
+    RatingScore:
+      type: integer
+      description: '0 = NotEnoughReviews
+
+        1 = OverwhelminglyPositive
+
+        2 = VeryPositive
+
+        3 = Positive
+
+        4 = MostlyPositive
+
+        5 = Mixed
+
+        6 = MostlyNegative
+
+        7 = Negative
+
+        8 = VeryNegative
+
+        9 = OverwhelminglyNegative'
+      x-enumNames:
+      - NotEnoughReviews
+      - OverwhelminglyPositive
+      - VeryPositive
+      - Positive
+      - MostlyPositive
+      - Mixed
+      - MostlyNegative
+      - Negative
+      - VeryNegative
+      - OverwhelminglyNegative
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+    ModAuthor:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
           type: integer
           format: int32
-        relationType:
-          $ref: '#/components/schemas/FileRelationType'
+        name:
+          type: string
+        url:
+          type: string
+        avatarUrl:
+          type: string
     SortableGameVersion:
       type: object
       additionalProperties: false
@@ -421,6 +414,175 @@ components:
           - 'null'
           description: Game version type id
           format: int32
+    FileStatus:
+      type: integer
+      description: '1 = Processing
+
+        2 = ChangesRequired
+
+        3 = UnderReview
+
+        4 = Approved
+
+        5 = Rejected
+
+        6 = MalwareDetected
+
+        7 = Deleted
+
+        8 = Archived
+
+        9 = Testing
+
+        10 = Released
+
+        11 = ReadyForReview
+
+        12 = Deprecated
+
+        13 = Baking
+
+        14 = AwaitingPublishing
+
+        15 = FailedPublishing'
+      x-enumNames:
+      - Processing
+      - ChangesRequired
+      - UnderReview
+      - Approved
+      - Rejected
+      - MalwareDetected
+      - Deleted
+      - Archived
+      - Testing
+      - Released
+      - ReadyForReview
+      - Deprecated
+      - Baking
+      - AwaitingPublishing
+      - FailedPublishing
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+    HashAlgo:
+      type: integer
+      description: '1 = Sha1
+
+        2 = Md5'
+      x-enumNames:
+      - Sha1
+      - Md5
+      enum:
+      - 1
+      - 2
+    ModLinks:
+      type: object
+      additionalProperties: false
+      properties:
+        websiteUrl:
+          type: string
+        wikiUrl:
+          type: string
+        issuesUrl:
+          type: string
+        sourceUrl:
+          type: string
+    FileIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        gameVersion:
+          type: string
+        fileId:
+          type: integer
+          format: int32
+        filename:
+          type: string
+        releaseType:
+          $ref: '#/components/schemas/FileReleaseType'
+        gameVersionTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        modLoader:
+          $ref: '#/components/schemas/ModLoaderType'
+    SubscribeModIdsRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        modIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    FileRelationType:
+      type: integer
+      description: '1 = EmbeddedLibrary
+
+        2 = OptionalDependency
+
+        3 = RequiredDependency
+
+        4 = Tool
+
+        5 = Incompatible
+
+        6 = Include'
+      x-enumNames:
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    Search_Mods_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Mod'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
     FileModule:
       type: object
       additionalProperties: false
@@ -430,13 +592,160 @@ components:
         fingerprint:
           type: integer
           format: int64
-    Get_Mod_Response:
+    RatingDetails:
       type: object
       additionalProperties: false
       properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/Mod'
+        rating:
+          type:
+          - number
+          - 'null'
+          format: decimal
+        totalRatings:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        positiveRatings:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        score:
+          $ref: '#/components/schemas/RatingScore'
+    File:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          description: The file id
+          format: int32
+        gameId:
+          type: integer
+          description: The game id related to the mod that this file belongs to
+          format: int32
+        modId:
+          type: integer
+          description: The mod id
+          format: int32
+        isAvailable:
+          type: boolean
+          description: Whether the file is available to download
+        displayName:
+          type: string
+          description: Display name of the file
+        fileName:
+          type: string
+          description: Exact file name
+        releaseType:
+          description: The file release type
+          $ref: '#/components/schemas/FileReleaseType'
+        fileStatus:
+          description: Status of the file
+          $ref: '#/components/schemas/FileStatus'
+        hashes:
+          type: array
+          description: The file hash (i.e. md5 or sha1)
+          items:
+            $ref: '#/components/schemas/FileHash'
+        fileDate:
+          type: string
+          description: The file timestamp
+          format: date-time
+        fileLength:
+          type: integer
+          description: The file length in bytes
+          format: int64
+        downloadCount:
+          type: integer
+          description: The number of downloads for the file
+          format: int64
+        fileSizeOnDisk:
+          type:
+          - integer
+          - 'null'
+          description: The file's size on disk
+          format: int64
+        downloadUrl:
+          type: string
+          description: The file download URL
+        gameVersions:
+          type: array
+          description: List of game versions this file is relevant for
+          items:
+            type: string
+        sortableGameVersions:
+          type: array
+          description: Metadata used for sorting by game versions
+          items:
+            $ref: '#/components/schemas/SortableGameVersion'
+        dependencies:
+          type: array
+          description: List of dependencies files
+          items:
+            $ref: '#/components/schemas/FileDependency'
+        exposeAsAlternative:
+          type:
+          - boolean
+          - 'null'
+        parentProjectFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        alternateFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isServerPack:
+          type:
+          - boolean
+          - 'null'
+        serverPackFileId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isEarlyAccessContent:
+          type:
+          - boolean
+          - 'null'
+        earlyAccessEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        fileFingerprint:
+          type: integer
+          format: int64
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileModule'
+        cookingInfo:
+          $ref: '#/components/schemas/CookerInfo'
+    Pagination:
+      type: object
+      additionalProperties: false
+      properties:
+        index:
+          type: integer
+          description: A zero based index of the first item that is included in the response
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested number of items to be included in the response
+          format: int32
+        resultCount:
+          type: integer
+          description: The actual number of items that were included in the response
+          format: int32
+        totalCount:
+          type: integer
+          description: The total number of items available by the request
+          format: int64
     Mod:
       type: object
       additionalProperties: false
@@ -580,90 +889,6 @@ components:
             $ref: '#/components/schemas/GalleryItem'
         featuredProjectTag:
           $ref: '#/components/schemas/ClientFeaturedProjectTag'
-    FileStatus:
-      type: integer
-      description: '1 = Processing
-
-        2 = ChangesRequired
-
-        3 = UnderReview
-
-        4 = Approved
-
-        5 = Rejected
-
-        6 = MalwareDetected
-
-        7 = Deleted
-
-        8 = Archived
-
-        9 = Testing
-
-        10 = Released
-
-        11 = ReadyForReview
-
-        12 = Deprecated
-
-        13 = Baking
-
-        14 = AwaitingPublishing
-
-        15 = FailedPublishing'
-      x-enumNames:
-      - Processing
-      - ChangesRequired
-      - UnderReview
-      - Approved
-      - Rejected
-      - MalwareDetected
-      - Deleted
-      - Archived
-      - Testing
-      - Released
-      - ReadyForReview
-      - Deprecated
-      - Baking
-      - AwaitingPublishing
-      - FailedPublishing
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      - 13
-      - 14
-      - 15
-    GalleryItem:
-      type: object
-      additionalProperties: false
-      properties:
-        description:
-          type: string
-        isFeatured:
-          type: boolean
-        displayIndex:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        title:
-          type: string
-        url:
-          type: string
-        thumbnailUrl:
-          type: string
-        type:
-          $ref: '#/components/schemas/GalleryItemType'
     SocialLinkType:
       type: integer
       description: '1 = Mastodon
@@ -743,18 +968,42 @@ components:
       - 17
       - 18
       - 19
-    ModLinks:
+    Get_Mod_Response:
       type: object
       additionalProperties: false
       properties:
-        websiteUrl:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Mod'
+    SocialLink:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          $ref: '#/components/schemas/SocialLinkType'
+        url:
           type: string
-        wikiUrl:
+    GalleryItem:
+      type: object
+      additionalProperties: false
+      properties:
+        description:
           type: string
-        issuesUrl:
+        isFeatured:
+          type: boolean
+        displayIndex:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        title:
           type: string
-        sourceUrl:
+        url:
           type: string
+        thumbnailUrl:
+          type: string
+        type:
+          $ref: '#/components/schemas/GalleryItemType'
     ModLoaderType:
       type: integer
       description: '0 = Any
@@ -786,177 +1035,40 @@ components:
       - 4
       - 5
       - 6
-    HashAlgo:
+    ClientFeaturedProjectTag:
       type: integer
-      description: '1 = Sha1
+      description: '0 = None
 
-        2 = Md5'
+        1 = Sponsored
+
+        2 = HiddenGem
+
+        3 = Popular'
       x-enumNames:
-      - Sha1
-      - Md5
+      - None
+      - Sponsored
+      - HiddenGem
+      - Popular
       enum:
-      - 1
-      - 2
-    File:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          description: The file id
-          format: int32
-        gameId:
-          type: integer
-          description: The game id related to the mod that this file belongs to
-          format: int32
-        modId:
-          type: integer
-          description: The mod id
-          format: int32
-        isAvailable:
-          type: boolean
-          description: Whether the file is available to download
-        displayName:
-          type: string
-          description: Display name of the file
-        fileName:
-          type: string
-          description: Exact file name
-        releaseType:
-          description: The file release type
-          $ref: '#/components/schemas/FileReleaseType'
-        fileStatus:
-          description: Status of the file
-          $ref: '#/components/schemas/FileStatus'
-        hashes:
-          type: array
-          description: The file hash (i.e. md5 or sha1)
-          items:
-            $ref: '#/components/schemas/FileHash'
-        fileDate:
-          type: string
-          description: The file timestamp
-          format: date-time
-        fileLength:
-          type: integer
-          description: The file length in bytes
-          format: int64
-        downloadCount:
-          type: integer
-          description: The number of downloads for the file
-          format: int64
-        fileSizeOnDisk:
-          type:
-          - integer
-          - 'null'
-          description: The file's size on disk
-          format: int64
-        downloadUrl:
-          type: string
-          description: The file download URL
-        gameVersions:
-          type: array
-          description: List of game versions this file is relevant for
-          items:
-            type: string
-        sortableGameVersions:
-          type: array
-          description: Metadata used for sorting by game versions
-          items:
-            $ref: '#/components/schemas/SortableGameVersion'
-        dependencies:
-          type: array
-          description: List of dependencies files
-          items:
-            $ref: '#/components/schemas/FileDependency'
-        exposeAsAlternative:
-          type:
-          - boolean
-          - 'null'
-        parentProjectFileId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        alternateFileId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        isServerPack:
-          type:
-          - boolean
-          - 'null'
-        serverPackFileId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        isEarlyAccessContent:
-          type:
-          - boolean
-          - 'null'
-        earlyAccessEndDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        fileFingerprint:
-          type: integer
-          format: int64
-        modules:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileModule'
-        cookingInfo:
-          $ref: '#/components/schemas/CookerInfo'
-    Pagination:
-      type: object
-      additionalProperties: false
-      properties:
-        index:
-          type: integer
-          description: A zero based index of the first item that is included in the response
-          format: int32
-        pageSize:
-          type: integer
-          description: The requested number of items to be included in the response
-          format: int32
-        resultCount:
-          type: integer
-          description: The actual number of items that were included in the response
-          format: int32
-        totalCount:
-          type: integer
-          description: The total number of items available by the request
-          format: int64
-    FileRelationType:
-      type: integer
-      description: '1 = EmbeddedLibrary
-
-        2 = OptionalDependency
-
-        3 = RequiredDependency
-
-        4 = Tool
-
-        5 = Incompatible
-
-        6 = Include'
-      x-enumNames:
-      - EmbeddedLibrary
-      - OptionalDependency
-      - RequiredDependency
-      - Tool
-      - Incompatible
-      - Include
-      enum:
+      - 0
       - 1
       - 2
       - 3
-      - 4
-      - 5
-      - 6
+    GalleryItemType:
+      type: integer
+      description: '0 = None
+
+        1 = Screenshot
+
+        2 = EmbeddedVideo'
+      x-enumNames:
+      - None
+      - Screenshot
+      - EmbeddedVideo
+      enum:
+      - 0
+      - 1
+      - 2
     ModAsset:
       type: object
       additionalProperties: false
@@ -975,108 +1087,6 @@ components:
           type: string
         url:
           type: string
-    FileReleaseType:
-      type: integer
-      description: '1 = Release
-
-        2 = Beta
-
-        3 = Alpha'
-      x-enumNames:
-      - Release
-      - Beta
-      - Alpha
-      enum:
-      - 1
-      - 2
-      - 3
-    SubscribeModIdsRequestBody:
-      type: object
-      additionalProperties: false
-      properties:
-        modIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-    AffiliationServiceType:
-      type: integer
-      description: 1 = Bisect
-      x-enumNames:
-      - Bisect
-      enum:
-      - 1
-    FileIndex:
-      type: object
-      additionalProperties: false
-      properties:
-        gameVersion:
-          type: string
-        fileId:
-          type: integer
-          format: int32
-        filename:
-          type: string
-        releaseType:
-          $ref: '#/components/schemas/FileReleaseType'
-        gameVersionTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        modLoader:
-          $ref: '#/components/schemas/ModLoaderType'
-    SocialLink:
-      type: object
-      additionalProperties: false
-      properties:
-        type:
-          $ref: '#/components/schemas/SocialLinkType'
-        url:
-          type: string
-    RatingScore:
-      type: integer
-      description: '0 = NotEnoughReviews
-
-        1 = OverwhelminglyPositive
-
-        2 = VeryPositive
-
-        3 = Positive
-
-        4 = MostlyPositive
-
-        5 = Mixed
-
-        6 = MostlyNegative
-
-        7 = Negative
-
-        8 = VeryNegative
-
-        9 = OverwhelminglyNegative'
-      x-enumNames:
-      - NotEnoughReviews
-      - OverwhelminglyPositive
-      - VeryPositive
-      - Positive
-      - MostlyPositive
-      - Mixed
-      - MostlyNegative
-      - Negative
-      - VeryNegative
-      - OverwhelminglyNegative
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
   securitySchemes:
     API_KEY:
       type: apiKey

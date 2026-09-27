@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - Minecraft
-      operationId: Get Minecraft Versions
+      operationId: GetMinecraftVersions
       parameters:
       - name: sortDescending
         in: query
@@ -35,11 +35,13 @@ paths:
           description: ''
       summary: Get minecraft versions
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Minecraft Versions
   /v1/minecraft/version/{gameVersionString}:
     get:
       tags:
       - Minecraft
-      operationId: Get Specific Minecraft Version
+      operationId: GetSpecificMinecraftVersion
       parameters:
       - name: gameVersionString
         in: path
@@ -60,11 +62,13 @@ paths:
           description: ''
       summary: Get specific minecraft version
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Specific Minecraft Version
   /v1/minecraft/modloader:
     get:
       tags:
       - Minecraft
-      operationId: Get Minecraft ModLoaders
+      operationId: GetMinecraftModLoaders
       parameters:
       - name: version
         in: query
@@ -91,11 +95,13 @@ paths:
           description: ''
       summary: Get minecraft mod loaders
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Minecraft ModLoaders
   /v1/minecraft/modloader/{modLoaderName}:
     get:
       tags:
       - Minecraft
-      operationId: Get Specific Minecraft ModLoader
+      operationId: GetSpecificMinecraftModLoader
       parameters:
       - name: modLoaderName
         in: path
@@ -116,8 +122,30 @@ paths:
           description: ''
       summary: Get specific minecraft mod loader
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Specific Minecraft ModLoader
 components:
   schemas:
+    GameVersionTypeStatus:
+      type: integer
+      description: '1 = Normal
+
+        2 = Deleted'
+      x-enumNames:
+      - Normal
+      - Deleted
+      enum:
+      - 1
+      - 2
+    ApiResponseOfListOfMinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftModLoaderIndex'
     ApiResponseOfMinecraftModLoaderVersion:
       type: object
       additionalProperties: false
@@ -125,59 +153,15 @@ components:
         data:
           description: The response data
           $ref: '#/components/schemas/MinecraftModLoaderVersion'
-    ApiResponseOfMinecraftGameVersion:
+    ApiResponseOfListOfMinecraftGameVersion:
       type: object
       additionalProperties: false
       properties:
         data:
+          type: array
           description: The response data
-          $ref: '#/components/schemas/MinecraftGameVersion'
-    ModLoaderInstallMethod:
-      type: integer
-      description: '1 = ForgeInstaller
-
-        2 = ForgeJarInstall
-
-        3 = ForgeInstaller_v2'
-      x-enumNames:
-      - ForgeInstaller
-      - ForgeJarInstall
-      - ForgeInstaller_v2
-      enum:
-      - 1
-      - 2
-      - 3
-    ModLoaderType:
-      type: integer
-      description: '0 = Any
-
-        1 = Forge
-
-        2 = Cauldron
-
-        3 = LiteLoader
-
-        4 = Fabric
-
-        5 = Quilt
-
-        6 = NeoForge'
-      x-enumNames:
-      - Any
-      - Forge
-      - Cauldron
-      - LiteLoader
-      - Fabric
-      - Quilt
-      - NeoForge
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
+          items:
+            $ref: '#/components/schemas/MinecraftGameVersion'
     MinecraftModLoaderVersion:
       type: object
       additionalProperties: false
@@ -244,6 +228,84 @@ components:
           $ref: '#/components/schemas/GameVersionTypeStatus'
         installProfileJson:
           type: string
+    ModLoaderInstallMethod:
+      type: integer
+      description: '1 = ForgeInstaller
+
+        2 = ForgeJarInstall
+
+        3 = ForgeInstaller_v2'
+      x-enumNames:
+      - ForgeInstaller
+      - ForgeJarInstall
+      - ForgeInstaller_v2
+      enum:
+      - 1
+      - 2
+      - 3
+    GameVersionStatus:
+      type: integer
+      description: '1 = Approved
+
+        2 = Deleted
+
+        3 = New'
+      x-enumNames:
+      - Approved
+      - Deleted
+      - New
+      enum:
+      - 1
+      - 2
+      - 3
+    MinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        gameVersion:
+          type: string
+        latest:
+          type: boolean
+        recommended:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/ModLoaderType'
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
     MinecraftGameVersion:
       type: object
       additionalProperties: false
@@ -272,67 +334,13 @@ components:
           $ref: '#/components/schemas/GameVersionStatus'
         gameVersionTypeStatus:
           $ref: '#/components/schemas/GameVersionTypeStatus'
-    ApiResponseOfListOfMinecraftGameVersion:
+    ApiResponseOfMinecraftGameVersion:
       type: object
       additionalProperties: false
       properties:
         data:
-          type: array
           description: The response data
-          items:
-            $ref: '#/components/schemas/MinecraftGameVersion'
-    ApiResponseOfListOfMinecraftModLoaderIndex:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/MinecraftModLoaderIndex'
-    GameVersionTypeStatus:
-      type: integer
-      description: '1 = Normal
-
-        2 = Deleted'
-      x-enumNames:
-      - Normal
-      - Deleted
-      enum:
-      - 1
-      - 2
-    MinecraftModLoaderIndex:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        gameVersion:
-          type: string
-        latest:
-          type: boolean
-        recommended:
-          type: boolean
-        dateModified:
-          type: string
-          format: date-time
-        type:
-          $ref: '#/components/schemas/ModLoaderType'
-    GameVersionStatus:
-      type: integer
-      description: '1 = Approved
-
-        2 = Deleted
-
-        3 = New'
-      x-enumNames:
-      - Approved
-      - Deleted
-      - New
-      enum:
-      - 1
-      - 2
-      - 3
+          $ref: '#/components/schemas/MinecraftGameVersion'
   securitySchemes:
     API_KEY:
       type: apiKey

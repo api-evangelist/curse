@@ -15,7 +15,7 @@ paths:
       tags:
       - Fingerprints
       description: Get mod files that match a list of fingerprints for a given game id.
-      operationId: Get Fingerprints Matches By Game Id
+      operationId: GetFingerprintsMatchesByGameId
       parameters:
       - name: gameId
         in: path
@@ -51,12 +51,14 @@ paths:
                 type: string
       summary: Get fingerprints matches by game id
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Fingerprints Matches By Game Id
   /v1/fingerprints:
     post:
       tags:
       - Fingerprints
       description: Get mod files that match a list of fingerprints.
-      operationId: Get Fingerprints Matches
+      operationId: GetFingerprintsMatches
       requestBody:
         x-name: requestBody
         description: The request body containing an array of fingerprints
@@ -83,12 +85,14 @@ paths:
                 type: string
       summary: Get fingerprints matches
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Fingerprints Matches
   /v1/fingerprints/fuzzy/{gameId}:
     post:
       tags:
       - Fingerprints
       description: Get mod files that match a list of fingerprints using fuzzy matching.
-      operationId: Get Fingerprints Fuzzy Matches By Game Id
+      operationId: GetFingerprintsFuzzyMatchesByGameId
       parameters:
       - name: gameId
         in: path
@@ -124,12 +128,14 @@ paths:
                 type: string
       summary: Get fingerprints fuzzy matches by game id
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Fingerprints Fuzzy Matches By Game Id
   /v1/fingerprints/fuzzy:
     post:
       tags:
       - Fingerprints
       description: Get mod files that match a list of fingerprints using fuzzy matching.
-      operationId: Get Fingerprints Fuzzy Matches
+      operationId: GetFingerprintsFuzzyMatches
       requestBody:
         x-name: matchCriteria
         description: Game id and folder fingerprints options for the fuzzy matching
@@ -156,79 +162,28 @@ paths:
                 type: string
       summary: Get fingerprints fuzzy matches
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Fingerprints Fuzzy Matches
 components:
   schemas:
-    GetFingerprintMatchesRequestBody:
+    FileDependency:
       type: object
       additionalProperties: false
       properties:
-        fingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    FingerprintsMatchesResult:
+        modId:
+          type: integer
+          format: int32
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
+    FileHash:
       type: object
       additionalProperties: false
       properties:
-        isCacheBuilt:
-          type: boolean
-        exactMatches:
-          type: array
-          items:
-            $ref: '#/components/schemas/FingerprintMatch'
-        exactFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-        partialMatches:
-          type: array
-          items:
-            $ref: '#/components/schemas/FingerprintMatch'
-        partialMatchFingerprints:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: integer
-              format: int64
-        installedFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-        unmatchedFingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    Get_Fingerprints_Fuzzy_Matches_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
-    Get_Fingerprint_Matches_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FingerprintsMatchesResult'
-    FolderFingerprint:
-      type: object
-      additionalProperties: false
-      properties:
-        foldername:
+        value:
           type: string
-        fingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    FingerprintMatch:
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
+    FingerprintFuzzyMatch:
       type: object
       additionalProperties: false
       properties:
@@ -241,6 +196,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/File'
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FingerprintFuzzyMatchResult:
+      type: object
+      additionalProperties: false
+      properties:
+        fuzzyMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintFuzzyMatch'
     CookerInfo:
       type: object
       additionalProperties: false
@@ -249,34 +217,6 @@ components:
           type: string
         cookerRevision:
           type: string
-    FileHash:
-      type: object
-      additionalProperties: false
-      properties:
-        value:
-          type: string
-        algo:
-          $ref: '#/components/schemas/HashAlgo'
-    FileDependency:
-      type: object
-      additionalProperties: false
-      properties:
-        modId:
-          type: integer
-          format: int32
-        relationType:
-          $ref: '#/components/schemas/FileRelationType'
-    GetFuzzyMatchesRequestBody:
-      type: object
-      additionalProperties: false
-      properties:
-        gameId:
-          type: integer
-          format: int32
-        fingerprints:
-          type: array
-          items:
-            $ref: '#/components/schemas/FolderFingerprint'
     SortableGameVersion:
       type: object
       additionalProperties: false
@@ -300,15 +240,6 @@ components:
           - 'null'
           description: Game version type id
           format: int32
-    FileModule:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        fingerprint:
-          type: integer
-          format: int64
     FileStatus:
       type: integer
       description: '1 = Processing
@@ -383,6 +314,57 @@ components:
       enum:
       - 1
       - 2
+    FileReleaseType:
+      type: integer
+      description: '1 = Release
+
+        2 = Beta
+
+        3 = Alpha'
+      x-enumNames:
+      - Release
+      - Beta
+      - Alpha
+      enum:
+      - 1
+      - 2
+      - 3
+    FileRelationType:
+      type: integer
+      description: '1 = EmbeddedLibrary
+
+        2 = OptionalDependency
+
+        3 = RequiredDependency
+
+        4 = Tool
+
+        5 = Incompatible
+
+        6 = Include'
+      x-enumNames:
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    FileModule:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        fingerprint:
+          type: integer
+          format: int64
     File:
       type: object
       additionalProperties: false
@@ -496,7 +478,88 @@ components:
             $ref: '#/components/schemas/FileModule'
         cookingInfo:
           $ref: '#/components/schemas/CookerInfo'
-    FingerprintFuzzyMatch:
+    Get_Fingerprint_Matches_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintsMatchesResult'
+    GetFuzzyMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        gameId:
+          type: integer
+          format: int32
+        fingerprints:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderFingerprint'
+    FolderFingerprint:
+      type: object
+      additionalProperties: false
+      properties:
+        foldername:
+          type: string
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    GetFingerprintMatchesRequestBody:
+      type: object
+      additionalProperties: false
+      properties:
+        fingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    FingerprintsMatchesResult:
+      type: object
+      additionalProperties: false
+      properties:
+        isCacheBuilt:
+          type: boolean
+        exactMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        exactFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        partialMatches:
+          type: array
+          items:
+            $ref: '#/components/schemas/FingerprintMatch'
+        partialMatchFingerprints:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: integer
+              format: int64
+        installedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+        unmatchedFingerprints:
+          type: array
+          items:
+            type: integer
+            format: int64
+    Get_Fingerprints_Fuzzy_Matches_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/FingerprintFuzzyMatchResult'
+    FingerprintMatch:
       type: object
       additionalProperties: false
       properties:
@@ -509,61 +572,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/File'
-        fingerprints:
-          type: array
-          items:
-            type: integer
-            format: int64
-    FingerprintFuzzyMatchResult:
-      type: object
-      additionalProperties: false
-      properties:
-        fuzzyMatches:
-          type: array
-          items:
-            $ref: '#/components/schemas/FingerprintFuzzyMatch'
-    FileRelationType:
-      type: integer
-      description: '1 = EmbeddedLibrary
-
-        2 = OptionalDependency
-
-        3 = RequiredDependency
-
-        4 = Tool
-
-        5 = Incompatible
-
-        6 = Include'
-      x-enumNames:
-      - EmbeddedLibrary
-      - OptionalDependency
-      - RequiredDependency
-      - Tool
-      - Incompatible
-      - Include
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    FileReleaseType:
-      type: integer
-      description: '1 = Release
-
-        2 = Beta
-
-        3 = Alpha'
-      x-enumNames:
-      - Release
-      - Beta
-      - Alpha
-      enum:
-      - 1
-      - 2
-      - 3
   securitySchemes:
     API_KEY:
       type: apiKey

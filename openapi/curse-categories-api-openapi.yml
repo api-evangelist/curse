@@ -17,7 +17,7 @@ paths:
       description: 'Get all available classes and categories of the specified game. Specify a game id for a list of all game categories, or a class id for a list of categories under that class.
 
         specifiy the classes Only flag to just get the classes for a given game.'
-      operationId: Get Categories
+      operationId: GetCategories
       parameters:
       - name: gameId
         in: query
@@ -55,6 +55,8 @@ paths:
           description: ''
       summary: Get categories
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Categories
 components:
   schemas:
     Get_Categories_Response:
