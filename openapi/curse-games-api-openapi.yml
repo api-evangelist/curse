@@ -204,6 +204,107 @@ paths:
       x-operation-id-original: Get additional client featured projects
 components:
   schemas:
+    GameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        slug:
+          type: string
+        name:
+          type: string
+    Get_Version_Types_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionType'
+    GameVersionType:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameId:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        isSyncable:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    Get_Versions_Response_-_V1:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType'
+    Get_Game_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Game'
+    GameVersionsByType:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            type: string
+    GameSupportedFeatures:
+      type: object
+      additionalProperties: false
+      properties:
+        supportModSubscriptions:
+          type: boolean
+    CoreApiStatus:
+      type: integer
+      description: '1 = Private
+
+        2 = Public'
+      x-enumNames:
+      - Private
+      - Public
+      enum:
+      - 1
+      - 2
+    GameAssets:
+      type: object
+      additionalProperties: false
+      properties:
+        iconUrl:
+          type: string
+        tileUrl:
+          type: string
+        coverUrl:
+          type: string
+    Get_Versions_Response_-_V2:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType2'
     GameVersionTypeStatus:
       type: integer
       description: '1 = Normal
@@ -215,6 +316,26 @@ components:
       enum:
       - 1
       - 2
+    Pagination:
+      type: object
+      additionalProperties: false
+      properties:
+        index:
+          type: integer
+          description: A zero based index of the first item that is included in the response
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested number of items to be included in the response
+          format: int32
+        resultCount:
+          type: integer
+          description: The actual number of items that were included in the response
+          format: int32
+        totalCount:
+          type: integer
+          description: The total number of items available by the request
+          format: int64
     Game:
       type: object
       additionalProperties: false
@@ -237,58 +358,6 @@ components:
           $ref: '#/components/schemas/CoreApiStatus'
         supportedFeatures:
           $ref: '#/components/schemas/GameSupportedFeatures'
-    CoreApiStatus:
-      type: integer
-      description: '1 = Private
-
-        2 = Public'
-      x-enumNames:
-      - Private
-      - Public
-      enum:
-      - 1
-      - 2
-    GameAssets:
-      type: object
-      additionalProperties: false
-      properties:
-        iconUrl:
-          type: string
-        tileUrl:
-          type: string
-        coverUrl:
-          type: string
-    GameVersionsByType2:
-      type: object
-      additionalProperties: false
-      properties:
-        type:
-          type: integer
-          format: int32
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GameVersion'
-    Get_Versions_Response_-_V1:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionsByType'
-    GameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        slug:
-          type: string
-        name:
-          type: string
     CoreStatus:
       type: integer
       description: '1 = Draft
@@ -316,15 +385,6 @@ components:
       - 4
       - 5
       - 6
-    Get_Versions_Response_-_V2:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionsByType2'
     Get_Games_Response:
       type: object
       additionalProperties: false
@@ -337,58 +397,7 @@ components:
         pagination:
           description: The response pagination information
           $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      additionalProperties: false
-      properties:
-        index:
-          type: integer
-          description: A zero based index of the first item that is included in the response
-          format: int32
-        pageSize:
-          type: integer
-          description: The requested number of items to be included in the response
-          format: int32
-        resultCount:
-          type: integer
-          description: The actual number of items that were included in the response
-          format: int32
-        totalCount:
-          type: integer
-          description: The total number of items available by the request
-          format: int64
-    GameSupportedFeatures:
-      type: object
-      additionalProperties: false
-      properties:
-        supportModSubscriptions:
-          type: boolean
-    GameVersionType:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        gameId:
-          type: integer
-          format: int32
-        name:
-          type: string
-        slug:
-          type: string
-        isSyncable:
-          type: boolean
-        status:
-          $ref: '#/components/schemas/GameVersionTypeStatus'
-    Get_Game_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/Game'
-    GameVersionsByType:
+    GameVersionsByType2:
       type: object
       additionalProperties: false
       properties:
@@ -398,16 +407,7 @@ components:
         versions:
           type: array
           items:
-            type: string
-    Get_Version_Types_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionType'
+            $ref: '#/components/schemas/GameVersion'
   securitySchemes:
     API_KEY:
       type: apiKey

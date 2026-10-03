@@ -366,103 +366,48 @@ paths:
       x-operation-id-original: Get Mod File2
 components:
   schemas:
-    Get_Mod_Files_Response:
+    Get_Mod_File_Response:
       type: object
       additionalProperties: false
       properties:
         data:
-          type: array
           description: The response data
-          items:
-            $ref: '#/components/schemas/File'
-        pagination:
-          description: The response pagination information
-          $ref: '#/components/schemas/Pagination'
-    PlatformType:
+          $ref: '#/components/schemas/File'
+    String_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: string
+          description: The response data
+    FileRelationType:
       type: integer
-      description: '0 = Empty
+      description: '1 = EmbeddedLibrary
 
-        1 = Windows
+        2 = OptionalDependency
 
-        2 = XboxOne
+        3 = RequiredDependency
 
-        3 = XboxXS
+        4 = Tool
 
-        4 = Linux
+        5 = Incompatible
 
-        5 = PS4
-
-        6 = PS5
-
-        7 = Mac
-
-        8 = IOS
-
-        9 = TVOS
-
-        10 = Android
-
-        11 = Switch
-
-        12 = WindowsServer
-
-        13 = LinuxServer'
+        6 = Include'
       x-enumNames:
-      - Empty
-      - Windows
-      - XboxOne
-      - XboxXS
-      - Linux
-      - PS4
-      - PS5
-      - Mac
-      - IOS
-      - TVOS
-      - Android
-      - Switch
-      - WindowsServer
-      - LinuxServer
+      - EmbeddedLibrary
+      - OptionalDependency
+      - RequiredDependency
+      - Tool
+      - Incompatible
+      - Include
       enum:
-      - 0
       - 1
       - 2
       - 3
       - 4
       - 5
       - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      - 13
-    FileDependency:
-      type: object
-      additionalProperties: false
-      properties:
-        modId:
-          type: integer
-          format: int32
-        relationType:
-          $ref: '#/components/schemas/FileRelationType'
-    FileHash:
-      type: object
-      additionalProperties: false
-      properties:
-        value:
-          type: string
-        algo:
-          $ref: '#/components/schemas/HashAlgo'
-    CookerInfo:
-      type: object
-      additionalProperties: false
-      properties:
-        cookerVersion:
-          type: string
-        cookerRevision:
-          type: string
-    ProjectFileReleaseType:
+    FileReleaseType:
       type: integer
       description: '1 = Release
 
@@ -477,38 +422,15 @@ components:
       - 1
       - 2
       - 3
-    SortableGameVersion:
+    FileDependency:
       type: object
       additionalProperties: false
       properties:
-        gameVersionName:
-          type: string
-          description: Original version name (e.g. 1.5b)
-        gameVersionPadded:
-          type: string
-          description: Used for sorting (e.g. 0000000001.0000000005)
-        gameVersion:
-          type: string
-          description: game version clean name (e.g. 1.5)
-        gameVersionReleaseDate:
-          type: string
-          description: Game version release date
-          format: date-time
-        gameVersionTypeId:
-          type:
-          - integer
-          - 'null'
-          description: Game version type id
+        modId:
+          type: integer
           format: int32
-    Get_Files_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/File'
+        relationType:
+          $ref: '#/components/schemas/FileRelationType'
     FileStatus:
       type: integer
       description: '1 = Processing
@@ -572,17 +494,21 @@ components:
       - 13
       - 14
       - 15
-    HashAlgo:
+    ProjectFileReleaseType:
       type: integer
-      description: '1 = Sha1
+      description: '1 = Release
 
-        2 = Md5'
+        2 = Beta
+
+        3 = Alpha'
       x-enumNames:
-      - Sha1
-      - Md5
+      - Release
+      - Beta
+      - Alpha
       enum:
       - 1
       - 2
+      - 3
     FileDeltaDiff:
       type: object
       additionalProperties: false
@@ -626,64 +552,51 @@ components:
             $ref: '#/components/schemas/FileHash'
         extraJsonData:
           type: string
-    FileReleaseType:
-      type: integer
-      description: '1 = Release
-
-        2 = Beta
-
-        3 = Alpha'
-      x-enumNames:
-      - Release
-      - Beta
-      - Alpha
-      enum:
-      - 1
-      - 2
-      - 3
-    String_Response:
+    CookerInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        cookerVersion:
+          type: string
+        cookerRevision:
+          type: string
+    ApiResponseOfFileDeltaDiff:
       type: object
       additionalProperties: false
       properties:
         data:
-          type: string
           description: The response data
-    FileRelationType:
-      type: integer
-      description: '1 = EmbeddedLibrary
-
-        2 = OptionalDependency
-
-        3 = RequiredDependency
-
-        4 = Tool
-
-        5 = Incompatible
-
-        6 = Include'
-      x-enumNames:
-      - EmbeddedLibrary
-      - OptionalDependency
-      - RequiredDependency
-      - Tool
-      - Incompatible
-      - Include
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    FileModule:
+          $ref: '#/components/schemas/FileDeltaDiff'
+    GetModFilesRequestBody:
       type: object
       additionalProperties: false
       properties:
-        name:
-          type: string
-        fingerprint:
-          type: integer
-          format: int64
+        fileIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+    Get_Files_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/File'
+    Get_Mod_Files_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/File'
+        pagination:
+          description: The response pagination information
+          $ref: '#/components/schemas/Pagination'
     DownloadInfoType:
       type: integer
       description: '1 = Default
@@ -699,13 +612,86 @@ components:
       - 1
       - 2
       - 3
-    Get_Mod_File_Response:
+    FileModule:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        fingerprint:
+          type: integer
+          format: int64
+    ApiResponseOfListOfDownloadInfo:
       type: object
       additionalProperties: false
       properties:
         data:
+          type: array
           description: The response data
-          $ref: '#/components/schemas/File'
+          items:
+            $ref: '#/components/schemas/DownloadInfo'
+    ModLoaderType:
+      type: integer
+      description: '0 = Any
+
+        1 = Forge
+
+        2 = Cauldron
+
+        3 = LiteLoader
+
+        4 = Fabric
+
+        5 = Quilt
+
+        6 = NeoForge'
+      x-enumNames:
+      - Any
+      - Forge
+      - Cauldron
+      - LiteLoader
+      - Fabric
+      - Quilt
+      - NeoForge
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+    SortableGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        gameVersionName:
+          type: string
+          description: Original version name (e.g. 1.5b)
+        gameVersionPadded:
+          type: string
+          description: Used for sorting (e.g. 0000000001.0000000005)
+        gameVersion:
+          type: string
+          description: game version clean name (e.g. 1.5)
+        gameVersionReleaseDate:
+          type: string
+          description: Game version release date
+          format: date-time
+        gameVersionTypeId:
+          type:
+          - integer
+          - 'null'
+          description: Game version type id
+          format: int32
+    FileHash:
+      type: object
+      additionalProperties: false
+      properties:
+        value:
+          type: string
+        algo:
+          $ref: '#/components/schemas/HashAlgo'
     File:
       type: object
       additionalProperties: false
@@ -819,26 +805,17 @@ components:
             $ref: '#/components/schemas/FileModule'
         cookingInfo:
           $ref: '#/components/schemas/CookerInfo'
-    Pagination:
-      type: object
-      additionalProperties: false
-      properties:
-        index:
-          type: integer
-          description: A zero based index of the first item that is included in the response
-          format: int32
-        pageSize:
-          type: integer
-          description: The requested number of items to be included in the response
-          format: int32
-        resultCount:
-          type: integer
-          description: The actual number of items that were included in the response
-          format: int32
-        totalCount:
-          type: integer
-          description: The total number of items available by the request
-          format: int64
+    HashAlgo:
+      type: integer
+      description: '1 = Sha1
+
+        2 = Md5'
+      x-enumNames:
+      - Sha1
+      - Md5
+      enum:
+      - 1
+      - 2
     DownloadInfo:
       type: object
       additionalProperties: false
@@ -863,6 +840,85 @@ components:
             $ref: '#/components/schemas/FileHash'
         extraJsonData:
           type: string
+    Pagination:
+      type: object
+      additionalProperties: false
+      properties:
+        index:
+          type: integer
+          description: A zero based index of the first item that is included in the response
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested number of items to be included in the response
+          format: int32
+        resultCount:
+          type: integer
+          description: The actual number of items that were included in the response
+          format: int32
+        totalCount:
+          type: integer
+          description: The total number of items available by the request
+          format: int64
+    PlatformType:
+      type: integer
+      description: '0 = Empty
+
+        1 = Windows
+
+        2 = XboxOne
+
+        3 = XboxXS
+
+        4 = Linux
+
+        5 = PS4
+
+        6 = PS5
+
+        7 = Mac
+
+        8 = IOS
+
+        9 = TVOS
+
+        10 = Android
+
+        11 = Switch
+
+        12 = WindowsServer
+
+        13 = LinuxServer'
+      x-enumNames:
+      - Empty
+      - Windows
+      - XboxOne
+      - XboxXS
+      - Linux
+      - PS4
+      - PS5
+      - Mac
+      - IOS
+      - TVOS
+      - Android
+      - Switch
+      - WindowsServer
+      - LinuxServer
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
     FileDeltaDiffStatus:
       type: integer
       description: '1 = Generating
@@ -878,62 +934,6 @@ components:
       - 1
       - 2
       - 3
-    ApiResponseOfFileDeltaDiff:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/FileDeltaDiff'
-    ApiResponseOfListOfDownloadInfo:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/DownloadInfo'
-    ModLoaderType:
-      type: integer
-      description: '0 = Any
-
-        1 = Forge
-
-        2 = Cauldron
-
-        3 = LiteLoader
-
-        4 = Fabric
-
-        5 = Quilt
-
-        6 = NeoForge'
-      x-enumNames:
-      - Any
-      - Forge
-      - Cauldron
-      - LiteLoader
-      - Fabric
-      - Quilt
-      - NeoForge
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-    GetModFilesRequestBody:
-      type: object
-      additionalProperties: false
-      properties:
-        fileIds:
-          type: array
-          items:
-            type: integer
-            format: int32
   securitySchemes:
     API_KEY:
       type: apiKey
