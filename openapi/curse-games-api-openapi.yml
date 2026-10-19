@@ -31,6 +31,20 @@ paths:
           type: integer
           format: int32
         x-position: 2
+      - name: HasExplicitPageSize
+        in: query
+        description: 'Whether the caller actually supplied a pageSize, as opposed to
+
+          pageSize returning the default because none was sent. [FromQuery]
+
+          model binding always constructs this class - even from an empty
+
+          query string - so pageSize''s own getter can''t be used to tell those
+
+          two cases apart from outside the class.'
+        schema:
+          type: boolean
+        x-position: 3
       responses:
         '200':
           description: ''
@@ -204,27 +218,7 @@ paths:
       x-operation-id-original: Get additional client featured projects
 components:
   schemas:
-    Get_Version_Types_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionType'
-    GameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        slug:
-          type: string
-        name:
-          type: string
-    GameVersionsByType2:
+    GameVersionsByType:
       type: object
       additionalProperties: false
       properties:
@@ -234,7 +228,32 @@ components:
         versions:
           type: array
           items:
-            $ref: '#/components/schemas/GameVersion'
+            type: string
+    GameVersionTypeStatus:
+      type: integer
+      description: '1 = Normal
+
+        2 = Deleted'
+      x-enumNames:
+      - Normal
+      - Deleted
+      enum:
+      - 1
+      - 2
+    Get_Versions_Response_-_V1:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionsByType'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
     Pagination:
       type: object
       additionalProperties: false
@@ -255,6 +274,17 @@ components:
           type: integer
           description: The total number of items available by the request
           format: int64
+    GameVersionsByType2:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: integer
+          format: int32
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameVersion'
     Get_Games_Response:
       type: object
       additionalProperties: false
@@ -267,17 +297,6 @@ components:
         pagination:
           description: The response pagination information
           $ref: '#/components/schemas/Pagination'
-    CoreApiStatus:
-      type: integer
-      description: '1 = Private
-
-        2 = Public'
-      x-enumNames:
-      - Private
-      - Public
-      enum:
-      - 1
-      - 2
     CoreStatus:
       type: integer
       description: '1 = Draft
@@ -305,53 +324,27 @@ components:
       - 4
       - 5
       - 6
-    GameVersionsByType:
-      type: object
-      additionalProperties: false
-      properties:
-        type:
-          type: integer
-          format: int32
-        versions:
-          type: array
-          items:
-            type: string
-    Get_Versions_Response_-_V1:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/GameVersionsByType'
-    GameVersionType:
+    CoreApiStatus:
+      type: integer
+      description: '1 = Private
+
+        2 = Public'
+      x-enumNames:
+      - Private
+      - Public
+      enum:
+      - 1
+      - 2
+    GameVersion:
       type: object
       additionalProperties: false
       properties:
         id:
           type: integer
           format: int32
-        gameId:
-          type: integer
-          format: int32
-        name:
-          type: string
         slug:
           type: string
-        isSyncable:
-          type: boolean
-        status:
-          $ref: '#/components/schemas/GameVersionTypeStatus'
-    GameAssets:
-      type: object
-      additionalProperties: false
-      properties:
-        iconUrl:
-          type: string
-        tileUrl:
-          type: string
-        coverUrl:
+        name:
           type: string
     Game:
       type: object
@@ -375,12 +368,60 @@ components:
           $ref: '#/components/schemas/CoreApiStatus'
         supportedFeatures:
           $ref: '#/components/schemas/GameSupportedFeatures'
-    GameSupportedFeatures:
+    GameAssets:
       type: object
       additionalProperties: false
       properties:
-        supportModSubscriptions:
+        iconUrl:
+          type: string
+        tileUrl:
+          type: string
+        coverUrl:
+          type: string
+    GameVersionType:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameId:
+          type: integer
+          format: int32
+        name:
+          type: string
+        slug:
+          type: string
+        isSyncable:
           type: boolean
+        status:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    Get_Version_Types_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/GameVersionType'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
+    Get_Game_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/Game'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
     Get_Versions_Response_-_V2:
       type: object
       additionalProperties: false
@@ -390,24 +431,17 @@ components:
           description: The response data
           items:
             $ref: '#/components/schemas/GameVersionsByType2'
-    Get_Game_Response:
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
+    GameSupportedFeatures:
       type: object
       additionalProperties: false
       properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/Game'
-    GameVersionTypeStatus:
-      type: integer
-      description: '1 = Normal
-
-        2 = Deleted'
-      x-enumNames:
-      - Normal
-      - Deleted
-      enum:
-      - 1
-      - 2
+        supportModSubscriptions:
+          type: boolean
   securitySchemes:
     API_KEY:
       type: apiKey

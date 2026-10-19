@@ -157,41 +157,17 @@ components:
       - 4
       - 5
       - 6
-    MinecraftGameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        id:
-          type: integer
-          format: int32
-        gameVersionId:
-          type: integer
-          format: int32
-        versionString:
-          type: string
-        jarDownloadUrl:
-          type: string
-        jsonDownloadUrl:
-          type: string
-        approved:
-          type: boolean
-        dateModified:
-          type: string
-          format: date-time
-        gameVersionTypeId:
-          type: integer
-          format: int32
-        gameVersionStatus:
-          $ref: '#/components/schemas/GameVersionStatus'
-        gameVersionTypeStatus:
-          $ref: '#/components/schemas/GameVersionTypeStatus'
-    ApiResponseOfMinecraftGameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          description: The response data
-          $ref: '#/components/schemas/MinecraftGameVersion'
+    GameVersionTypeStatus:
+      type: integer
+      description: '1 = Normal
+
+        2 = Deleted'
+      x-enumNames:
+      - Normal
+      - Deleted
+      enum:
+      - 1
+      - 2
     ApiResponseOfMinecraftModLoaderVersion:
       type: object
       additionalProperties: false
@@ -199,30 +175,11 @@ components:
         data:
           description: The response data
           $ref: '#/components/schemas/MinecraftModLoaderVersion'
-    GameVersionStatus:
-      type: integer
-      description: '1 = Approved
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
 
-        2 = Deleted
-
-        3 = New'
-      x-enumNames:
-      - Approved
-      - Deleted
-      - New
-      enum:
-      - 1
-      - 2
-      - 3
-    ApiResponseOfListOfMinecraftModLoaderIndex:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/MinecraftModLoaderIndex'
+            caller requested a signed response and the game supports it.'
     MinecraftModLoaderIndex:
       type: object
       additionalProperties: false
@@ -240,30 +197,21 @@ components:
           format: date-time
         type:
           $ref: '#/components/schemas/ModLoaderType'
-    ModLoaderInstallMethod:
+    GameVersionStatus:
       type: integer
-      description: '1 = ForgeInstaller
+      description: '1 = Approved
 
-        2 = ForgeJarInstall
+        2 = Deleted
 
-        3 = ForgeInstaller_v2'
+        3 = New'
       x-enumNames:
-      - ForgeInstaller
-      - ForgeJarInstall
-      - ForgeInstaller_v2
+      - Approved
+      - Deleted
+      - New
       enum:
       - 1
       - 2
       - 3
-    ApiResponseOfListOfMinecraftGameVersion:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/MinecraftGameVersion'
     MinecraftModLoaderVersion:
       type: object
       additionalProperties: false
@@ -330,17 +278,89 @@ components:
           $ref: '#/components/schemas/GameVersionTypeStatus'
         installProfileJson:
           type: string
-    GameVersionTypeStatus:
-      type: integer
-      description: '1 = Normal
+    MinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+        gameVersionId:
+          type: integer
+          format: int32
+        versionString:
+          type: string
+        jarDownloadUrl:
+          type: string
+        jsonDownloadUrl:
+          type: string
+        approved:
+          type: boolean
+        dateModified:
+          type: string
+          format: date-time
+        gameVersionTypeId:
+          type: integer
+          format: int32
+        gameVersionStatus:
+          $ref: '#/components/schemas/GameVersionStatus'
+        gameVersionTypeStatus:
+          $ref: '#/components/schemas/GameVersionTypeStatus'
+    ApiResponseOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          description: The response data
+          $ref: '#/components/schemas/MinecraftGameVersion'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
 
-        2 = Deleted'
+            caller requested a signed response and the game supports it.'
+    ApiResponseOfListOfMinecraftModLoaderIndex:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftModLoaderIndex'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
+    ApiResponseOfListOfMinecraftGameVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/MinecraftGameVersion'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
+    ModLoaderInstallMethod:
+      type: integer
+      description: '1 = ForgeInstaller
+
+        2 = ForgeJarInstall
+
+        3 = ForgeInstaller_v2'
       x-enumNames:
-      - Normal
-      - Deleted
+      - ForgeInstaller
+      - ForgeJarInstall
+      - ForgeInstaller_v2
       enum:
       - 1
       - 2
+      - 3
   securitySchemes:
     API_KEY:
       type: apiKey

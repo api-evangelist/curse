@@ -94,20 +94,6 @@ apis:
     url: https://docs.curseforge.com/rest-api/
   - type: APIReference
     url: https://docs.curseforge.com/rest-api/
-- aid: curse:curse-fingerprints-api
-  name: Curse Fingerprints API
-  description: The Fingerprints API from Curse — 4 operation(s) for fingerprints.
-  humanURL: https://docs.curseforge.com/rest-api/
-  baseURL: https://api.curseforge.com
-  tags:
-  - Fingerprints
-  properties:
-  - type: OpenAPI
-    url: openapi/curse-fingerprints-api-openapi.yml
-  - type: Documentation
-    url: https://docs.curseforge.com/rest-api/
-  - type: APIReference
-    url: https://docs.curseforge.com/rest-api/
 - aid: curse:curse-games-api
   name: Curse Games API
   description: The Games API from Curse — 6 operation(s) for games.
@@ -164,6 +150,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/curse-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.curseforge.com/rest-api/
+  - type: APIReference
+    url: https://docs.curseforge.com/rest-api/
+- aid: curse:curse-usermods-api
+  name: Curse User Mods API
+  description: The UserMods API from Curse — 2 operation(s) for usermods.
+  humanURL: https://docs.curseforge.com/rest-api/
+  baseURL: https://api.curseforge.com
+  tags:
+  - UserMods
+  properties:
+  - type: OpenAPI
+    url: openapi/curse-usermods-api-openapi.yml
   - type: Documentation
     url: https://docs.curseforge.com/rest-api/
   - type: APIReference

@@ -59,6 +59,20 @@ paths:
       x-operation-id-original: Get Categories
 components:
   schemas:
+    Get_Categories_Response:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          description: The response data
+          items:
+            $ref: '#/components/schemas/Category'
+        sig:
+          type: string
+          description: 'Base64-encoded RSA-SHA256/PSS signature of the response, present only when the
+
+            caller requested a signed response and the game supports it.'
     Category:
       type: object
       additionalProperties: false
@@ -110,15 +124,6 @@ components:
           - 'null'
           description: The display index for this category
           format: int32
-    Get_Categories_Response:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          description: The response data
-          items:
-            $ref: '#/components/schemas/Category'
   securitySchemes:
     API_KEY:
       type: apiKey
