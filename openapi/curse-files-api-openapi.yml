@@ -982,3 +982,9 @@ components:
       name: x-api-key
       in: header
 x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v11.0.0.0))
+x-provenance:
+  method: harvested
+  publisher: Curse
+  source: https://api.curseforge.com/swagger/v1/swagger.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
