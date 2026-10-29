@@ -64,6 +64,133 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Curse is a company surfaced as a portfolio company of ggv-capital, uncork-capital and added to the API Evangelist network as a stub for enrichment. Sector: gaming. This profile is a lead awaiting the enrichment pipeline.
+Curse (Curse Inc.) built and operated CurseForge, Gamepedia, and the Curse gaming network; its platform assets are now operated under Fandom / Overwolf. The live developer surface is the CurseForge Core API — a REST API over the CurseForge catalog of game mods, modpacks, and add-ons, covering games, categories, mods, files, fingerprint matching, and Minecraft versions and mod loaders. It is authenticated with an x-api-key header issued from the CurseForge for Studios developer console, with third-party access granted via an approved application.
 
-Backed by: ggv-capital, uncork-capital — https://www.fandom.com/
+**Areas:** Company · Gaming · MODS · Minecraft · Game Content · Developer Platform · Catalog
+
+## Curse on APIs.io
+
+Everything profiled for Curse is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/curse/](https://apis.io/providers/curse/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [Curse Categories API](https://apis.io/apis/curse/curse-categories-api/) — The Categories API from Curse — 1 operation(s) for categories.
+- [Curse Files API](https://apis.io/apis/curse/curse-files-api/) — The Files API from Curse — 7 operation(s) for files.
+- [Curse Fingerprints API](https://apis.io/apis/curse/curse-fingerprints-api/) — The Fingerprints API from Curse — 4 operation(s) for fingerprints.
+- [Curse Games API](https://apis.io/apis/curse/curse-games-api/) — The Games API from Curse — 6 operation(s) for games.
+- [Curse Minecraft API](https://apis.io/apis/curse/curse-minecraft-api/) — The Minecraft API from Curse — 4 operation(s) for minecraft.
+- [Curse Mods API](https://apis.io/apis/curse/curse-mods-api/) — The Mods API from Curse — 19 operation(s) for mods.
+- [Curse Subscriptions API](https://apis.io/apis/curse/curse-subscriptions-api/) — The Subscriptions API from Curse — 5 operation(s) for subscriptions.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [curse](https://apis.io/servers/curse/curse/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Curse Agentic Access](https://apis.io/agentic-access/curse/curse-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CurseForge Core Categories API](https://apis.io/collections/curse/open-curse-categories-api/)
+- [CurseForge Core Categories Files API](https://apis.io/collections/curse/open-curse-files-api/)
+- [CurseForge Core Categories Fingerprints API](https://apis.io/collections/curse/open-curse-fingerprints-api/)
+- [CurseForge Core Categories Games API](https://apis.io/collections/curse/open-curse-games-api/)
+- [CurseForge Core Categories Minecraft API](https://apis.io/collections/curse/open-curse-minecraft-api/)
+- [CurseForge Core Categories Mods API](https://apis.io/collections/curse/open-curse-mods-api/)
+- [CurseForge Core Categories Subscriptions API](https://apis.io/collections/curse/open-curse-subscriptions-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Curse Core Overlay](https://apis.io/overlays/curse/curse-core-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Curse Authentication](https://apis.io/security/curse/curse-authentication/)
+- [Curse Domain Security](https://apis.io/security/curse/curse-domain-security/)
+- [Curse Vulnerability Disclosure](https://apis.io/security/curse/curse-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.fandom.com/)
+- [Documentation](https://docs.curseforge.com/rest-api/)
+- [Getting started](https://docs.curseforge.com/rest-api/)
+- [API reference](https://docs.curseforge.com/rest-api/)
+- [Sign up](https://console.curseforge.com/)
+- [Support](https://support.curseforge.com/)
+- [Blog](https://about.fandom.com/newsroom)
+- [Security](https://hackerone.com/fandom_bbp)
+- [Terms of service](https://docs.curseforge.com/rest-api/#terms-of-use)
+- [Privacy policy](https://www.fandom.com/privacy-policy)
+- [Status](https://status.curseforge.com/)
+
+## API Evangelist rating
+
+**Kin Score 43.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 47.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 34.2 |
+
+**Agent readiness 19.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 30.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/curse/](https://apis.io/providers/curse/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Curse: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/curse/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
